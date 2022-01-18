@@ -15,5 +15,4 @@ class NumberStringsTest {
 
         assertThat(numberStrings2).containsExactly("1", "2");
     }
-
 }
