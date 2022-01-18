@@ -8,7 +8,6 @@ public class NumberStrings {
     }
 
     public List<String> split(final String regex) {
-        // return List.of(numberStrings.split(regex));
-        return List.of("1", "2");
+        return List.of(numberStrings.split(regex));
     }
 }
