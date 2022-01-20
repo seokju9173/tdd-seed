@@ -23,18 +23,19 @@ public class SetTest {
     }
 
     @Test
-    void SetTest1() {
+    void setTest1() {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    void SetTest2(int number) {
+    void setTest2(int number) {
         assertThat(numbers.contains(number)).isTrue();
     }
 
-    @ParameterizedTest @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"})
-    void SetTest3(int number, boolean expected) {
+    @ParameterizedTest
+    @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"})
+    void setTest3(int number, boolean expected) {
         assertThat(numbers.contains(number)).isEqualTo(expected);
     }
 }
