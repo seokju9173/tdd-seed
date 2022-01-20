@@ -2,10 +2,16 @@ import java.util.Objects;
 
 public class Calculator {
 
+    private static final String BLANK = " ";
+    private static final String PLUS = "+";
+    private static final String MINUS = "-";
+    private static final String MULTIPLY = "*";
+    private static final String DIVIDE = "/";
+
     int calculate(String input) {
         checkNullOrEmpty(input);
 
-        String[] data = input.split(" ");
+        String[] data = input.split(BLANK);
         checkInputLength(data);
 
         checkValidNumber(data[0]);
@@ -25,13 +31,13 @@ public class Calculator {
     }
 
     private int operate(int result, String operator, int num) {
-        if (operator.equals("+")) {
+        if (operator.equals(PLUS)) {
             result = plus(result, num);
-        } else if (operator.equals("*")) {
+        } else if (operator.equals(MULTIPLY)) {
             result = multiply(result, num);
-        } else if (operator.equals("-")) {
+        } else if (operator.equals(MINUS)) {
             result = minus(result, num);
-        } else if (operator.equals("/")) {
+        } else if (operator.equals(DIVIDE)) {
             result = divide(result, num);
         }
         return result;
@@ -68,7 +74,7 @@ public class Calculator {
     }
 
     private void checkValidOperator(String op) {
-        if (!op.equals("+") && !op.equals("-") && !op.equals("*") && !op.equals("/")) {
+        if (!op.equals(PLUS) && !op.equals(MINUS) && !op.equals(MULTIPLY) && !op.equals(DIVIDE)) {
             throw new IllegalArgumentException("유효한 연산자가 아닙니다");
         }
     }
