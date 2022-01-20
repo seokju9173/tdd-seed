@@ -20,15 +20,26 @@ class CalculatorTest {
     @DisplayName("null 혹은 빈 공백 에러 테스트 ")
     @NullAndEmptySource
     void nullOrEmptyErrorTest(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> c.calculate(input))
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> c.calculate(input))
                 .withMessageMatching("input 값이 잘못되었습니다");
+    }
+
+    @ParameterizedTest
+    @DisplayName("숫자가 아닐 경우 에러 테스트")
+    @ValueSource(strings = {"2 + + - 4", "- - 3 * 4"})
+    void invalidNumberErrorTest(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> c.calculate(input))
+                .withMessageMatching("숫자를 입력해주세요");
     }
 
     @ParameterizedTest
     @DisplayName("연산자 에러 테스트")
     @ValueSource(strings = {"2 // 3 ) 4", "1 == 4"})
-    void operatorErrorTest(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> c.calculate(input))
+    void invalidOperatorErrorTest(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> c.calculate(input))
                 .withMessageMatching("유효한 연산자가 아닙니다");
     }
 
@@ -36,7 +47,8 @@ class CalculatorTest {
     @DisplayName("Input 값이 2개 미만일 경우 에러 테스트")
     @ValueSource(strings = {"2 -", "3"})
     void inputLengthErrorTest(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> c.calculate(input))
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> c.calculate(input))
                 .withMessageMatching("2개 이상의 값을 입력해주세요");
     }
 
@@ -44,7 +56,8 @@ class CalculatorTest {
     @DisplayName("0으로 나눌 경우 에러 테스트")
     @ValueSource(strings = {"2 + 5 / 0", "3 / 0 * 10"})
     void divideByZeroErrorTest(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> c.calculate(input))
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> c.calculate(input))
                 .withMessageMatching("0으로는 나눌 수 없습니다");
     }
 }
