@@ -3,20 +3,16 @@ package racingcar;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-import java.util.Scanner;
-
 public class Race {
-    private int totalCars;
-    private int totalProgress;
+    private int carsTotal;
+    private int progressTotal;
     private Car[] cars;
 
     public void racePrepare() {
-        Scanner scanner = new Scanner(System.in);
-
         OutputView.printHowManyCars();
-        this.totalCars = InputView.inputCarCount();
+        this.carsTotal = InputView.inputCarCount();
         OutputView.printHowManyProgress();
-        this.totalProgress = InputView.inputProgressTotal();
+        this.progressTotal = InputView.inputProgressTotal();
         setupCars();
         race();
     }
@@ -24,8 +20,10 @@ public class Race {
     public void race() {
         OutputView.printResult();
 
-        for (int i = 0; i < totalProgress; i++) {
-            for (int j = 0; j < totalCars; j++) {
+        //아래 for문을 추가적으로 매소드를 분리 시킬수 있을 것 같음
+        for (int i = 0; i < progressTotal; i++) {
+            // 아래 구문을 OutputView로 이동해야함
+            for (int j = 0; j < carsTotal; j++) {
                 cars[j].drivingCar();
                 System.out.println(cars[j].getProgress());
             }
@@ -34,8 +32,8 @@ public class Race {
     }
 
     public void setupCars(){
-        cars = new Car[totalCars];
-        for (int i = 0; i < totalCars; i++) {
+        cars = new Car[carsTotal];
+        for (int i = 0; i < carsTotal; i++) {
             cars[i] = new Car();
         }
     }
