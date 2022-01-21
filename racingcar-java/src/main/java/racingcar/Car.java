@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.Random;
 
-public class racingCar {
+public class Car {
     private static Random random = new Random();
     private String progress = "";
 
@@ -10,5 +10,9 @@ public class racingCar {
         if (random.nextInt(10) > 3){
             this.progress += "-";
         }
+    }
+
+    public String getProgress() {
+        return progress;
     }
 }
