@@ -1,12 +1,15 @@
+package view;
+
+import domain.Car;
 import java.util.List;
 
 public class ResultView {
 
-    void printIntroResult () {
+    public void printIntroResult () {
         System.out.println("실행 결과");
     }
 
-    void printResult(List<Car> cars) {
+    public void printResult(List<Car> cars) {
         for (Car c: cars) {
             printScore(c.getPosition());
         }
