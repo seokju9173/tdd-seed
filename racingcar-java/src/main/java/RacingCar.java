@@ -1,35 +1,36 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RacingCar {
 
-    Random random = new Random();
-    ResultView rv = new ResultView();
+    List<Car> cars;
 
-    void racingMain() {
-        InputView iv = new InputView();
-
-        int numberCar = iv.inputNumberCar();
-        int round = iv.inputRound();
-
-        int [] scoreCars = new int[numberCar];
-
-        rv.printIntroResult();
-
-        playOneRound(round, scoreCars);
+    public RacingCar(int numberCars) {
+        this.cars = setCars(numberCars);
     }
 
-    void playOneRound(int round, int[] scoreCars) {
-        for (int i = 0; i < round; i++){
-            playRacing(scoreCars);
-            rv.printResult(scoreCars);
+    List<Car> setCars(int numberCar) {
+        List<Car> cars = new ArrayList<Car>();
+        for (int i = 0; i < numberCar; i++) {
+            cars.add(new Car());
+        }
+        return cars;
+    }
+
+    List<Car> getCars() {
+        return cars;
+    }
+
+    int getRandom() {
+        return new Random().nextInt(10);
+    }
+
+    void playOneRound(List<Car> cars) {
+        for (Car c: cars) {
+            c.move(getRandom());
         }
     }
 
-    private void playRacing(int[] scoreCars) {
-        for (int i = 0; i < scoreCars.length; i++) {
-            if (random.nextInt(10) >= 4) {
-                scoreCars[i]++;
-            }
-        }
-    }
+
 }

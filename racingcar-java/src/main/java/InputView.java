@@ -10,6 +10,7 @@ public class InputView {
         int numberCar = sc.nextInt();
 
         checkValidInput(numberCar);
+
         return numberCar;
     }
 
@@ -19,6 +20,7 @@ public class InputView {
         int round = sc.nextInt();
 
         checkValidInput(round);
+
         return round;
     }
 

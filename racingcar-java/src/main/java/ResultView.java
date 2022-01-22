@@ -1,18 +1,20 @@
+import java.util.List;
+
 public class ResultView {
 
     void printIntroResult () {
         System.out.println("실행 결과");
     }
 
-    void printResult(int[] score) {
-        for (int i = 0; i < score.length; i++) {
-            printScore(score[i]);
+    void printResult(List<Car> cars) {
+        for (Car c: cars) {
+            printScore(c.getPosition());
         }
         System.out.println("");
     }
 
-    private void printScore(int score) {
-        for (int i = 0; i < score; i++) {
+    private void printScore(int pos) {
+        for (int i = 0; i < pos; i++) {
             System.out.print("-");
         }
         System.out.println("");
