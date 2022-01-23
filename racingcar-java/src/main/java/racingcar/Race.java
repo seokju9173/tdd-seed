@@ -5,7 +5,7 @@ import racingcar.view.OutputView;
 
 public class Race {
     private final int progressTotal;
-    private Cars cars;
+    private final Cars cars;
 
     public Race(String carNames, int progressTotal) {
         cars = new Cars(carNames);
