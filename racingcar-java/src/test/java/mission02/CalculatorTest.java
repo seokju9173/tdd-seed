@@ -4,11 +4,11 @@ import mission02.exception.DividedException;
 import mission02.exception.InvalidExpressionException;
 import mission02.exception.OperatorException;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * 계산기테스트이므로, input과 output에 대해서 체크만 한다.
@@ -17,6 +17,7 @@ import static org.assertj.core.api.Assertions.*;
 public class CalculatorTest {
 
     final Calculator calculator = new Calculator();
+
 
     @DisplayName("올바른 식의 형태 - 정상 값")
     @ParameterizedTest
@@ -60,9 +61,7 @@ public class CalculatorTest {
     @CsvSource({"5 & 1", "5 ^ 5", "3 ( 2"})
     void 문자열이_올바르지_않는_사칙연산이_들어왔을때_Format_예외를_터트린다(String input){
 
-        assertThatThrownBy(() -> {
-            int calcResult = calculator.calculatorValue(input);
-        })
+        assertThatThrownBy(() -> { int calcResult = calculator.calculatorValue(input); })
                 .isInstanceOf(OperatorException.class)
                 .hasMessage("operation is not arithmetic operation");
     }

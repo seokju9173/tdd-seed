@@ -1,5 +1,6 @@
 package mission02;
 
+
 import mission02.exception.DividedException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -19,6 +20,7 @@ public class CalculationTest {
     @DisplayName("연산기호 테스트 - +, -, *, /")
     @ParameterizedTest
     @ValueSource(strings = {"+", "-", "*", "/"})
+
     void 연산기호가_올바른_사칙연산의_연산기호인지_확인한다(String type){
         // given
         final String[] types = {Calculation.PLUS, Calculation.MINUS, Calculation.MULTIPLY, Calculation.DIVIDED};
@@ -49,6 +51,7 @@ public class CalculationTest {
     @ParameterizedTest
     @CsvSource(value = {"3, 2, 1", "5, 2, 3", "100, 10, 90"})
     void 두개의_값이_주어지고_빼면_올바른_값이_나온다(int baseOperand, int nextOperand, int result){
+
         // given
         final String operator = Calculation.MINUS;
 
@@ -63,6 +66,7 @@ public class CalculationTest {
     @ParameterizedTest
     @CsvSource(value = {"3, 2, 6", "5, 2, 10", "100, 10, 1000"})
     void 두개의_값이_주어지고_곱하면_올바른_값이_나온다(int baseOperand, int nextOperand, int result){
+
         // given
         final String operator = Calculation.MULTIPLY;
 
@@ -94,9 +98,7 @@ public class CalculationTest {
 
         final String operator = Calculation.DIVIDED;
 
-        assertThatThrownBy(() -> {
-            int calcResult = calculation.calculate(baseOperand, operator, nextOperand);
-        })
+        assertThatThrownBy(() -> { calculation.calculate(baseOperand, operator, nextOperand); })
                 .isInstanceOf(DividedException.class)
                 .hasMessage("cannot be divided by zero");
     }
