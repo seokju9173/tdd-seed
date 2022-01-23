@@ -11,7 +11,7 @@ public class Cars {
     private static final int MAX_BOUND = 10;
     private static final int MIN_POSITION = 0;
 
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(String carNames) {
         String[] carNamesSplit = carNames.split(",");
@@ -48,7 +48,7 @@ public class Cars {
         return max;
     }
 
-    private List<Car> getWinnerCars(int winnerPosition){
+    public List<Car> getWinnerCars(int winnerPosition){
         List<Car> winnerCars = new ArrayList<>();
 
         for (Car car : cars){
