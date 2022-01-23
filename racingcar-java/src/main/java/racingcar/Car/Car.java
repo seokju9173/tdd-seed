@@ -9,6 +9,9 @@ public class Car {
     private int position = START_LINE;
 
     public Car(String carName) {
+        if (carName.length() > 5){
+            throw new RuntimeException("차량의 이름은 5자를 넘길 수 없습니다.");
+        }
         this.carName = carName;
     }
 
