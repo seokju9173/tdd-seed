@@ -36,7 +36,7 @@ public class CalculatorTest {
     void 문자열이_숫자표현식에_맞지않을때_InvalidExpression_예외를_터트린다(String input){
 
         assertThatThrownBy(() -> {
-            int calcResult = calculator.calculatorValue(input);
+           calculator.calculatorValue(input);
         })
                 .isInstanceOf(InvalidExpressionException.class)
                 .hasMessage("expression is invalid expression");
@@ -49,7 +49,7 @@ public class CalculatorTest {
     void 문자열에_영으로_나누는_형식이_있다면_Divided_예외를_터트린다(String input){
 
         assertThatThrownBy(() -> {
-            int calcResult = calculator.calculatorValue(input);
+           calculator.calculatorValue(input);
         })
                 .isInstanceOf(DividedException.class)
                 .hasMessage("cannot be divided by zero");
@@ -61,7 +61,7 @@ public class CalculatorTest {
     void 문자열이_올바르지_않는_사칙연산이_들어왔을때_Format_예외를_터트린다(String input){
 
         assertThatThrownBy(() -> {
-            int calcResult = calculator.calculatorValue(input);
+           calculator.calculatorValue(input);
         })
                 .isInstanceOf(OperatorException.class)
                 .hasMessage("operation is not arithmetic operation");

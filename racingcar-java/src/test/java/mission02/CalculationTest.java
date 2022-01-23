@@ -95,7 +95,7 @@ public class CalculationTest {
         final String operator = Calculation.DIVIDED;
 
         assertThatThrownBy(() -> {
-            int calcResult = calculation.calculate(baseOperand, operator, nextOperand);
+           calculation.calculate(baseOperand, operator, nextOperand);
         })
                 .isInstanceOf(DividedException.class)
                 .hasMessage("cannot be divided by zero");
