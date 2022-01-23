@@ -4,11 +4,11 @@ import mission02.exception.DividedException;
 import mission02.exception.InvalidExpressionException;
 import mission02.exception.OperatorException;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.*;
+
 
 /**
  * 계산기테스트이므로, input과 output에 대해서 체크만 한다.
@@ -35,9 +35,7 @@ public class CalculatorTest {
     @CsvSource({"5 +", "5 -", "10 + 3 - 1 *", "5 + 3 +"})
     void 문자열이_숫자표현식에_맞지않을때_InvalidExpression_예외를_터트린다(String input){
 
-        assertThatThrownBy(() -> {
-           calculator.calculatorValue(input);
-        })
+        assertThatThrownBy(() -> { calculator.calculatorValue(input); })
                 .isInstanceOf(InvalidExpressionException.class)
                 .hasMessage("expression is invalid expression");
     }
@@ -48,9 +46,7 @@ public class CalculatorTest {
     @CsvSource({"10 / 0" , "5 / 0", "125 / 0"})
     void 문자열에_영으로_나누는_형식이_있다면_Divided_예외를_터트린다(String input){
 
-        assertThatThrownBy(() -> {
-           calculator.calculatorValue(input);
-        })
+        assertThatThrownBy(() -> { calculator.calculatorValue(input); })
                 .isInstanceOf(DividedException.class)
                 .hasMessage("cannot be divided by zero");
     }
@@ -60,9 +56,7 @@ public class CalculatorTest {
     @CsvSource({"5 & 1", "5 ^ 5", "3 ( 2"})
     void 문자열이_올바르지_않는_사칙연산이_들어왔을때_Format_예외를_터트린다(String input){
 
-        assertThatThrownBy(() -> {
-           calculator.calculatorValue(input);
-        })
+        assertThatThrownBy(() -> { calculator.calculatorValue(input); })
                 .isInstanceOf(OperatorException.class)
                 .hasMessage("operation is not arithmetic operation");
     }
