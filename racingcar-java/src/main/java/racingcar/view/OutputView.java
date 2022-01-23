@@ -28,7 +28,7 @@ public class OutputView {
         StringBuilder sb = new StringBuilder();
 
         for (Car car : cars) {
-            sb.append(car.getCarName() + ": ");
+            sb.append(car.getCarName()).append(": ");
             printCurrentCarPosition(sb, car);
             sb.append("\n");
         }
@@ -50,7 +50,7 @@ public class OutputView {
         }
 
         for (int i = 1; i < winnerCars.size(); i++) {
-            sb.append(", " + winnerCars.get(i).getCarName());
+            sb.append(", ").append(winnerCars.get(i).getCarName());
         }
 
         System.out.println(sb + PRINT_WINNER);
