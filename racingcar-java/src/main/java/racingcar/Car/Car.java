@@ -12,14 +12,14 @@ public class Car {
     private int position = START_LINE;
 
     public Car(String carName) {
-        if (carName.length() > LIMITED_NAME_LENGTH){
+        if (carName.length() > LIMITED_NAME_LENGTH) {
             throw new RuntimeException("차량의 이름은 5자를 넘길 수 없습니다.");
         }
         this.carName = carName;
     }
 
     public void drivingCar(int commandNumber) {
-        if (commandNumber >= MAX_COMMAND_NUMBER || commandNumber < MIN_COMMAND_NUMBER){
+        if (commandNumber >= MAX_COMMAND_NUMBER || commandNumber < MIN_COMMAND_NUMBER) {
             throw new RuntimeException("허용되지 않은 수치입니다.");
         }
         if (commandNumber >= ALLOW_DRIVE) {

@@ -54,7 +54,7 @@ public class CarTest {
     @DisplayName("자동차 이름 5자 넘길 때")
     public void longNameTest() {
         assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> new Car("LoooooooongName"))
+                .isThrownBy(() -> new Car("Looong"))
                 .withMessageMatching("차량의 이름은 5자를 넘길 수 없습니다.");
     }
 }
