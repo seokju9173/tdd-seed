@@ -3,8 +3,10 @@ package racingcar.Car;
 import racingcar.view.OutputView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Cars {
     private static final Random random = new Random();
@@ -15,10 +17,7 @@ public class Cars {
 
     public Cars(String carNames) {
         String[] carNamesSplit = carNames.split(",");
-        this.cars = new ArrayList<>();
-        for (String carName : carNamesSplit) {
-            this.cars.add(new Car(carName.trim()));
-        }
+        this.cars = Arrays.stream(carNamesSplit).map(name -> new Car(name.trim())).collect(Collectors.toList());
     }
 
     public List<Car> getCars() {
