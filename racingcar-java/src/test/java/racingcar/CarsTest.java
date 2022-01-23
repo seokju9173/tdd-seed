@@ -12,7 +12,7 @@ public class CarsTest {
 
     @Test
     @DisplayName("승자 검출 테스트")
-    public void winnerTest(){
+    public void winnerTest() {
         //given
         Cars cars = new Cars("test1,test2,test3");
 

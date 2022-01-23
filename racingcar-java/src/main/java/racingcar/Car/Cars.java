@@ -31,7 +31,7 @@ public class Cars {
         }
     }
 
-    public void winner(){
+    public void winner() {
         int winnerPosition = getMaxPosition();
         List<Car> winnerCars = getWinnerCars(winnerPosition);
 
@@ -41,25 +41,25 @@ public class Cars {
     private int getMaxPosition() {
         int max = MIN_POSITION;
 
-        for (Car car : cars){
+        for (Car car : cars) {
             max = Math.max(car.getPosition(), max);
         }
 
         return max;
     }
 
-    public List<Car> getWinnerCars(int winnerPosition){
+    public List<Car> getWinnerCars(int winnerPosition) {
         List<Car> winnerCars = new ArrayList<>();
 
-        for (Car car : cars){
-            WinnerCar(winnerCars, car, winnerPosition);
+        for (Car car : cars) {
+            winnerCar(winnerCars, car, winnerPosition);
         }
 
         return winnerCars;
     }
 
-    private void WinnerCar (List<Car> winnerCars, Car car, int winnerPosition){
-        if(car.getPosition() == winnerPosition){
+    private void winnerCar(List<Car> winnerCars, Car car, int winnerPosition) {
+        if (car.getPosition() == winnerPosition) {
             winnerCars.add(car);
         }
     }
