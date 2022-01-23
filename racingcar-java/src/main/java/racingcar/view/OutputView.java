@@ -5,7 +5,8 @@ import racingcar.Car.Car;
 import java.util.List;
 
 public class OutputView {
-    private static final String PRINT_HOW_MANY_CARS = "자동차 경주에 참여하는 사람의 이름은 무엇인가요?\n" + "여러명 입력이 가능하나 \",\"로 구분됩니다.";
+    private static final String PRINT_HOW_MANY_CARS = "자동차 경주에 참여하는 사람의 이름은 무엇인가요?\n"
+            + "여러명 입력이 가능하나 \",\"로 구분됩니다.";
     private static final String PRINT_HOW_MANY_PROGRESS = "시도할 회수는 몇 회 인가요?";
     private static final String PRINT_RESULT = "\n실행 결과";
     private static final String PROGRESS_STRING = "-";

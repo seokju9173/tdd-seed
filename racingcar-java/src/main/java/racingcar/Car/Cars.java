@@ -17,7 +17,9 @@ public class Cars {
 
     public Cars(String carNames) {
         String[] carNamesSplit = carNames.split(",");
-        this.cars = Arrays.stream(carNamesSplit).map(name -> new Car(name.trim())).collect(Collectors.toList());
+        this.cars = Arrays.stream(carNamesSplit)
+                .map(name -> new Car(name.trim()))
+                .collect(Collectors.toList());
     }
 
     public List<Car> getCars() {

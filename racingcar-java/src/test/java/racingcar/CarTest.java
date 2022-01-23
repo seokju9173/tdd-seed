@@ -36,10 +36,25 @@ public class CarTest {
     }
 
     @Test
+    @DisplayName("자동차 전진하는데 이상한 숫자")
+    public void wrongCommandTest() {
+        // given
+        Car wrong = new Car("molu");
+
+        // when
+        assertThatExceptionOfType(RuntimeException.class)
+                .isThrownBy(() -> wrong.drivingCar(-1))
+                .withMessageMatching("허용되지 않은 수치입니다.");
+        assertThatExceptionOfType(RuntimeException.class)
+                .isThrownBy(() -> wrong.drivingCar(10))
+                .withMessageMatching("허용되지 않은 수치입니다.");
+    }
+
+    @Test
     @DisplayName("자동차 이름 5자 넘길 때")
     public void longNameTest() {
         assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> new Car("LoooooooongName")
-                ).withMessageMatching("차량의 이름은 5자를 넘길 수 없습니다.");
+                .isThrownBy(() -> new Car("LoooooooongName"))
+                .withMessageMatching("차량의 이름은 5자를 넘길 수 없습니다.");
     }
 }
