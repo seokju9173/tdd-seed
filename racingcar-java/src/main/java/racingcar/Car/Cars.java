@@ -17,7 +17,7 @@ public class Cars {
         String[] carNamesSplit = carNames.split(",");
         this.cars = new ArrayList<>();
         for (String carName : carNamesSplit) {
-            this.cars.add(new Car(carName));
+            this.cars.add(new Car(carName.trim()));
         }
     }
 
