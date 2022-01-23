@@ -9,17 +9,27 @@ public class CarTest {
 
     @Test
     @DisplayName("자동차 전진 테스트")
-    public void moveTest() throws Exception {
+    public void moveTest() {
         // given
-        Car move = new Car();
-        Car stop = new Car();
+        Car move = new Car("moveCar");
 
         // when
         move.drivingCar(4);
-        stop.drivingCar(3);
 
         // then
         Assertions.assertThat(move.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("자동차 정차 테스트")
+    public void stopTest() {
+        // given
+        Car stop = new Car("stopCar");
+
+        // when
+        stop.drivingCar(3);
+
+        // then
         Assertions.assertThat(stop.getPosition()).isEqualTo(0);
     }
 }
