@@ -5,11 +5,11 @@ import racingcar.view.OutputView;
 public class Main {
     public static void main(String[] args) {
         OutputView.printHowManyCars();
-        int carsNumber = InputView.inputCarCount();
+        String carsNames = InputView.inputCarNames();
 
         OutputView.printHowManyProgress();
         int progressNumber = InputView.inputProgressTotal();
 
-        new Race(carsNumber, progressNumber).racing();
+        new Race(carsNames, progressNumber).racing();
     }
 }

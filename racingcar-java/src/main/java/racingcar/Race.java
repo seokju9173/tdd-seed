@@ -5,10 +5,10 @@ import racingcar.view.OutputView;
 
 public class Race {
     private final int progressTotal;
-    private Cars cars;
+    private final Cars cars;
 
-    public Race(int carsTotal, int progressTotal) {
-        cars = new Cars(carsTotal);
+    public Race(String carNames, int progressTotal) {
+        cars = new Cars(carNames);
         this.progressTotal = progressTotal;
     }
 
@@ -18,6 +18,8 @@ public class Race {
         for (int i = 0; i < progressTotal; i++) {
             raceOneCycle();
         }
+
+        cars.winner();
     }
 
     private void raceOneCycle() {
