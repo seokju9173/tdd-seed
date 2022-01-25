@@ -1,0 +1,20 @@
+plugins {
+    id "java"
+}
+
+group = "com.babydev.study"
+version = "1.0-SNAPSHOT"
+sourceCompatibility = JavaVersion.VERSION_17
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.7.2"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:5.7.2"
+}
+
+test {
+    useJUnitPlatform()
+}
