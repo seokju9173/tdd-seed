@@ -35,15 +35,15 @@ public class StringCalculator {
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    private static boolean isNotNumber(String s) {
-        boolean isPlus = s.equals("+");
-        boolean isMinus = s.equals("-");
-        boolean isDivide = s.equals("*");
-        boolean isMultiply = s.equals("/");
+    private static boolean isNotNumber(String operation) {
+        boolean isPlus = operation.equals("+");
+        boolean isMinus = operation.equals("-");
+        boolean isDivide = operation.equals("*");
+        boolean isMultiply = operation.equals("/");
         return isPlus || isMinus || isDivide || isMultiply;
     }
 
-    private static boolean isNumber(String s) {
-        return !isNotNumber(s);
+    private static boolean isNumber(String operation) {
+        return !isNotNumber(operation);
     }
 }
