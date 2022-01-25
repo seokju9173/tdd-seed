@@ -16,7 +16,7 @@ public class Calculation {
     private static final int ZERO = 0;
 
     public int calculate(int baseOperand, String operator, int nextOperand){
-        switch (operator){
+        switch (operator) {
             case PLUS:
                 return plusNumber(baseOperand, nextOperand);
             case MINUS:

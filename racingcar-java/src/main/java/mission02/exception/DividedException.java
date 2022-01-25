@@ -11,4 +11,7 @@ public class DividedException extends ArithmeticException{
     public final String getMessage() {
         return EXCEPTION_MESSAGE;
     }
+    /**
+     * 나타내기 힘든 것만을 커스텀하자.
+     */
 }
