@@ -1,6 +1,5 @@
 package view;
 
-import java.util.Objects;
 import java.util.Scanner;
 
 public class InputView {
@@ -18,7 +17,6 @@ public class InputView {
         System.out.println("시도할 회수는 몇 회 인가요?");
 
         int round = sc.nextInt();
-
         checkValidRoundInput(round);
 
         return round;

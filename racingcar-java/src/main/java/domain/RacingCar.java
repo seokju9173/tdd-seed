@@ -17,10 +17,9 @@ public class RacingCar {
         String[] carNames = inputNames.split(",");
 
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carNames.length; i++) {
-            cars.add(new Car(carNames[i]));
-        }
-        return cars;
+        return Arrays.stream(carNames)
+            .map(Car::new)
+            .collect(Collectors.toList());
     }
 
     public void playOneRound() {
@@ -30,16 +29,20 @@ public class RacingCar {
     }
 
     public List<Car> getWinners() {
-        Car winner = getWinnerObject();
+        Car winner = getWinner();
         return cars.stream()
-                .filter(car -> car.getPosition() == winner.getPosition())
+                .filter(car -> isSameCar(winner, car))
                 .collect(Collectors.toList());
     }
 
-    private Car getWinnerObject() {
+    private boolean isSameCar(Car winner, Car car) {
+        return car.position == winner.position;
+    }
+
+    private Car getWinner() {
         return cars.stream()
                 .max(Comparator.comparing(Car :: getPosition))
-                .orElseThrow(IllegalStateException::new);
+                .orElseThrow(IllegalArgumentException::new);
     }
 
     public List<Car> getCars() {
