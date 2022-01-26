@@ -1,17 +1,20 @@
 package mission03.domain;
 
 public class RacingCar {
-    private int move;
+
+    private static final int INIT = 1;
+
+    private int movedDistance;
 
     public RacingCar() {
-        this.move = 0;
+        this.movedDistance = INIT;
     }
 
-    public int getMove() {
-        return move;
+    public void moveCar() {
+        this.movedDistance++;
     }
 
-    public void updateMove(int move) { // set 명칭 사용X
-        this.move = move;
+    public int getMovedDistance() {
+        return movedDistance;
     }
 }
