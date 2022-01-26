@@ -6,10 +6,10 @@ public class RacingMain {
 
     public static void main(String[] args) {
         InputView iv = new InputView();
-        int numberCars = iv.inputNumberCar();
+        String nameCars = iv.inputCarNames();
         int round = iv.inputRound();
 
-        RacingCar rc = new RacingCar(numberCars);
+        RacingCar rc = new RacingCar(nameCars);
 
         ResultView rv = new ResultView();
         rv.printIntroResult();
@@ -18,5 +18,7 @@ public class RacingMain {
             rc.playOneRound();
             rv.printResult(rc.getCars());
         }
+
+        rv.printWinners(rc.getWinners());
     }
 }

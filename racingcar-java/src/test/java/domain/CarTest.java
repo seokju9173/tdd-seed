@@ -9,11 +9,11 @@ import static org.assertj.core.api.Assertions.*;
 
 class CarTest {
 
-    Car c;
+    private Car c;
 
     @BeforeEach
     void init() {
-        c = new Car();
+        c = new Car("pobi");
     }
 
     @Test
@@ -39,5 +39,13 @@ class CarTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> c.move(numberCar))
                 .withMessageMatching("0에서 9사이의 숫자여야 합니다");
+    }
+
+    @Test
+    @DisplayName("5자 초과 이름 에러 테스트")
+    void invalidCarNameTest() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Car("cookie"))
+                .withMessageMatching("이름은 5자를 초과할 수 없습니다");
     }
 }

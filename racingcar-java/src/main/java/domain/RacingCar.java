@@ -1,34 +1,48 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class RacingCar {
 
     private final List<Car> cars;
 
-    private static final int MIN_NUMBER_CARS = 2;
-
     private Random random = new Random();
 
-    public RacingCar(int numberCars) {
-        this.cars = setCars(numberCars);
+    public RacingCar(String inputNames) {
+        this.cars = setCars(inputNames);
     }
 
-    private List<Car> setCars(int numberCar) {
-        checkValidNumberCars(numberCar);
+    private List<Car> setCars(String inputNames) {
+        String[] carNames = inputNames.split(",");
+
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < numberCar; i++) {
-            cars.add(new Car());
-        }
-        return cars;
+        return Arrays.stream(carNames)
+            .map(Car::new)
+            .collect(Collectors.toList());
     }
 
-    private void checkValidNumberCars(int numberCar) {
-        if (numberCar < MIN_NUMBER_CARS) {
-            throw new IllegalArgumentException("2 이상의 값을 입력해주세요");
+    public void playOneRound() {
+        for (Car c: cars) {
+            c.move(getRandom());
         }
+    }
+
+    public List<Car> getWinners() {
+        Car winner = getWinner();
+        return cars.stream()
+                .filter(car -> isSameCar(winner, car))
+                .collect(Collectors.toList());
+    }
+
+    private boolean isSameCar(Car winner, Car car) {
+        return car.position == winner.position;
+    }
+
+    private Car getWinner() {
+        return cars.stream()
+                .max(Comparator.comparing(Car :: getPosition))
+                .orElseThrow(IllegalArgumentException::new);
     }
 
     public List<Car> getCars() {
@@ -37,11 +51,5 @@ public class RacingCar {
 
     private int getRandom() {
         return random.nextInt(10);
-    }
-
-    public void playOneRound() {
-        for (Car c: cars) {
-            c.move(getRandom());
-        }
     }
 }

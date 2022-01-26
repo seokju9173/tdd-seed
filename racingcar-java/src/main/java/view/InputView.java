@@ -8,19 +8,18 @@ public class InputView {
 
     private Scanner sc = new Scanner(System.in);
 
-    public int inputNumberCar() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return sc.nextInt();
+    public String inputCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표를(,) 기준으로 구분)");
+        return sc.next();
     }
 
     public int inputRound() {
         System.out.println("시도할 회수는 몇 회 인가요?");
 
         int round = sc.nextInt();
-
         checkValidRoundInput(round);
 
-        return sc.nextInt();
+        return round;
     }
 
     private void checkValidRoundInput(int round) {
@@ -28,5 +27,4 @@ public class InputView {
             throw new IllegalArgumentException("회수는 1회 이상이어야 합니다");
         }
     }
-
 }
