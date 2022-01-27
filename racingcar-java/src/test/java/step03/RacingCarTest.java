@@ -14,7 +14,7 @@ public class RacingCarTest {
     private RacingCar racingCar;
 
     @BeforeEach
-    void init(){
+    void init() {
         racingCar = new RacingCar();
     }
 

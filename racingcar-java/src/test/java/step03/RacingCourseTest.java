@@ -49,9 +49,9 @@ public class RacingCourseTest {
         IntStream.range(RANDOM_START_INDEX, RANDOM_END_INDEX - INIT_RACING_CAR_DISTANCE)
                 .forEach(i -> racingCourse.moveCars());
 
-        racingCourse.getCars().forEach(car -> {
-            assertThat(car.getMovedDistance()).isBetween(RANDOM_START_INDEX, RANDOM_END_INDEX);
-        });
+        racingCourse.getCars()
+                .forEach(car -> assertThat(car.getMovedDistance())
+                        .isBetween(RANDOM_START_INDEX, RANDOM_END_INDEX));
     }
 /**
  * 1. 자동차 개수 받으면, 크기에 맞춰 자동차 생성
