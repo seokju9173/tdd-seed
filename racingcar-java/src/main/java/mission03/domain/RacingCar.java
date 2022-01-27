@@ -4,7 +4,7 @@ public class RacingCar {
 
     private static final int INIT = 1;
 
-    private int movedDistance;
+    private int movedDistance; // 필드로 설정
 
     public RacingCar() {
         this.movedDistance = INIT;

@@ -1,5 +1,7 @@
 package mission03.domain;
 
+import mission03.utils.RacingCarMovement;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -19,10 +21,10 @@ public class RacingCourse {
     }
 
     public void moveCars() {
-        for (RacingCar car : cars) {
+        cars.forEach(car -> {
             if (racingCarMovement.makeRandomMovement()) {
                 car.moveCar();
             }
-        }
+        });
     }
 }

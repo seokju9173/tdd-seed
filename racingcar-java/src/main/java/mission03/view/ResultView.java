@@ -22,14 +22,14 @@ public class ResultView {
         IntStream.range(0, tryCount - SPEND_INIT_COUNT).forEach(i -> {
             racingCourse.moveCars();
             printCurrentCarsPosition(racingCourse.getCars());
-            System.out.println("");
+            System.out.println();
         });
     }
 
     private void printCurrentCarsPosition(List<RacingCar> cars) {
         for (RacingCar car : cars) {
-            IntStream.range(0,car.getMovedDistance())
-                    .forEach( i -> System.out.print("-"));
+            IntStream.range(0, car.getMovedDistance())
+                    .forEach(i -> System.out.print("-"));
             System.out.println();
         }
     }

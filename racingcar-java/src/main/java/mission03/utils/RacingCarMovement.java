@@ -1,4 +1,4 @@
-package mission03.domain;
+package mission03.utils;
 
 import java.util.Random;
 

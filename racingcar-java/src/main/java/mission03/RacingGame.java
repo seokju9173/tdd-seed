@@ -15,6 +15,6 @@ public class RacingGame {
         racingCourse.initRacingCars(inputView.getCarCount());
 
         resultView.showRacingResultMessage();
-        resultView.showRacingCarsPosition(racingCourse,inputView.getTryCount());
+        resultView.showRacingCarsPosition(racingCourse, inputView.getTryCount());
     }
 }
