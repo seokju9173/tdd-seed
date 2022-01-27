@@ -19,18 +19,19 @@ public class ResultView {
         printCurrentCarsPosition(racingCourse.getCars());
         System.out.println();
 
-        IntStream.range(0, tryCount - SPEND_INIT_COUNT).forEach(i -> {
-            racingCourse.moveCars();
-            printCurrentCarsPosition(racingCourse.getCars());
-            System.out.println();
-        });
+        IntStream.range(0, tryCount - SPEND_INIT_COUNT)
+                .forEach(i -> {
+                    racingCourse.moveCars();
+                    printCurrentCarsPosition(racingCourse.getCars());
+                    System.out.println();
+                });
     }
 
     private void printCurrentCarsPosition(List<RacingCar> cars) {
-        for (RacingCar car : cars) {
+        cars.forEach(car -> {
             IntStream.range(0, car.getMovedDistance())
                     .forEach(i -> System.out.print("-"));
             System.out.println();
-        }
+        });
     }
 }

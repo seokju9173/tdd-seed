@@ -7,8 +7,9 @@ public class RacingCarMovement {
     private static final int RANDOM_SIZE = 10;
     private static final int FOUR = 4;
 
+    private final Random randomBox = new Random();
+
     public boolean makeRandomMovement() {
-        final Random RandomBox = new Random();
-        return RandomBox.nextInt(RANDOM_SIZE) >= FOUR;
+        return randomBox.nextInt(RANDOM_SIZE) >= FOUR;
     }
 }
