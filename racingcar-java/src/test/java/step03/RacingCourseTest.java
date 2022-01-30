@@ -2,10 +2,16 @@ package step03;
 
 import mission03.domain.RacingCar;
 import mission03.domain.RacingCourse;
+import mission03.utils.RacingCarMovementStrategy;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCourseTest {
 
@@ -13,69 +19,38 @@ public class RacingCourseTest {
     private static final int RANDOM_START_INDEX = 0;
     private static final int RANDOM_END_INDEX = 9;
 
+    @DisplayName("입력받은 숫자만큼 자동차를 생성하는지 테스트")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
+    void initInputSizeIsRacingCarSize(int initCarsSize) {
+        final RacingCourse racingCourse = new RacingCourse(initCarsSize);
+        final List<RacingCar> cars = racingCourse.getCars();
+
+        assertThat(cars).hasSize(initCarsSize);
+    }
+
+    @DisplayName("이동한 거리가 다른 자동차들이 전략에 맞춰 자동차가 올바르게 이동하는지 테스트")
     @Test
-    void test() {
-        int a = 5;
-        RacingCourse racingCourse = new RacingCourse(a);
+    void checkAnotherMovedCarsAreMoving() {
+        // given
+        final RacingCarMovementStrategy racingCarMovementStrategy = () -> true;
+        RacingCar racingCar00 = new RacingCar(1);
+        RacingCar racingCar01 = new RacingCar(2);
+        RacingCar racingCar02 = new RacingCar(3);
 
-        RacingCar racingCar1 = new RacingCar();
+        List<RacingCar> cars = new ArrayList<>();
+        cars.add(racingCar00);
+        cars.add(racingCar01);
+        cars.add(racingCar02);
 
-        RacingCar racingCar2 = new RacingCar(2);
+        // when
+        final RacingCourse racingCourse = new RacingCourse(cars);
+        racingCourse.moveCars(racingCarMovementStrategy);
 
-        RacingCar racingCar3 = new RacingCar(3);
-
-        List<RacingCar> lst = new ArrayList<>();
-        lst.add(racingCar1);
-        lst.add(racingCar2);
-        lst.add(racingCar3);
-        lst.forEach(car -> car.moveCar(() -> true));
-
+        // then
+        assertThat(cars.get(00).getMovedDistance()).isEqualTo(2);
+        assertThat(cars.get(01).getMovedDistance()).isEqualTo(3);
+        assertThat(cars.get(02).getMovedDistance()).isEqualTo(4);
     }
 }
 
-    // 함수형 인터페이스 편하게
-//
-//        RacingCar racingCar01 = new RacingCar();
-//        RacingCar racingCar02 = new RacingCar();
-
-//    private RacingCourse racingCourse;
-//
-//    @BeforeEach
-//    void init() {
-//        racingCourse = new RacingCourse();
-//    }
-//
-//    @DisplayName("자동차 개수를 받으면, 알맞은 자동차 개수를 받았는지 테스트")
-//    @CsvSource({"1, 1", "2, 2", "3, 3", "4, 4"})
-//    @ParameterizedTest
-//    void initRacingCarCountTest(int input, int output) {
-//        // when
-//        racingCourse.initRacingCars(input);
-//
-//        // then
-//        assertThat(racingCourse.getCars()).hasSize(output);
-//        racingCourse.getCars().forEach(car -> {
-//            assertThat(car.getMovedDistance()).isEqualTo(INIT_RACING_CAR_DISTANCE);
-//        });
-//    }
-//
-//    @DisplayName("레이싱 경주장에 있는 자동차들이 랜덤을 통해 자동차를 움직일 때, 수치가 허용치인지 테스트")
-//    @ParameterizedTest
-//    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
-//    public void checkAllRacingCarTakeRandomMovement(int input) {
-//        // given
-//        racingCourse.initRacingCars(input);
-//
-//        // when
-//        IntStream.range(RANDOM_START_INDEX, RANDOM_END_INDEX - INIT_RACING_CAR_DISTANCE)
-//                .forEach(i -> racingCourse.moveCars());
-//
-//        racingCourse.getCars()
-//                .forEach(car -> assertThat(car.getMovedDistance())
-//                        .isBetween(RANDOM_START_INDEX, RANDOM_END_INDEX));
-//    }
-/**
- * 1. 자동차 개수 받으면, 크기에 맞춰 자동차 생성
- * 2. 레이싱 경주에서 자동차들이 움직인 횟수가 정상 범위 안에 있는지
- * 이정도가 최대인 것 같아요. step 넘어가면, 추가적인 테스트 코드 작성
- */

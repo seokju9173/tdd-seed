@@ -3,7 +3,6 @@ package mission03.view;
 import mission03.domain.RacingCar;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.IntStream;
 
 public class ResultView {
@@ -15,16 +14,13 @@ public class ResultView {
         System.out.println(RESULT_MESSAGE);
     }
 
-//    public void showRacingCarsPosition(int tryCount, Map<RacingCar, List<Integer>> map){
-//        IntStream.range(0, tryCount)
-//                .forEach();
-//    }
+    public void showRacingCarsPosition(List<RacingCar> cars) {
+        cars.forEach(car -> printCurrentCarsPosition(car.getMovedDistance()));
+    }
 
-    private void printCurrentCarsPosition(List<RacingCar> cars) {
-        cars.forEach(car -> {
-            IntStream.range(0, car.getMovedDistance())
-                    .forEach(i -> System.out.print(CAR_POSITION_MARK));
-            System.out.println();
-        });
+    private void printCurrentCarsPosition(int carDistance) {
+        IntStream.range(0, carDistance)
+                .forEach(i -> System.out.print(CAR_POSITION_MARK));
+        System.out.println();
     }
 }

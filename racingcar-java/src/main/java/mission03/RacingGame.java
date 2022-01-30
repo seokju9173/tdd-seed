@@ -1,8 +1,12 @@
 package mission03;
 
 import mission03.domain.RacingCourse;
+import mission03.utils.RacingCarMovement;
+import mission03.utils.RacingCarMovementStrategy;
 import mission03.view.InputView;
 import mission03.view.ResultView;
+
+import java.util.stream.IntStream;
 
 public class RacingGame {
     public static void main(String[] args) {
@@ -17,8 +21,16 @@ public class RacingGame {
         tryCount = inputView.requestTryCount();
 
         RacingCourse racingCourse = new RacingCourse(carCount);
+        RacingCarMovementStrategy racingCarMovementStrategy = new RacingCarMovement();
 
         resultView.showRacingResultMessage();
-//        resultView.showRacingCarsPosition(tryCount,);
+        resultView.showRacingCarsPosition(racingCourse.getCars()); // 초기 상태 확인
+
+        IntStream.range(0, tryCount)
+                .forEach(i -> {
+                    System.out.println();
+                    racingCourse.moveCars(racingCarMovementStrategy);
+                    resultView.showRacingCarsPosition(racingCourse.getCars());
+                });
     }
 }
