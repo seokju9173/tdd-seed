@@ -2,7 +2,7 @@ package mission03.utils;
 
 import java.util.Random;
 
-public class RacingCarMovement implements RacingCarMovementStrategy {
+public class RacingCarRandomMovement implements RacingCarMovementStrategy {
 
     private static final int RANDOM_SIZE = 10;
     private static final int FOUR = 4;
