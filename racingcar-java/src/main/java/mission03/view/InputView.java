@@ -21,7 +21,7 @@ public class InputView {
         return stringToNumber(scanner.next());
     }
 
-    public int stringToNumber(String number) {
+    private int stringToNumber(String number) {
         try {
             return Integer.parseInt(number);
         } catch (NumberFormatException e) {
