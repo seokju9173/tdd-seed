@@ -1,8 +1,8 @@
 package mission03;
 
 import mission03.domain.RacingCourse;
-import mission03.utils.RacingCarRandomMovement;
 import mission03.utils.RacingCarMovementStrategy;
+import mission03.utils.RacingCarRandomMovement;
 import mission03.view.InputView;
 import mission03.view.ResultView;
 
@@ -26,7 +26,7 @@ public class RacingGame {
         RacingCarMovementStrategy racingCarMovementStrategy = new RacingCarRandomMovement();
 
         resultView.showRacingResultMessage();
-        resultView.showRacingCarsPosition(racingCourse.getCars()); // 초기 상태 확인
+        resultView.showRacingCarsPosition(racingCourse.getCars());
 
         IntStream.range(ZERO, tryCount)
                 .forEach(i -> {

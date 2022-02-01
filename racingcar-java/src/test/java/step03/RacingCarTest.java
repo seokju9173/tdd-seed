@@ -14,8 +14,8 @@ public class RacingCarTest {
     @Test
     @DisplayName("자동차가 생성되었을 때, 기본 값이 1인지 테스트")
     void initRacingCarTest() {
-        final int DISTANCE_DEFAULT = 1;
-        final RacingCar racingCar = new RacingCar();
+        int DISTANCE_DEFAULT = 1;
+        RacingCar racingCar = new RacingCar();
 
         assertThat(racingCar.getMovedDistance()).isEqualTo(DISTANCE_DEFAULT);
     }
@@ -24,7 +24,7 @@ public class RacingCarTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
     void moveRacingCarCorrectTest(int initDistance) {
-        final RacingCar racingCar = new RacingCar(initDistance);
+        RacingCar racingCar = new RacingCar(initDistance);
 
         assertThat(racingCar.getMovedDistance()).isEqualTo(initDistance);
     }
@@ -33,14 +33,29 @@ public class RacingCarTest {
     @DisplayName("자동차들이 올바르게 움직이는지 테스트")
     void checkMovedRacingCarsCorrectTest() {
         // given
-        final int MOVED_CARS_DISTANCE = 2;
-        final RacingCarMovementStrategy racingCarMovementStrategy = () -> true;
-        final RacingCar racingCar = new RacingCar();
+        int MOVED_CARS_DISTANCE = 2;
+        RacingCarMovementStrategy racingCarMovementStrategy = () -> true;
+        RacingCar racingCar = new RacingCar();
 
         // when
         racingCar.moveCar(racingCarMovementStrategy);
 
         // then
         assertThat(racingCar.getMovedDistance()).isEqualTo(MOVED_CARS_DISTANCE);
+    }
+
+    @Test
+    @DisplayName("자동차들이 움직이지 않도록 하는 테스트")
+    void checkMovedRacingCarsNotMovingTest() {
+        // given
+        int DISTANCE_DEFAULT = 1;
+        RacingCarMovementStrategy racingCarMovementStrategy = () -> false;
+        RacingCar racingCar = new RacingCar();
+
+        // when
+        racingCar.moveCar(racingCarMovementStrategy);
+
+        // then
+        assertThat(racingCar.getMovedDistance()).isEqualTo(DISTANCE_DEFAULT);
     }
 }

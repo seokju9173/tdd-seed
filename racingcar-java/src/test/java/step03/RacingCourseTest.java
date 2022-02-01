@@ -19,8 +19,8 @@ public class RacingCourseTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
     void initInputSizeIsRacingCarSize(int initCarsSize) {
-        final RacingCourse racingCourse = new RacingCourse(initCarsSize);
-        final List<RacingCar> cars = racingCourse.getCars();
+        RacingCourse racingCourse = new RacingCourse(initCarsSize);
+        List<RacingCar> cars = racingCourse.getCars();
 
         assertThat(cars).hasSize(initCarsSize);
     }
@@ -30,8 +30,8 @@ public class RacingCourseTest {
     @CsvSource({"1, 2, 3", "2, 3, 4", "3, 4, 5"})
     void checkAnotherMovedCarsAreMoving(int firstRacingCar, int secondRacingCar, int thirdRacingCar) {
         // given
-        final int DISTANCE_DEFAULT = 1;
-        final RacingCarMovementStrategy racingCarMovementStrategy = () -> true;
+        int DISTANCE_DEFAULT = 1;
+        RacingCarMovementStrategy racingCarMovementStrategy = () -> true;
         RacingCar racingCar1 = new RacingCar(firstRacingCar);
         RacingCar racingCar2 = new RacingCar(secondRacingCar);
         RacingCar racingCar3 = new RacingCar(thirdRacingCar);
@@ -42,7 +42,7 @@ public class RacingCourseTest {
         cars.add(racingCar3);
 
         // when
-        final RacingCourse racingCourse = new RacingCourse(cars);
+        RacingCourse racingCourse = new RacingCourse(cars);
         racingCourse.moveCars(racingCarMovementStrategy);
 
         // then

@@ -2,13 +2,14 @@ package mission03.domain;
 
 import mission03.utils.RacingCarMovementStrategy;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingCourse {
 
-    private List<RacingCar> cars;
+    private final List<RacingCar> cars;
 
     // 객체 자신은 스스로 만들어야 한다. 외부로부터 만들면 안된다.
     public RacingCourse(int carCount) {
@@ -22,7 +23,7 @@ public class RacingCourse {
     }
 
     public List<RacingCar> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
     public void moveCars(RacingCarMovementStrategy racingCarMovementStrategy) {
