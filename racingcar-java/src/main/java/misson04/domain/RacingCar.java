@@ -6,13 +6,15 @@ public class RacingCar {
 
     private static final int DISTANCE_DEFAULT = 1;
 
+    private final Name name;
     private int movedDistance;
 
-    public RacingCar() {
-        this(DISTANCE_DEFAULT);
+    public RacingCar(String name) {
+        this(name, DISTANCE_DEFAULT);
     }
 
-    public RacingCar(int movedDistance) {
+    public RacingCar(String name, int movedDistance) {
+        this.name = new Name(name);
         this.movedDistance = movedDistance;
     }
 
@@ -20,6 +22,10 @@ public class RacingCar {
         if (racingCarMovementStrategy.makeRandomMovement()) {
             this.movedDistance++;
         }
+    }
+
+    public String getCarName(){
+        return name.getName();
     }
 
     public int getMovedDistance() {
