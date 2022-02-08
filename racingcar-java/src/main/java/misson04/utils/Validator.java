@@ -20,6 +20,6 @@ public class Validator {
     }
 
     public static boolean isCorrectNameLength(String name) {
-        return name.length() < NUMBER_ONE || name.length() > NUMBER_FIVE;
+        return name.length() < NUMBER_ONE || name.length() >= NUMBER_FIVE;
     }
 }

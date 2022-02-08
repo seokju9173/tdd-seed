@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 
 public class RacingInfo {
 
-    private final static String postfix = "가 최종 우승했습니다";
 
     private final RacingCourse racingCourse;
 
@@ -15,21 +14,23 @@ public class RacingInfo {
 
     public String getRacingWinner(){
         int distance = getMaxDistance();
-        List<String> winners = getRacingCourseCars().stream().filter(i -> i.getMovedDistance() == distance)
+        List<String> winners = getRacingCourseCars().stream()
+                .filter(i -> i.getMovedDistance() == distance)
                 .map(RacingCar::getCarName)
                 .collect(Collectors.toList());
 
-        return String.join(",", winners) + postfix;
+        return String.join(",", winners);
+    }
+
+    public int getMaxDistance(){ // 이걸 public으로..??
+        return getRacingCourseCars().stream()
+                .mapToInt(RacingCar::getMovedDistance)
+                .max()
+                .getAsInt();
     }
 
     private List<RacingCar> getRacingCourseCars(){
         return racingCourse.getCars();
     }
 
-    private int getMaxDistance(){
-        return getRacingCourseCars().stream()
-                .mapToInt(RacingCar::getMovedDistance)
-                .max()
-                .getAsInt();
-    }
 }

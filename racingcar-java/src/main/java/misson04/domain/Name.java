@@ -1,6 +1,6 @@
 package misson04.domain;
 
-import misson04.exception.NamingEmptyException;
+import misson04.exception.NamingEmptyOrNullException;
 import misson04.exception.NamingSizeException;
 
 import static misson04.utils.Validator.isCorrectNameLength;
@@ -21,7 +21,7 @@ public class Name {
 
     private void checkNameLength(String name) {
         if (isEmptyAndIsNull(name)) {
-            throw new NamingEmptyException();
+            throw new NamingEmptyOrNullException();
         }
 
         if (isCorrectNameLength(name)) {

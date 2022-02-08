@@ -22,10 +22,8 @@ public class RacingGame {
         List<String> names = inputView.requestInputNames();
         int tryCount = inputView.requestTryCount();
 
-        RacingCourse racingCourse = new RacingCourse(names);
-
-        resultView.showRacingResultMessage();
-        resultView.showRacingCarsPosition(racingCourse.getCars());
+        RacingCourse racingCourse = new RacingCourse(names.size(), names);
+        resultView.showRacingResultMessage(racingCourse.getCars());
 
         IntStream.range(ZERO, tryCount)
                 .forEach(i -> {
@@ -35,7 +33,7 @@ public class RacingGame {
                 });
 
         RacingInfo racingInfo = new RacingInfo(racingCourse);
-        System.out.println(racingInfo.getRacingWinner());
+        resultView.showRacingWinner(racingInfo.getRacingWinner());
     }
 }
 

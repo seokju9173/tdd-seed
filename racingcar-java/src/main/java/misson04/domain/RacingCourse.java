@@ -14,9 +14,18 @@ public class RacingCourse {
 
     private final static int ZERO = 0;
 
-    // 객체 자신은 스스로 만들어야 한다. 외부로부터 만들면 안된다.
-    public RacingCourse(List<String> names) {
-        this.cars = createCars(names);
+    public RacingCourse(int carCount) {
+        this(IntStream.range(0, carCount)
+                .mapToObj(i -> new RacingCar())
+                .collect(Collectors.toList()));
+    }
+
+    public RacingCourse(List<RacingCar> cars) {
+        this.cars = cars;
+    }
+
+    public RacingCourse(int carCount, List<String> names) {
+        this.cars = createCars(names, carCount);
     }
 
     public List<RacingCar> getCars() {
@@ -27,9 +36,9 @@ public class RacingCourse {
         cars.forEach(car -> car.moveCar(racingCarMovementStrategy));
     }
 
-    private List<RacingCar> createCars(List<String> names) {
+    private List<RacingCar> createCars(List<String> names, int carCount) {
         List<RacingCar> cars = new ArrayList<>();
-        IntStream.range(ZERO, names.size())
+        IntStream.range(ZERO, carCount)
                 .forEach(i -> cars.add(new RacingCar(names.get(i))));
 
         return cars;
