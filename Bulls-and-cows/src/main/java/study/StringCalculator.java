@@ -1,49 +1,26 @@
 package study;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.StringTokenizer;
+
+import static java.lang.Integer.parseInt;
 
 public class StringCalculator {
 
-    private static final int ZERO = 0;
-    private static final int ONE = 1;
-
     public static int calculate(String input, String delimiter) {
-        return calculate(
-                extract(input.split(delimiter), StringCalculator::isNumber, Integer::parseInt),
-                extract(input.split(delimiter), StringCalculator::isNotNumber, String::valueOf)
-        );
+        StringTokenizer tokenizer = new StringTokenizer(input, delimiter);
+        InputValidator.checkSize(tokenizer.countTokens());
+        return calculate(tokenizer);
     }
 
-    public static int calculate(List<Integer> values, List<String> operation) {
-        Integer result = values.get(ZERO);
-        int lastIndex = operation.size() + ONE;
-        for (int index = ONE; index < lastIndex; index++) {
-            result = OperationMap.getOperator(operation.get(index - ONE)).apply(result, values.get(index));
+    private static int calculate(StringTokenizer tokenizer) {
+        int baseValue = parseInt(tokenizer.nextToken());
+        while (tokenizer.hasMoreTokens()) {
+            String operation = tokenizer.nextToken();
+            String number = tokenizer.nextToken();
+
+            baseValue = OperationType.getOperator(operation)
+                    .apply(baseValue, parseInt(number));
         }
-        return result;
-    }
-
-    public static <T, R> List<R> extract(T[] input, Predicate<T> predicate, Function<T, R> function) {
-        return Arrays.stream(input)
-                .filter(predicate)
-                .map(function)
-                .collect(Collectors.toCollection(ArrayList::new));
-    }
-
-    private static boolean isNotNumber(String operation) {
-        boolean isPlus = operation.equals("+");
-        boolean isMinus = operation.equals("-");
-        boolean isDivide = operation.equals("*");
-        boolean isMultiply = operation.equals("/");
-        return isPlus || isMinus || isDivide || isMultiply;
-    }
-
-    private static boolean isNumber(String operation) {
-        return !isNotNumber(operation);
+        return baseValue;
     }
 }
