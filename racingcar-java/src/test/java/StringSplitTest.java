@@ -11,5 +11,6 @@ public class StringSplitTest {
 
         assertThat(str1).contains("1","2");
         assertThat(str2).contains("1");
+
     }
 }
