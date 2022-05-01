@@ -81,7 +81,10 @@ public class StringCalculatorTest {
     void arithmeticTest() {
         Assertions.assertAll(
                 () -> assertThat(sc.calculate("2 + 3 * 4 / 2")).isEqualTo(10),
-                () -> assertThat(sc.calculate("1 / 2 * 3 + 4 - 5")).isEqualTo(-1)
+                () -> assertThat(sc.calculate("1 / 2 * 3 + 4 - 5")).isEqualTo(-1),
+                () -> assertThatIllegalArgumentException().isThrownBy(() -> {
+                    sc.calculate("2 + 3 *");
+                })
         );
     }
 }
