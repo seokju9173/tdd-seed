@@ -39,11 +39,9 @@ class SetTest {
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     @DisplayName("존재/존재하지 않는 값 테스트")
     void containsVarietyTest(String input, String expected) {
-        Assertions.assertEquals(
-                Boolean.toString(
-                        numbers.contains(
-                                Integer.parseInt(input)
-                        )
-                ), expected);
+        int intInput = Integer.parseInt(input);
+        boolean contain = numbers.contains(intInput);
+        String booleanString = Boolean.toString(contain);
+        Assertions.assertEquals(booleanString, expected);
     }
 }
