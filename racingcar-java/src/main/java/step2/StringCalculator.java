@@ -13,7 +13,6 @@ public final class StringCalculator extends ArithmeticCalculator {
             if (isOperator(input[i])) {
                 operator = input[i];
             } else {
-                int x = Integer.parseInt(input[i - 2]);
                 int y = Integer.parseInt(input[i]);
                 result = selectArithmeticOperation(operator, result, y);
             }
