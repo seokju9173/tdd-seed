@@ -5,9 +5,7 @@ public final class StringCalculator extends ArithmeticCalculator {
     private final static String[] operators = {"+", "-", "*", "/"};
 
     public int calculation(final String str) {
-        if (str == null || str == "") throw new IllegalArgumentException();
-
-        String[] input = str.split(" ");
+        String[] input =  this.validation(str);
         String operator = null;
         int result = Integer.parseInt(input[0]);
 
@@ -22,6 +20,17 @@ public final class StringCalculator extends ArithmeticCalculator {
         }
 
         return result;
+    }
+
+    private String[] validation(final String str) throws IllegalArgumentException{
+        if (str == null || str == "") throw new IllegalArgumentException();
+
+        String[] input = str.split(" ");
+        for(int i = 1 ; i < input.length ; i+=2){
+            if(!isOperator(input[i])) throw new IllegalArgumentException();
+        }
+
+        return input;
     }
 
     private final boolean isOperator(final String str) {
@@ -49,5 +58,4 @@ public final class StringCalculator extends ArithmeticCalculator {
         }
         return answer;
     }
-
 }
