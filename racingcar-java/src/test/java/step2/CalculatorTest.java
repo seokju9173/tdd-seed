@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 @DisplayName("문자열 계산기")
 public class CalculatorTest {
@@ -48,5 +49,14 @@ public class CalculatorTest {
         String str = "4 / 2";
 
         assertThat(calculator.calculation(str)).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("연산자 오류 테스트")
+    void operatorExceptionTest(){
+        String str = "2 ) 3 * 4 / 2";
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> calculator.calculation(str));
     }
 }
