@@ -37,17 +37,22 @@ public class StringCalculatorTest {
     }
 
     @Test
-    @DisplayName("나눗셈 테스트")
-    void divideTest() {
+    @DisplayName("나눗셈 성공 테스트")
+    void divideSuccessTest() {
         Assertions.assertAll(
                 () -> assertThat(sc.calculate("1 / 2")).isEqualTo(0),
                 () -> assertThat(sc.calculate("2 / 1")).isEqualTo(2),
-                () -> assertThatExceptionOfType(ArithmeticException.class)
-                        .isThrownBy(() -> {
-                            sc.calculate("2 / 0");
-                        }),
                 () -> assertThat(sc.calculate("0 / 2")).isEqualTo(0)
         );
+    }
+
+    @Test
+    @DisplayName("나눗셈 실패 테스트")
+    void divideFailTest() {
+        assertThatExceptionOfType(ArithmeticException.class)
+                        .isThrownBy(() -> {
+                            sc.calculate("2 / 0");
+                        });
     }
 
     @Test
