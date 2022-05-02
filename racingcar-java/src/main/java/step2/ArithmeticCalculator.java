@@ -1,27 +1,25 @@
 package step2;
 
-public class ArithmeticCalculator {
+import java.util.function.BiFunction;
 
-    public int add(final int x, final int y) {
-        return x + y;
+public enum ArithmeticCalculator {
+
+    ADD("+",(x, y) -> x + y);
+
+    private String operator;
+    private BiFunction<Integer, Integer, Integer> biFunction;
+
+    ArithmeticCalculator(final String operator , final BiFunction<Integer, Integer, Integer> biFunction){
+        this.operator = operator;
+        this.biFunction = biFunction;
     }
 
-    public int minus(final int x, final int y) {
-        return x - y;
+    public static int arithmeticCalculator(final String operator, final int x, final int y){
+        return getOperator(operator).biFunction.apply(x,y);
     }
 
-    public int multiplication(final int x, final int y) {
-        return x * y;
+    private static ArithmeticCalculator getOperator(final String operator){
+        return ArithmeticCalculator.valueOf(operator);
     }
 
-    public int division(final int x, final int y) {
-        checkDivision(y);
-        return x / y;
-    }
-
-    private void checkDivision(final int y) {
-        if(y == 0){
-            throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
-        }
-    }
 }

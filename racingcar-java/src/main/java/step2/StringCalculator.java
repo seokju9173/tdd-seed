@@ -3,7 +3,7 @@ package step2;
 import java.util.Arrays;
 import java.util.Optional;
 
-public class StringCalculator extends ArithmeticCalculator {
+public class StringCalculator {
 
     private final static String[] operators = {"+", "-", "*", "/"};
 
@@ -41,13 +41,13 @@ public class StringCalculator extends ArithmeticCalculator {
     private int selectArithmeticOperation(final String operator, final int x, final int y) {
         switch (operator) {
             case "+":
-                return super.add(x, y);
+                return ArithmeticCalculator.arithmeticCalculator("+" , x , y);
             case "*":
-                return super.multiplication(x, y);
+                return ArithmeticCalculator.arithmeticCalculator("-" , x , y);
             case "-":
-                return super.minus(x, y);
+                return ArithmeticCalculator.arithmeticCalculator("*" , x , y);
             case "/":
-                return super.division(x, y);
+                return ArithmeticCalculator.arithmeticCalculator("/" , x , y);
             default:
                 throw new IllegalArgumentException("연산자가 아닙니다.");
         }
