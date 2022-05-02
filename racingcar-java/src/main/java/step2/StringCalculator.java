@@ -1,6 +1,7 @@
 package step2;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 public class StringCalculator extends ArithmeticCalculator {
 
@@ -8,15 +9,15 @@ public class StringCalculator extends ArithmeticCalculator {
 
     public int calculation(final String str) {
         String[] input = isStringNullCheck(str);
-        String operator = null;
+        Optional<String> optOperator = Optional.empty();
         int result = Integer.parseInt(input[0]);
 
         for (int i = 1; i < input.length; i++) {
             if (isOperator(input[i])) {
-                operator = input[i];
+                optOperator = Optional.of(input[i]);
             } else {
                 int y = Integer.parseInt(input[i]);
-                result = selectArithmeticOperation(operator, result, y);
+                result = selectArithmeticOperation(optOperator.get(), result, y);
             }
         }
 
