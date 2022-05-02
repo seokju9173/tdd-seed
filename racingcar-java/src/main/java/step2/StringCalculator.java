@@ -41,13 +41,13 @@ public class StringCalculator {
     private int selectArithmeticOperation(final String operator, final int x, final int y) {
         switch (operator) {
             case "+":
-                return ArithmeticCalculator.arithmeticCalculator("+" , x , y);
+                return ArithmeticCalculator.ADD.arithmeticCalculator(x, y);
             case "*":
-                return ArithmeticCalculator.arithmeticCalculator("-" , x , y);
+                return ArithmeticCalculator.MULTIPLE.arithmeticCalculator(x, y);
             case "-":
-                return ArithmeticCalculator.arithmeticCalculator("*" , x , y);
+                return ArithmeticCalculator.MINUS.arithmeticCalculator(x, y);
             case "/":
-                return ArithmeticCalculator.arithmeticCalculator("/" , x , y);
+                return ArithmeticCalculator.DIVISION.arithmeticCalculator(x, y);
             default:
                 throw new IllegalArgumentException("연산자가 아닙니다.");
         }

@@ -2,24 +2,25 @@ package step2;
 
 import java.util.function.BiFunction;
 
-public enum ArithmeticCalculator {
+enum ArithmeticCalculator {
 
-    ADD("+",(x, y) -> x + y);
+    ADD((x, y) -> x + y),
+    MINUS((x, y) -> x - y),
+    DIVISION((x, y) -> {
+        if (y == 0) {
+            throw new IllegalArgumentException("0은 나눌 수 없습니다.");
+        }
+        return x / y;
+    }),
+    MULTIPLE((x, y) -> x * y);
 
-    private String operator;
     private BiFunction<Integer, Integer, Integer> biFunction;
 
-    ArithmeticCalculator(final String operator , final BiFunction<Integer, Integer, Integer> biFunction){
-        this.operator = operator;
+    public int arithmeticCalculator(final int x, final int y) {
+        return biFunction.apply(x, y);
+    }
+
+    ArithmeticCalculator(final BiFunction<Integer, Integer, Integer> biFunction) {
         this.biFunction = biFunction;
     }
-
-    public static int arithmeticCalculator(final String operator, final int x, final int y){
-        return getOperator(operator).biFunction.apply(x,y);
-    }
-
-    private static ArithmeticCalculator getOperator(final String operator){
-        return ArithmeticCalculator.valueOf(operator);
-    }
-
 }
