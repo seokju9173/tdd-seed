@@ -59,6 +59,9 @@ public class StringCalculatorTest {
                 }),
                 () -> assertThatIllegalArgumentException().isThrownBy(() -> {
                     sc.calculate("");
+                }),
+                () -> assertThatIllegalArgumentException().isThrownBy(() -> {
+                    sc.calculate(" ");
                 })
         );
     }
