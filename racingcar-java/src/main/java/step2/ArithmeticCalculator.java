@@ -7,8 +7,8 @@ enum ArithmeticCalculator {
     ADD((x, y) -> x + y),
     MINUS((x, y) -> x - y),
     DIVISION((x, y) -> {
-        if (y == 0) {
-            throw new IllegalArgumentException("0은 나눌 수 없습니다.");
+        if (y <= 0) {
+            throw new IllegalArgumentException("0이하의 수는 나눌 수 없습니다.");
         }
         return x / y;
     }),
