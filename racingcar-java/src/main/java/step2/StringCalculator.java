@@ -26,7 +26,7 @@ public class StringCalculator extends ArithmeticCalculator {
 
     private String[] isStringNullCheck(final String str) {
         if (str == null || str.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력 값이 비어있습니다.");
         }
         return str.split(" ");
     }
@@ -48,7 +48,8 @@ public class StringCalculator extends ArithmeticCalculator {
                 return super.minus(x, y);
             case "/":
                 return super.division(x, y);
+            default:
+                throw new IllegalArgumentException("연산자가 아닙니다.");
         }
-        return 0;
     }
 }

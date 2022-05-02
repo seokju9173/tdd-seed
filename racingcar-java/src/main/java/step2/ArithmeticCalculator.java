@@ -15,6 +15,13 @@ public class ArithmeticCalculator {
     }
 
     public int division(final int x, final int y) {
+        checkDivision(y);
         return x / y;
+    }
+
+    private void checkDivision(final int y) {
+        if(y == 0){
+            throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
+        }
     }
 }
