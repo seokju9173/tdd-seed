@@ -1,11 +1,13 @@
 package step2;
 
+import java.util.Arrays;
+
 public final class StringCalculator extends ArithmeticCalculator {
 
     private final static String[] operators = {"+", "-", "*", "/"};
 
     public int calculation(final String str) {
-        String[] input =  this.validation(str);
+        String[] input =  isStringNullCheck(str);
         String operator = null;
         int result = Integer.parseInt(input[0]);
 
@@ -21,40 +23,31 @@ public final class StringCalculator extends ArithmeticCalculator {
         return result;
     }
 
-    private String[] validation(final String str) throws IllegalArgumentException{
-        if (str == null || str == "") throw new IllegalArgumentException();
-
-        String[] input = str.split(" ");
-        for(int i = 1 ; i < input.length ; i+=2){
-            if(!isOperator(input[i])) throw new IllegalArgumentException();
+    private String[] isStringNullCheck(final String str){
+        if (str == null || str.isEmpty()) {
+            throw new IllegalArgumentException();
         }
-
-        return input;
+        return str.split(" ");
     }
 
     private final boolean isOperator(final String str) {
-        for (String operator : operators) {
-            if (operator.equals(str)) return true;
+        if(Arrays.asList(operators).contains(str)){
+            return true;
         }
         return false;
     }
 
-    public int selectArithmeticOperation(final String operator, final int x,final int y) {
-        int answer = 0;
+    private int selectArithmeticOperation(final String operator, final int x,final int y) {
         switch (operator) {
             case "+":
-                answer = this.add(x,y);
-                break;
+                return super.add(x,y);
             case "*":
-                answer = this.multiplication(x,y);
-                break;
+                return super.multiplication(x,y);
             case "-":
-                answer = this.minus(x,y);
-                break;
+                return super.minus(x,y);
             case "/":
-                answer = this.division(x,y);
-                break;
+                return super.division(x,y);
         }
-        return answer;
+        return 0;
     }
 }
