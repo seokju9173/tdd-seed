@@ -2,12 +2,12 @@ package step2;
 
 import java.util.Arrays;
 
-public final class StringCalculator extends ArithmeticCalculator {
+public class StringCalculator extends ArithmeticCalculator {
 
     private final static String[] operators = {"+", "-", "*", "/"};
 
     public int calculation(final String str) {
-        String[] input =  isStringNullCheck(str);
+        String[] input = isStringNullCheck(str);
         String operator = null;
         int result = Integer.parseInt(input[0]);
 
@@ -23,7 +23,7 @@ public final class StringCalculator extends ArithmeticCalculator {
         return result;
     }
 
-    private String[] isStringNullCheck(final String str){
+    private String[] isStringNullCheck(final String str) {
         if (str == null || str.isEmpty()) {
             throw new IllegalArgumentException();
         }
@@ -31,22 +31,22 @@ public final class StringCalculator extends ArithmeticCalculator {
     }
 
     private final boolean isOperator(final String str) {
-        if(Arrays.asList(operators).contains(str)){
+        if (Arrays.asList(operators).contains(str)) {
             return true;
         }
         return false;
     }
 
-    private int selectArithmeticOperation(final String operator, final int x,final int y) {
+    private int selectArithmeticOperation(final String operator, final int x, final int y) {
         switch (operator) {
             case "+":
-                return super.add(x,y);
+                return super.add(x, y);
             case "*":
-                return super.multiplication(x,y);
+                return super.multiplication(x, y);
             case "-":
-                return super.minus(x,y);
+                return super.minus(x, y);
             case "/":
-                return super.division(x,y);
+                return super.division(x, y);
         }
         return 0;
     }

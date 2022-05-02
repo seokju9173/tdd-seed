@@ -53,7 +53,7 @@ public class CalculatorTest {
 
     @Test
     @DisplayName("연산자 오류 테스트")
-    void operatorExceptionTest(){
+    void operatorExceptionTest() {
         String str = "2 ) 3 * 4 / 2";
 
         assertThatExceptionOfType(IllegalArgumentException.class)
