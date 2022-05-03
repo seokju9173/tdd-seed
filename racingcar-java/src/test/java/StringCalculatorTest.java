@@ -1,49 +1,42 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class StringCalculatorTest {
 
     StringCalculator sc = new StringCalculator();
 
-    @Test
+    @ParameterizedTest
+    @CsvSource(value = {"1 + 2:3", "1 + 3:4", "1234 + 5678:6912"}, delimiter = ':')
     @DisplayName("덧셈 테스트")
-    void addTest() {
-        Assertions.assertAll(
-                () -> assertThat(sc.calculate("1 + 2")).isEqualTo(3),
-                () -> assertThat(sc.calculate("1 + 3")).isEqualTo(4),
-                () -> assertThat(sc.calculate("1234 + 5678")).isEqualTo(6912)
-        );
+    void addTest(String input, int expected) {
+        assertThat(sc.calculate(input)).isEqualTo(expected);
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource(value = {"1 - 2:-1", "3 - 1:2", "0 - 0:0"}, delimiter = ':')
     @DisplayName("뺄셈 테스트")
-    void subtractTest() {
-        Assertions.assertAll(
-                () -> assertThat(sc.calculate("1 - 2")).isEqualTo(-1),
-                () -> assertThat(sc.calculate("3 - 1")).isEqualTo(2),
-                () -> assertThat(sc.calculate("0 - 0")).isEqualTo(0)
-        );
+    void subtractTest(String input, int expected) {
+        assertThat(sc.calculate(input)).isEqualTo(expected);
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource(value = {"1 * 2:2", "3 * 0:0"}, delimiter = ':')
     @DisplayName("곱셈 테스트")
-    void multipleTest() {
-        Assertions.assertAll(
-                () -> assertThat(sc.calculate("1 * 2")).isEqualTo(2),
-                () -> assertThat(sc.calculate("3 * 0")).isEqualTo(0)
-        );
+    void multipleTest(String input, int expected) {
+        assertThat(sc.calculate(input)).isEqualTo(expected);
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource(value = {"1 / 2:0", "2 / 1:2", "0 / 2:0"}, delimiter = ':')
     @DisplayName("나눗셈 성공 테스트")
-    void divideSuccessTest() {
-        Assertions.assertAll(
-                () -> assertThat(sc.calculate("1 / 2")).isEqualTo(0),
-                () -> assertThat(sc.calculate("2 / 1")).isEqualTo(2),
-                () -> assertThat(sc.calculate("0 / 2")).isEqualTo(0)
-        );
+    void divideSuccessTest(String input, int expected) {
+        assertThat(sc.calculate(input)).isEqualTo(expected);
     }
 
     @Test
@@ -55,44 +48,37 @@ public class StringCalculatorTest {
                         });
     }
 
-    @Test
+    @ParameterizedTest
+    @NullAndEmptySource
     @DisplayName("null, 공백 문자열 테스트")
-    void emptyTest() {
-        Assertions.assertAll(
-                () -> assertThatIllegalArgumentException().isThrownBy(() -> {
-                    sc.calculate(null);
-                }),
-                () -> assertThatIllegalArgumentException().isThrownBy(() -> {
-                    sc.calculate("");
-                }),
-                () -> assertThatIllegalArgumentException().isThrownBy(() -> {
-                    sc.calculate(" ");
-                })
-        );
+    void emptyTest(String input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            sc.calculate(input);
+        });
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource(value = {"1 ; 2", "0 ~ 3"})
     @DisplayName("사칙연산 기호가 아닌 경우 테스트")
-    void symbolTest() {
-        Assertions.assertAll(
-                () -> assertThatIllegalArgumentException().isThrownBy(() -> {
-                    sc.calculate("1 ; 2");
-                }),
-                () -> assertThatIllegalArgumentException().isThrownBy(() -> {
-                    sc.calculate("0 ~ 3");
-                })
-        );
+    void symbolTest(String input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            sc.calculate(input);
+        });
     }
 
-    @Test
-    @DisplayName("종합 사칙연산 테스트")
-    void arithmeticTest() {
-        Assertions.assertAll(
-                () -> assertThat(sc.calculate("2 + 3 * 4 / 2")).isEqualTo(10),
-                () -> assertThat(sc.calculate("1 / 2 * 3 + 4 - 5")).isEqualTo(-1),
-                () -> assertThatIllegalArgumentException().isThrownBy(() -> {
-                    sc.calculate("2 + 3 *");
-                })
-        );
+    @ParameterizedTest
+    @CsvSource(value = {"2 + 3 * 4 / 2:10", "1 / 2 * 3 + 4 - 5:-1"}, delimiter = ':')
+    @DisplayName("종합 사칙연산 성공 테스트")
+    void arithmeticSuccessTest(String input, int expected) {
+        assertThat(sc.calculate(input)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"2 + 3 *", "2 + * 3"})
+    @DisplayName("종합 사칙연산 실패 테스트")
+    void arithmeticTest(String input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            sc.calculate(input);
+        });
     }
 }
