@@ -1,2 +1,11 @@
-요구사항 1
-1,2를 split() 했을 때 1과 2로 분리되는지 확습 테스트
+# 문자열 계산기
+
+
+x + y
+x - y
+x * y
+x / y
+x % y
+
+x 또는 y 가 null 혹은 "" 일 때 IllegalArgumentException 에러 핸들링
+사칙연산 기호가 아니면 에러 핸들링
