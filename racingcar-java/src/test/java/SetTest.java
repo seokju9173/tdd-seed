@@ -38,12 +38,7 @@ class SetTest {
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     @DisplayName("존재/존재하지 않는 값 테스트")
-    void containsVarietyTest(String input, String expected) {
-        Assertions.assertEquals(
-                Boolean.toString(
-                        numbers.contains(
-                                Integer.parseInt(input)
-                        )
-                ), expected);
+    void containsVarietyTest(int input, boolean expected) {
+        Assertions.assertEquals(numbers.contains(input), expected);
     }
 }
