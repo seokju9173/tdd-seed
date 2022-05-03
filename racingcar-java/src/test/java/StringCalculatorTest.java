@@ -74,7 +74,7 @@ public class StringCalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"2 + 3 *", "2 + * 3"})
     @DisplayName("종합 사칙연산 실패 테스트")
-    void arithmeticTest(String input) {
+    void arithmeticFailTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             sc.calculate(input);
         });
