@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 
 public class Racing {
 
-    public void raceStart() {
+    public void raceStart(){
 
         Output output = new Output();
         Input input = new Input();
@@ -19,27 +19,19 @@ public class Racing {
         //차 몇대?
         output.outputHowManyCar();
         List<Car> cars = IntStream.range(0, input.inputCarCount())
-                .mapToObj(i -> new Car(i, "-"))
+                .mapToObj(Car::new)
                 .collect(Collectors.toList());
 
         //몇라운드?
         output.outputHowManyRacingAttempt();
         IntStream.range(0, input.inputRacingAttempt())
                 .forEach(i -> {
-                    cars.stream().forEach(car -> {
-                        car.setDistance(goAndStop());
+                    cars.forEach(car -> {
+                        car.move();
                         car.printDistance();
                     });
                     System.out.println();
                 });
 
-    }
-
-    private String goAndStop() {
-        Random point = new Random();
-        if (point.nextInt(10) >= 4) {
-            return "-";
-        }
-        return "";
     }
 }
