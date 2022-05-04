@@ -1,6 +1,5 @@
 package step3.collections;
 
-import java.util.Optional;
 import java.util.Random;
 
 public class Car {
@@ -10,19 +9,19 @@ public class Car {
     int number;
     String distance;
 
-    public Car(int number){
+    public Car(int number) {
         this.number = number;
         this.distance = "-";
         printDistance();
     }
 
-    public void printDistance(){
+    public void printDistance() {
         System.out.println(distance);
     }
 
-    public void move(){
+    public void move() {
         Random point = new Random();
-        if(point.nextInt(RANDOM_MAX_BOUND) >= CAR_MOVE_POINT){
+        if (point.nextInt(RANDOM_MAX_BOUND) >= CAR_MOVE_POINT) {
             distance += "-";
         }
     }

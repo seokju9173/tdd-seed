@@ -1,17 +1,24 @@
 package step3.collections;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Round {
 
-    private Map<Integer, Car> round =new HashMap<>();
+    private Map<Integer, List<Car>> round = new HashMap<>();
 
-    public Round(int round , Car car){
+    public Round(int round, List<Car> car) {
         this.round.put(round, car);
     }
 
-    public void printRound(){
-        round.forEach((i, j) -> System.out.println(i +" "+ j));
+    public void carMove() {
+        System.out.println("");
+
+        round.get(0).stream().forEach(i -> {
+            i.move();
+            i.printDistance();
+        });
     }
+
 }
