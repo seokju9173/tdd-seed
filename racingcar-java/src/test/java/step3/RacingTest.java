@@ -16,6 +16,15 @@ class RacingTest {
         String input = "3\n5";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        racing.racingCar();
+        //racing.racingCar();
+    }
+
+    @Test
+    @DisplayName("입력값 넣기 테스트")
+    void testRacing2(){
+        String input = "3\n5";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        racing.raceStart();
     }
 }
