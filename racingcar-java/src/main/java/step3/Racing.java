@@ -2,8 +2,8 @@ package step3;
 
 import step3.collections.Car;
 import step3.collections.Round;
-import step3.io.Input;
-import step3.io.Output;
+import step3.view.InputView;
+import step3.view.OutputView;
 
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -12,8 +12,8 @@ public class Racing {
 
     public void raceStart() {
 
-        Output output = new Output();
-        Input input = new Input();
+        OutputView output = new OutputView();
+        InputView input = new InputView();
 
         output.outputHowManyCar();
         int count = input.inputRaceData();

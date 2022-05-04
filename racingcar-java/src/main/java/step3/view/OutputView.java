@@ -1,6 +1,6 @@
-package step3.io;
+package step3.view;
 
-public class Output {
+public class OutputView {
 
     private static final String OUTPUT_HOW_MANY_CAR = "자동차의 대수는 몇 대 인가요?";
     private static final String OUTPUT_HOW_MANY_RACING_ATTEMPT = "시도할 회수는 몇 회 인가요?";
