@@ -16,14 +16,14 @@ public class Racing {
         Input input = new Input();
 
         output.outputHowManyCar();
-        int count = input.inputCarCount();
+        int count = input.inputRaceData();
         output.outputHowManyRacingAttempt();
 
         Round round = new Round(0, IntStream.range(0, count)
                 .mapToObj(Car::new)
                 .collect(Collectors.toList()));
 
-        IntStream.range(0, input.inputCarCount())
+        IntStream.range(0, input.inputRaceData())
                 .forEach(i -> round.carMove());
     }
 }
