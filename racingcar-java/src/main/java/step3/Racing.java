@@ -1,18 +1,32 @@
 package step3;
 
+import step3.collections.Cars;
 import step3.io.Input;
 import step3.io.Output;
 
-import java.util.Arrays;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Racing {
 
     private static String[] cars;
     private int car, trial;
 
+    public void raceStart(){
+
+    }
+
+    public List<Cars> createCars(int carsCount){
+        return IntStream.range(0, carsCount)
+                .mapToObj(i -> new Cars(i , "-"))
+                .collect(Collectors.toList());
+    }
+
     public void racingCar() {
+
         initializeCar();
         Arrays.fill(cars, "-");
 
