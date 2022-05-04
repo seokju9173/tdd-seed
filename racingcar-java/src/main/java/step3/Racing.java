@@ -16,21 +16,21 @@ public class Racing {
         Output output = new Output();
         Input input = new Input();
 
-        //차 몇대?
         output.outputHowManyCar();
-        List<Car> cars = IntStream.range(0, input.inputCarCount())
+        int count = input.inputCarCount();
+        output.outputHowManyRacingAttempt();
+
+        List<Car> cars = IntStream.range(0, count)
                 .mapToObj(Car::new)
                 .collect(Collectors.toList());
 
-        //몇라운드?
-        output.outputHowManyRacingAttempt();
         IntStream.range(0, input.inputRacingAttempt())
                 .forEach(i -> {
+                    System.out.println();
                     cars.forEach(car -> {
                         car.move();
                         car.printDistance();
                     });
-                    System.out.println();
                 });
 
     }

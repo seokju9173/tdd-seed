@@ -13,6 +13,7 @@ public class Car {
     public Car(int number){
         this.number = number;
         this.distance = "-";
+        printDistance();
     }
 
     public void printDistance(){
