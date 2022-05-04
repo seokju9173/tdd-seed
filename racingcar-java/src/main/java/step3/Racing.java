@@ -1,5 +1,7 @@
 package step3;
 
+import step3.io.Input;
+
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -24,11 +26,11 @@ public class Racing {
     }
 
     private void initializeCar() {
-        Scanner sc = new Scanner(System.in);
+        Input input = new Input();
         System.out.println("자동차의 대수는 몇 대 인가요?");
-        car = sc.nextInt();
+        car = input.inputCar();
         System.out.println("시도할 회수는 몇 회 인가요?");
-        trial = sc.nextInt();
+        trial = input.inputRacingTrial();
         cars = new String[car];
     }
 
