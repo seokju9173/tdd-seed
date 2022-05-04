@@ -1,7 +1,7 @@
 package step3;
 
-import step3.collections.Car;
-import step3.collections.Round;
+import step3.domain.Car;
+import step3.domain.Round;
 import step3.view.InputView;
 import step3.view.OutputView;
 

@@ -1,4 +1,4 @@
-package step3.collections;
+package step3.domain;
 
 import java.util.HashMap;
 import java.util.List;
