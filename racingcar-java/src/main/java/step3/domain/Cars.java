@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 public class Cars {
     private List<Car> cars;
 
-    public Cars(final int count){
+    public Cars(final int count) {
         this.cars = IntStream.range(0, count)
                 .mapToObj(Car::new)
                 .collect(Collectors.toList());
@@ -18,8 +18,8 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
-    public void move(){
-        for(Car car : cars){
+    public void move() {
+        for (Car car : cars) {
             car.move();
         }
     }

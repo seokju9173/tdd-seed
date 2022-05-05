@@ -18,9 +18,9 @@ public class OutputView {
         System.out.println(OUTPUT_HOW_MANY_RACING_ATTEMPT);
     }
 
-    public void outputMoveCarPosition(final Cars cars){
+    public void outputMoveCarPosition(final Cars cars) {
         System.out.println("");
-        for(Car car : cars.getCars()){
+        for (Car car : cars.getCars()) {
             System.out.println(OUTPUT_MOVE_CAR_POSITION.repeat(car.getDistance()));
         }
     }
