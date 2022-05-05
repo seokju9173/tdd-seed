@@ -1,6 +1,5 @@
 package step3.domain;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,5 +16,11 @@ public class Cars {
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
+    }
+
+    public void move(){
+        for(Car car : cars){
+            car.move();
+        }
     }
 }

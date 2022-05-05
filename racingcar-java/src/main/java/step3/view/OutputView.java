@@ -19,6 +19,7 @@ public class OutputView {
     }
 
     public void outputMoveCarPosition(final Cars cars){
+        System.out.println("");
         for(Car car : cars.getCars()){
             System.out.println(OUTPUT_MOVE_CAR_POSITION.repeat(car.getDistance()));
         }
