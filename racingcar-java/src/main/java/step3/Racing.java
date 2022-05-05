@@ -10,12 +10,9 @@ public class Racing {
         OutputView output = new OutputView();
         InputView input = new InputView();
 
-        output.outputHowManyCar();
         int count = input.inputRaceData();
-        output.outputHowManyRacingAttempt();
+        int attempt = input.inputRacingAttempt();
 
-
-        int bound = input.inputRaceData();
 
     }
 }

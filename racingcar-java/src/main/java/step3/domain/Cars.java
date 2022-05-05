@@ -9,8 +9,10 @@ import java.util.stream.IntStream;
 public class Cars {
     private List<Car> cars;
 
-    public Cars(List<Car> cars){
-        this.cars = new ArrayList<>(cars);
+    public Cars(final int count){
+        this.cars = IntStream.range(0, count)
+                .mapToObj(num -> new Car(num))
+                .collect(Collectors.toList());
     }
 
     public List<Car> getCars() {
