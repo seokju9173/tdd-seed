@@ -5,24 +5,23 @@ import java.util.Random;
 public class Car {
     private final static int RANDOM_MAX_BOUND = 10;
     private final static int CAR_MOVE_POINT = 4;
+    private final Random point = new Random();
 
-    int number;
-    String distance;
+    private int number;
+    private int distance;
 
     public Car(int number) {
         this.number = number;
-        this.distance = "-";
-        printDistance();
+        this.distance = 1;
     }
 
-    public void printDistance() {
-        System.out.println(distance);
+    public int getDistance() {
+        return distance;
     }
 
     public void move() {
-        Random point = new Random();
         if (point.nextInt(RANDOM_MAX_BOUND) >= CAR_MOVE_POINT) {
-            distance += "-";
+            distance += 1;
         }
     }
 }

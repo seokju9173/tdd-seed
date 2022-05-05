@@ -1,24 +1,22 @@
 package step3.domain;
 
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class Round {
+public class Round implements Cloneable{
 
-    private Map<Integer, List<Car>> round = new HashMap<>();
+    private final Map<Integer, Cars> round = new HashMap<>();
 
-    public Round(int round, List<Car> car) {
-        this.round.put(round, car);
+    public Round(int number , Cars cars) {
+        round.put(number, cars);
     }
 
-    public void carMove() {
-        System.out.println("");
-
-        round.get(0).stream().forEach(i -> {
-            i.move();
-            i.printDistance();
-        });
+    public Map<Integer, Cars> getRound() {
+        return Collections.unmodifiableMap(round);
     }
 
+    public Round clone() throws CloneNotSupportedException{
+        return (Round) super.clone();
+    }
 }
