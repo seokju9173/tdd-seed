@@ -20,7 +20,7 @@ public class OutputView {
 
     public void outputMoveCarPosition(final Cars cars){
         for(Car car : cars.getCars()){
-            System.out.println("-".repeat(car.getDistance()));
+            System.out.println(OUTPUT_MOVE_CAR_POSITION.repeat(car.getDistance()));
         }
     }
 
