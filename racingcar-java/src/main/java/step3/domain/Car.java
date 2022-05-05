@@ -17,13 +17,13 @@ public class Car {
         this.distance = DEFAULT_DISTANCE;
     }
 
-    public int getDistance() {
-        return distance;
-    }
-
     public void move() {
         if (point.nextInt(RANDOM_MAX_BOUND) >= CAR_MOVE_POINT) {
             distance += INCREASE_DISTANCE_POINT;
         }
+    }
+
+    public int getDistance() {
+        return distance;
     }
 }

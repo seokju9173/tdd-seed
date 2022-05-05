@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Cars {
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(final int count) {
         this.cars = IntStream.range(0, count)
@@ -14,13 +14,17 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
+    public Cars(final List<Car> cars){
+        this.cars = cars;
+    }
+
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
 
     public void move() {
-        for (Car car : cars) {
-            car.move();
-        }
+        cars.stream()
+                .peek(Car::move)
+                .collect(Collectors.toList());
     }
 }
