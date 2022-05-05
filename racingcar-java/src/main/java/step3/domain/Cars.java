@@ -11,7 +11,7 @@ public class Cars {
 
     public Cars(final int count){
         this.cars = IntStream.range(0, count)
-                .mapToObj(num -> new Car(num))
+                .mapToObj(Car::new)
                 .collect(Collectors.toList());
     }
 
