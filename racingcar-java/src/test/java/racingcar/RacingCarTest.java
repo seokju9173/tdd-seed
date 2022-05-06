@@ -12,6 +12,7 @@ public class RacingCarTest {
     void positionCreateTest() {
         Position position = new Position();
         assertThat(position.getDistance()).isEqualTo(1);
+        assertThat(position.toString()).isEqualTo("-");
     }
 
 }
