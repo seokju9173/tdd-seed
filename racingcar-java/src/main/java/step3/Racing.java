@@ -1,16 +1,14 @@
 package step3;
 
 import step3.domain.Cars;
+import step3.view.InputView;
+import step3.view.OutputView;
 
 import java.util.stream.IntStream;
-
-import static step3.view.Utils.OutputView;
-import static step3.view.Utils.InputView;
 
 public class Racing {
 
     public void raceStart() {
-
         String carNames = InputView.inputCarNames();
         int attempt = InputView.inputRacingAttempt();
 
@@ -19,10 +17,10 @@ public class Racing {
         cycle(cars, attempt);
     }
 
-    private void cycle(Cars cars, int attempt){
+    private void cycle(Cars cars, int attempt) {
         OutputView.outputMoveCarPosition(cars);
         IntStream.range(0, attempt)
-                .forEach( i-> {
+                .forEach(i -> {
                     cars.move();
                     OutputView.outputMoveCarPosition(cars);
                 });
