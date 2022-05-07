@@ -9,6 +9,7 @@ import java.util.stream.IntStream;
 public class Racing {
 
     public void raceStart() {
+
         String carNames = InputView.inputCarNames();
         int attempt = InputView.inputRacingAttempt();
 
@@ -17,10 +18,10 @@ public class Racing {
         cycle(cars, attempt);
     }
 
-    private void cycle(Cars cars, int attempt) {
+    private void cycle(Cars cars, int attempt){
         OutputView.outputMoveCarPosition(cars);
         IntStream.range(0, attempt)
-                .forEach(i -> {
+                .forEach( i-> {
                     cars.move();
                     OutputView.outputMoveCarPosition(cars);
                 });
