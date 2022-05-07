@@ -25,7 +25,7 @@ class RacingTest {
 
     @Test
     @DisplayName("Car 이름 가져오기")
-    void getCarName(){
+    void getCarName() {
         String carNames = "pobi,crong,honux";
 
         Cars cars = new Cars(carNames);

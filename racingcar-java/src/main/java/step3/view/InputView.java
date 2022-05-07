@@ -15,5 +15,4 @@ public class InputView {
         OutputView.outputHowManyRacingAttempt();
         return input.nextInt();
     }
-
 }

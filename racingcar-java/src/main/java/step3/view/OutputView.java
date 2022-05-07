@@ -18,7 +18,7 @@ public class OutputView {
 
     public static void outputMoveCarPosition(final Cars cars) {
         System.out.println("");
-        cars.getCars().forEach( car -> {
+        cars.getCars().forEach(car -> {
             System.out.print(car.getCarName() + " : ");
             System.out.println(OUTPUT_MOVE_CAR_POSITION.repeat(car.getDistance()));
         });

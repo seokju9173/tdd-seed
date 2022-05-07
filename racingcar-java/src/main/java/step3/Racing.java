@@ -18,10 +18,10 @@ public class Racing {
         cycle(cars, attempt);
     }
 
-    private void cycle(Cars cars, int attempt){
+    private void cycle(Cars cars, int attempt) {
         OutputView.outputMoveCarPosition(cars);
         IntStream.range(0, attempt)
-                .forEach( i-> {
+                .forEach(i -> {
                     cars.move();
                     OutputView.outputMoveCarPosition(cars);
                 });

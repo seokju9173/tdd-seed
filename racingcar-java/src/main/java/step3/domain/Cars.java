@@ -15,7 +15,7 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public Cars(final List<Car> cars){
+    public Cars(final List<Car> cars) {
         this.cars = cars;
     }
 
