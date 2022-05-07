@@ -1,16 +1,17 @@
 package step3.domain;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(final int count) {
-        this.cars = IntStream.range(0, count)
-                .mapToObj(Car::new)
+    public Cars(final String carName) {
+        String[] splitCarNames = carName.split(",");
+        cars = Arrays.stream(splitCarNames)
+                .map(Car::new)
                 .collect(Collectors.toList());
     }
 

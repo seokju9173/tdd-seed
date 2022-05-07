@@ -2,11 +2,16 @@ package step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.domain.Car;
 import step3.domain.Cars;
 import step3.view.Utils;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Arrays;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 @DisplayName("레이싱 테스트")
 class RacingTest {
@@ -23,13 +28,16 @@ class RacingTest {
     }
 
     @Test
-    @DisplayName("Car에 값 넣고 이동하기")
-    void useCarObjectTest() {
-        Cars cars = new Cars(3);
+    @DisplayName("Car 이름 가져오기")
+    void getCarName(){
+        String carNames = "pobi,crong,honux";
 
-        outputView.outputMoveCarPosition(cars);
-        cars.getCars().get(0).move();
-        outputView.outputMoveCarPosition(cars);
+        Cars cars = new Cars(carNames);
+
+        assertAll(
+                () -> assertThat(cars.getCars().get(0).getCarName()).isEqualTo("pobi"),
+                () -> assertThat(cars.getCars().get(1).getCarName()).isEqualTo("crong")
+        );
     }
 
 }
