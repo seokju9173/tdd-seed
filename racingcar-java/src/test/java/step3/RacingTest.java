@@ -21,7 +21,7 @@ class RacingTest {
     @Test
     @DisplayName("입력값 넣기 테스트")
     void testRacing() {
-        String input = "3\n5";
+        String input = "pobi,crong,honux\n5";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         racing.raceStart();
