@@ -27,4 +27,11 @@ public class Cars {
             strings[i] = carList.get(i).toString();
         return strings;
     }
+
+    public void printCarsStatus() {
+        String[] carsStatus = getCarsStatus();
+        for(int i = 0; i < carsStatus.length; i++) {
+            System.out.println(carsStatus[i]);
+        }
+    }
 }

@@ -20,4 +20,9 @@ public class Users {
     public User getUser(int index) {
         return userList.get(index);
     }
+
+    public void usersGo() {
+        for(int i = 0; i < userList.size(); i++)
+            getUser(i).go();
+    }
 }
