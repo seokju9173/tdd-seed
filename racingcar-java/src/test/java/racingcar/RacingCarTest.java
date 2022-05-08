@@ -51,4 +51,11 @@ public class RacingCarTest {
         assertThat(cars2.getCar(1).getPosition()).isEqualTo(1);
         assertThat(cars2.getCarList()).hasSize(2);
     }
+
+    @Test
+    @DisplayName("사용자 생성 및 랜덤 테스트")
+    void userCreateTest() {
+        User user = new User(new Car());
+        assertThat(user.random()).isBetween(1, 9);
+    }
 }
