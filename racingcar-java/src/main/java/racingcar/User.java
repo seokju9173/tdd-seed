@@ -7,9 +7,12 @@ public class User {
     private Car car;
     private Random random;
 
-    public User(Car car) {
-        this.car = car;
+    public User() {
         random = new Random();
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
     }
 
     public int random() {

@@ -55,7 +55,14 @@ public class RacingCarTest {
     @Test
     @DisplayName("사용자 생성 및 랜덤 테스트")
     void userCreateTest() {
-        User user = new User(new Car());
+        User user = new User();
         assertThat(user.random()).isBetween(0, 9);
+    }
+
+    @Test
+    @DisplayName("사용자들 여러 명 생성 테스트")
+    void usersCreateTest() {
+        Users users = new Users(3);
+        assertThat(users.getUserList()).hasSize(3);
     }
 }
