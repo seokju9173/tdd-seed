@@ -42,4 +42,13 @@ public class RacingCarTest {
         assertThat(car.getPosition()).isEqualTo(2);
         assertThat(car.toString()).isEqualTo("--");
     }
+
+    @Test
+    @DisplayName("자동차들 여러 대 생성 테스트")
+    void carsCreateTest() {
+        Cars cars2 = new Cars(2);
+        assertThat(cars2.getCar(0).getPosition()).isEqualTo(1);
+        assertThat(cars2.getCar(1).getPosition()).isEqualTo(1);
+        assertThat(cars2.getCarList()).hasSize(2);
+    }
 }
