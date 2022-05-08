@@ -31,7 +31,7 @@ public class RacingCarTest {
     @DisplayName("자동차 객체 생성 후 위치 출력")
     void carStringTest() {
         Car car = new Car();
-        assertThat(car.getPosition()).isEqualTo("-");
+        assertThat(car.toString()).isEqualTo("-");
     }
 
     @Test
@@ -56,6 +56,6 @@ public class RacingCarTest {
     @DisplayName("사용자 생성 및 랜덤 테스트")
     void userCreateTest() {
         User user = new User(new Car());
-        assertThat(user.random()).isBetween(1, 9);
+        assertThat(user.random()).isBetween(0, 9);
     }
 }
