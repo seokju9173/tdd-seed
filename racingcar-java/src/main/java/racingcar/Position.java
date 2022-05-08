@@ -19,4 +19,8 @@ public class Position {
             string += '-';
         return string;
     }
+
+    public void increase() {
+        distance++;
+    }
 }
