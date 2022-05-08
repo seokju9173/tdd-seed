@@ -50,6 +50,11 @@ public class RacingCarTest {
         assertThat(cars2.getCar(0).getPosition()).isEqualTo(1);
         assertThat(cars2.getCar(1).getPosition()).isEqualTo(1);
         assertThat(cars2.getCarList()).hasSize(2);
+
+        cars2.getCar(0).move();
+        String[] carsStatus = cars2.getCarsStatus();
+        assertThat(carsStatus[0]).isEqualTo("--");
+        assertThat(carsStatus[1]).isEqualTo("-");
     }
 
     @Test

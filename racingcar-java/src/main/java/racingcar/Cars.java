@@ -20,4 +20,11 @@ public class Cars {
     public Car getCar(int index) {
         return carList.get(index);
     }
+
+    public String[] getCarsStatus() {
+        String[] strings = new String[carList.size()];
+        for(int i = 0; i < strings.length; i++)
+            strings[i] = carList.get(i).toString();
+        return strings;
+    }
 }
