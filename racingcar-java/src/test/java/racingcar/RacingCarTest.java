@@ -19,4 +19,27 @@ public class RacingCarTest {
         Position position = new Position();
         assertThat(position.toString()).isEqualTo("-");
     }
+
+    @Test
+    @DisplayName("자동차 객체 생성 후 위치 확인")
+    void carCreateTest() {
+        Car car = new Car();
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("자동차 객체 생성 후 위치 출력")
+    void carStringTest() {
+        Car car = new Car();
+        assertThat(car.getPosition()).isEqualTo("-");
+    }
+
+    @Test
+    @DisplayName("자동차 객체 생성 후 1칸 움직임")
+    void carMoveTest() {
+        Car car = new Car();
+        car.move();
+        assertThat(car.getPosition()).isEqualTo(2);
+        assertThat(car.toString()).isEqualTo("--");
+    }
 }
