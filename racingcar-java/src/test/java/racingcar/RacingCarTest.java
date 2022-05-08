@@ -2,7 +2,6 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.Assertions.*;
 
 public class RacingCarTest {
@@ -12,7 +11,12 @@ public class RacingCarTest {
     void positionCreateTest() {
         Position position = new Position();
         assertThat(position.getDistance()).isEqualTo(1);
-        assertThat(position.toString()).isEqualTo("-");
     }
 
+    @Test
+    @DisplayName("새로 생성한 위치 객체 문자열 확인")
+    void positionStringTest() {
+        Position position = new Position();
+        assertThat(position.toString()).isEqualTo("-");
+    }
 }
