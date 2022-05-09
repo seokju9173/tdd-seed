@@ -26,7 +26,4 @@ public class User {
         }
     }
 
-    public String carString() {
-        return car.toString();
-    }
 }
