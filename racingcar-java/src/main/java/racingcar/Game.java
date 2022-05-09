@@ -5,16 +5,14 @@ public class Game {
         Cars cars;
         Users users;
 
-        ResultView.carMessage();
-        int number = InputView.getNumber();
+        int number = InputView.getCarNumber();
         cars = new Cars(number);
         users = new Users(number);
         for(int i = 0; i < number; i++) {
             users.getUser(i).
             setCar(cars.getCar(i));
         }
-        ResultView.roundMessage();
-        int round = InputView.getNumber();
+        int round = InputView.getRoundNumber();
 
         for(int i = 0; i < round; i++) {
             users.usersGo();
