@@ -12,12 +12,12 @@ public class Car {
         return position.getDistance();
     }
 
+    public void move() {
+        this.position.increase();
+    }
+
     @Override
     public String toString() {
         return position.toString();
-    }
-
-    public void move() {
-        this.position.increase();
     }
 }
