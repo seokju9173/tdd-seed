@@ -4,13 +4,9 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private Scanner sc;
+    private static Scanner sc = new Scanner(System.in);
 
-    public InputView() {
-        this.sc = new Scanner(System.in);
-    }
-
-    public int getNumber() {
+    public static int getNumber() {
         return sc.nextInt();
     }
 
