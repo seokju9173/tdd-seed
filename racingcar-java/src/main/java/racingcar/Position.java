@@ -4,8 +4,12 @@ public class Position {
 
     private int distance;
 
+    public Position(int distance) {
+        this.distance = distance;
+    }
+
     public Position() {
-        this.distance = 1;
+        this(1);
     }
 
     public int getDistance() {
@@ -15,8 +19,9 @@ public class Position {
     @Override
     public String toString() {
         String string = "";
+        char character = ResultView.getPrintCharacter();
         for(int i = 0; i < distance; i++)
-            string += '-';
+            string += character;
         return string;
     }
 

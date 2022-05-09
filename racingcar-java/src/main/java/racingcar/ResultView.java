@@ -2,6 +2,8 @@ package racingcar;
 
 public class ResultView {
 
+    private static char printCharacter = '-';
+
     public static void carMessage() {
         System.out.println("자동차 대수는 몇 대 인가요?");
     }
@@ -20,5 +22,13 @@ public class ResultView {
             System.out.println(carsStatus[i]);
         }
         System.out.println();
+    }
+
+    public static char getPrintCharacter() {
+        return printCharacter;
+    }
+
+    public static void setPrintCharacter(char printCharacter) {
+        ResultView.printCharacter = printCharacter;
     }
 }
