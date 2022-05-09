@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Users {
@@ -14,7 +15,7 @@ public class Users {
     }
 
     public List<User> getUserList() {
-        return new ArrayList<>(userList);
+        return Collections.unmodifiableList(new ArrayList<>(userList));
     }
 
     public User getUser(int index) {
@@ -22,7 +23,8 @@ public class Users {
     }
 
     public void usersGo() {
-        for(int i = 0; i < userList.size(); i++)
+        for(int i = 0; i < userList.size(); i++) {
             getUser(i).go();
+        }
     }
 }
