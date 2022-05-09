@@ -27,15 +27,10 @@ public class Cars {
 
     public String[] getCarsStatus() {
         String[] strings = new String[carList.size()];
-        for(int i = 0; i < strings.length; i++)
+        for(int i = 0; i < strings.length; i++) {
             strings[i] = carList.get(i).toString();
+        }
         return strings;
     }
-
-    public void printCarsStatus() {
-        String[] carsStatus = getCarsStatus();
-        for(int i = 0; i < carsStatus.length; i++) {
-            System.out.println(carsStatus[i]);
-        }
-    }
+    
 }

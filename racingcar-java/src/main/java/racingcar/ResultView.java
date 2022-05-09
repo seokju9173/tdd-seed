@@ -17,7 +17,10 @@ public class ResultView {
     }
 
     public static void printGameStatus(Cars cars) {
-        cars.printCarsStatus();
+        String[] carsStatus = cars.getCarsStatus();
+        for(int i = 0; i < carsStatus.length; i++) {
+            System.out.println(carsStatus[i]);
+        }
         System.out.println();
     }
 }
