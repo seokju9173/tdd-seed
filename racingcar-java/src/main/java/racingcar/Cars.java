@@ -19,10 +19,8 @@ public class Cars {
     }
 
     public Car getCar(int index) {
-        Optional<Car> optionalCar = Optional.ofNullable(carList.get(index));
-        if(optionalCar.isPresent())
-            return optionalCar.get();
-        throw new IllegalArgumentException("carList에서 null이 반환됨");
+        validateCarsSize(index);
+        return carList.get(index);
     }
 
     public String[] getCarsStatus() {
@@ -33,4 +31,12 @@ public class Cars {
         return strings;
     }
 
+    private void validateCarsSize(int index) {
+        if(carList.size() < index + 1) {
+            throw new IllegalArgumentException("carList size 보다 작은 index에 접근함");
+        }
+        if(carList.get(index) == null) {
+            throw new IllegalArgumentException("carList의 null값에 접근함");
+        }
+    }
 }

@@ -61,7 +61,7 @@ public class RacingCarTest {
     @DisplayName("자동차들 0대 생성 테스트")
     void carsNotCreateTest() {
         Cars cars = new Cars(0);
-        assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
             cars.getCar(0);
         });
     }
