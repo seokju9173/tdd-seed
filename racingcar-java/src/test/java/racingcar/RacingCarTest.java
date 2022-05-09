@@ -58,6 +58,25 @@ public class RacingCarTest {
     }
 
     @Test
+    @DisplayName("자동차들 0대 생성 테스트")
+    void carsNotCreateTest() {
+        Cars cars = new Cars(0);
+        assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
+            cars.getCar(0);
+        });
+    }
+
+    @Test
+    @DisplayName("자동차들 null 테스트")
+    void carsNullTest() {
+        Cars cars = new Cars(0);
+        cars.carList.add(null);
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            cars.getCar(0);
+        });
+    }
+
+    @Test
     @DisplayName("사용자 생성 및 랜덤 테스트")
     void userCreateTest() {
         User user = new User();

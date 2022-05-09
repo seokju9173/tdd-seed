@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Cars {
 
@@ -18,7 +19,10 @@ public class Cars {
     }
 
     public Car getCar(int index) {
-        return carList.get(index);
+        Optional<Car> optionalCar = Optional.ofNullable(carList.get(index));
+        if(optionalCar.isPresent())
+            return optionalCar.get();
+        throw new IllegalArgumentException("carList에서 null이 반환됨");
     }
 
     public String[] getCarsStatus() {
