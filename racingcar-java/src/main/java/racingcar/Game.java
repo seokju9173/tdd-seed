@@ -1,7 +1,7 @@
 package racingcar;
 
 public class Game {
-    public void gameLogic() {
+    public void run() {
         Cars cars;
         Users users;
 
