@@ -29,5 +29,5 @@ public class ResultView {
     public static char getPrintCharacter() {
         return printCharacter;
     }
-    
+
 }

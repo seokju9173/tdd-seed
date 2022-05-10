@@ -6,9 +6,10 @@ import java.util.List;
 
 public class Users {
 
-    final static List<User> userList = new ArrayList<>();
+    final List<User> userList;
 
     public Users(int size) {
+        userList = new ArrayList<>();
         for(int i = 0; i < size; i++) {
             userList.add(new User());
         }
