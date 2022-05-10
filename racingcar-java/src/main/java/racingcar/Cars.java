@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +18,7 @@ public class Cars {
     }
 
     public List<Car> getCarList() {
-        return new ArrayList<>(cars);
+        return Collections.unmodifiableList(cars);
     }
 
     public Car getCar(int index) {

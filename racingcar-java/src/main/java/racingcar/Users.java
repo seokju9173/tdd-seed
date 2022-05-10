@@ -16,7 +16,7 @@ public class Users {
     }
 
     public List<User> getUserList() {
-        return Collections.unmodifiableList(new ArrayList<>(userList));
+        return Collections.unmodifiableList(userList);
     }
 
     public User getUser(int index) {
