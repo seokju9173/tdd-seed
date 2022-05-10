@@ -2,7 +2,7 @@ package racingcar;
 
 public class Car {
 
-    private Position position;
+    private final Position position;
 
     public Car() {
         this.position = new Position();
