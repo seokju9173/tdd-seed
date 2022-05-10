@@ -27,10 +27,12 @@ public class Cars{
                 .collect(Collectors.toList());
     }
 
-    public int winner(){
+    public List<Car> winner(){
+        int max = maxCarPoint();
 
-
-        return maxCarPoint();
+        return cars.stream()
+                .filter(car -> max == car.getDistance())
+                .collect(Collectors.toList());
     }
 
     private int maxCarPoint(){
@@ -41,4 +43,5 @@ public class Cars{
 
         return car.getDistance();
     }
+
 }

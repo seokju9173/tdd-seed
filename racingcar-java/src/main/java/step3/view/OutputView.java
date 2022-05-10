@@ -1,12 +1,20 @@
 package step3.view;
 
+import step3.domain.Car;
 import step3.domain.Cars;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
 
 public class OutputView {
 
     private static final String OUTPUT_HOW_MANY_CAR = "자동차의 이름은 무엇 인가요?";
     private static final String OUTPUT_HOW_MANY_RACING_ATTEMPT = "시도할 회수는 몇 회 인가요?";
     private static final String OUTPUT_MOVE_CAR_POSITION = "-";
+    private static final String OUTPUT_JOINING_TEXT = ", ";
+    private static final String OUTPUT_WINNER_TEXT = "가 최종 우승했습니다.";
 
     public static void outputHowManyCar() {
         System.out.println(OUTPUT_HOW_MANY_CAR);
@@ -24,7 +32,13 @@ public class OutputView {
         });
     }
 
-    public static void outputMaxPoint(final Cars cars){
-        System.out.println(cars.winner());
+    public static void outputWinner(final Cars cars){
+        List<Car> winner = cars.winner();
+
+        String str = winner.stream()
+                .map(Car::getCarName)
+                .collect(joining(OUTPUT_JOINING_TEXT));
+
+        System.out.println(str+OUTPUT_WINNER_TEXT);
     }
 }

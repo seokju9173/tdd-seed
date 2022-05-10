@@ -24,6 +24,6 @@ public class Racing {
                     cars.move();
                     OutputView.outputMoveCarPosition(cars);
                 });
-        OutputView.outputMaxPoint(cars);
+        OutputView.outputWinner(cars);
     }
 }
