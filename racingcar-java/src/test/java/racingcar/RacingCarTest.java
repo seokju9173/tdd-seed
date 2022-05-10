@@ -64,9 +64,7 @@ public class RacingCarTest {
     @DisplayName("자동차들 0대 생성 테스트")
     void carsNotCreateTest() {
         Cars cars = new Cars(0);
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            cars.getCar(0);
-        });
+        assertThat(cars.getCar(0).getPosition()).isEqualTo(1);
     }
 
 //    @Test

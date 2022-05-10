@@ -2,6 +2,8 @@ package racingcar;
 
 public class Position {
 
+    final static int START_POSITION = 1;
+
     private int distance;
 
     public Position(int distance) {
@@ -9,7 +11,7 @@ public class Position {
     }
 
     public Position() {
-        this(1);
+        this(START_POSITION);
     }
 
     public int getDistance() {
