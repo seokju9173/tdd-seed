@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Users {
 
-    final List<User> userList;
+    private final List<User> userList;
 
     public Users(int size) {
         userList = new ArrayList<>();
