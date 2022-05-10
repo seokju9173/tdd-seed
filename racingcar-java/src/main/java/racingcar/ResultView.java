@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class ResultView {
 
     private static char printCharacter = '-';
@@ -17,9 +19,9 @@ public class ResultView {
     }
 
     public static void printGameStatus(Cars cars) {
-        String[] carsStatus = cars.getCarsStatus();
-        for(int i = 0; i < carsStatus.length; i++) {
-            System.out.println(carsStatus[i]);
+        List<String> carsStatus = cars.getCarsStatus();
+        for(int i = 0; i < carsStatus.size(); i++) {
+            System.out.println(carsStatus.get(i));
         }
         System.out.println();
     }

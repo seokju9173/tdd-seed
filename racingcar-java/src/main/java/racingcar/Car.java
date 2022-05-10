@@ -16,8 +16,7 @@ public class Car {
         this.position.increase();
     }
 
-    @Override
-    public String toString() {
-        return position.toString();
+    public String carString() {
+        return position.positionString();
     }
 }

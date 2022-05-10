@@ -16,8 +16,7 @@ public class Position {
         return distance;
     }
 
-    @Override
-    public String toString() {
+    public String positionString() {
         String string = "";
         char character = ResultView.getPrintCharacter();
         for(int i = 0; i < distance; i++)
