@@ -36,4 +36,11 @@ class RacingTest {
         );
     }
 
+    @Test
+    @DisplayName("Car 최고점 가져오기")
+    void getCarMaxPoint() {
+        String carNames = "pobi,crong,honux";
+
+        Cars cars = new Cars(carNames);
+    }
 }

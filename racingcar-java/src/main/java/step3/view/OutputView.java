@@ -23,4 +23,8 @@ public class OutputView {
             System.out.println(OUTPUT_MOVE_CAR_POSITION.repeat(car.getDistance()));
         });
     }
+
+    public static void outputMaxPoint(final Cars cars){
+        System.out.println(cars.winner());
+    }
 }

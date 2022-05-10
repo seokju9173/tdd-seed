@@ -9,7 +9,6 @@ import java.util.stream.IntStream;
 public class Racing {
 
     public void raceStart() {
-
         String carNames = InputView.inputCarNames();
         int attempt = InputView.inputRacingAttempt();
 
@@ -25,5 +24,6 @@ public class Racing {
                     cars.move();
                     OutputView.outputMoveCarPosition(cars);
                 });
+        OutputView.outputMaxPoint(cars);
     }
 }

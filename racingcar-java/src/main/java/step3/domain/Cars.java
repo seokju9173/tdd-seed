@@ -1,11 +1,9 @@
 package step3.domain;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
-public class Cars {
+public class Cars{
     private final List<Car> cars;
 
     public Cars(final String carName) {
@@ -27,5 +25,20 @@ public class Cars {
         cars.stream()
                 .peek(Car::move)
                 .collect(Collectors.toList());
+    }
+
+    public int winner(){
+
+
+        return maxCarPoint();
+    }
+
+    private int maxCarPoint(){
+        Car car = cars
+                .stream()
+                .max(Comparator.comparing(Car::getCarName))
+                .orElse(new Car("test",0));
+
+        return car.getDistance();
     }
 }
