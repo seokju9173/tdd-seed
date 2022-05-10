@@ -8,12 +8,16 @@ public class Car {
         this.position = new Position();
     }
 
+    public Car(int number) {
+        this.position = new Position(number);
+    }
+
     public int getPosition() {
         return position.getDistance();
     }
 
     public void move() {
-        this.position.increase();
+        position.increase();
     }
 
     public String carString() {
