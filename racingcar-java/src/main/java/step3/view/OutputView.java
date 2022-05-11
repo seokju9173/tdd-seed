@@ -32,9 +32,9 @@ public class OutputView {
         });
     }
 
-    public static void outputWinner(final Cars cars){
+    public static void outputWinner(final Cars cars) {
         List<String> winner = cars.winner();
 
-        System.out.println(String.join(",", winner) +OUTPUT_WINNER_TEXT);
+        System.out.println(String.join(",", winner) + OUTPUT_WINNER_TEXT);
     }
 }

@@ -3,11 +3,11 @@ package step3.domain;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Cars{
+public class Cars {
     private final List<Car> cars;
 
     public Cars(final String carName) {
-        if(carName.isEmpty()){
+        if (carName.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름이 비어있습니다");
         }
         String[] splitCarNames = carName.split(",");
@@ -30,7 +30,7 @@ public class Cars{
                 .collect(Collectors.toList());
     }
 
-    public List<String> winner(){
+    public List<String> winner() {
         int max = maxCarPoint();
 
         return cars.stream()
@@ -39,11 +39,11 @@ public class Cars{
                 .collect(Collectors.toList());
     }
 
-    private int maxCarPoint(){
+    private int maxCarPoint() {
         Car car = cars
                 .stream()
                 .max(Comparator.comparing(Car::getDistance))
-                .orElseThrow( () -> new IllegalArgumentException("우승자가 없습니다") );
+                .orElseThrow(() -> new IllegalArgumentException("우승자가 없습니다"));
 
         return car.getDistance();
     }
