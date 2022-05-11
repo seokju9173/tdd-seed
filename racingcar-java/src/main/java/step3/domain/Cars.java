@@ -7,6 +7,9 @@ public class Cars{
     private final List<Car> cars;
 
     public Cars(final String carName) {
+        if(carName.isEmpty()){
+            throw new IllegalArgumentException("자동차 이름이 비어있습니다");
+        }
         String[] splitCarNames = carName.split(",");
         cars = Arrays.stream(splitCarNames)
                 .map(Car::new)
