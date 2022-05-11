@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ResultView {
 
-    private static final char printCharacter = '-';
+    private static final String printCharacter = "-";
 
     public static void carMessage() {
         System.out.println("자동차 대수는 몇 대 인가요?");
@@ -26,7 +26,7 @@ public class ResultView {
         System.out.println();
     }
 
-    public static char getPrintCharacter() {
+    public static String getPrintCharacter() {
         return printCharacter;
     }
 

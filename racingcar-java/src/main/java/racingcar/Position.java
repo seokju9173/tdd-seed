@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class Position {
 
     final static int START_POSITION = 1;
@@ -19,11 +22,11 @@ public class Position {
     }
 
     public String positionString() {
-        String string = "";
-        char character = ResultView.getPrintCharacter();
-        for(int i = 0; i < distance; i++)
-            string += character;
-        return string;
+        String character = ResultView.getPrintCharacter();
+        return IntStream.rangeClosed(1, distance).
+                filter(i -> i == distance).
+                mapToObj(i -> character.repeat(i)).
+                collect(Collectors.joining());
     }
 
     public void increase() {
