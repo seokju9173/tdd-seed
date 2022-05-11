@@ -2,6 +2,7 @@ package step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.domain.Car;
 import step3.domain.Cars;
 
 import java.io.ByteArrayInputStream;
@@ -28,6 +29,16 @@ class RacingTest {
     void carNameIsNullTest() {
         assertThatThrownBy(() -> new Cars(""))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("랜덤 값 테스트")
+    void carRandomDistance(){
+        Car car = new Car("pobi",1, bound -> 5);
+        car.move();
+        car.move();
+        car.move();
+        assertThat(car.getDistance()).isEqualTo(4);
     }
 
     @Test

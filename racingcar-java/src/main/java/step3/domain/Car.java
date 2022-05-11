@@ -23,7 +23,7 @@ public class Car {
     }
 
     public Car(String carName) {
-        this(carName, DEFAULT_DISTANCE, new RandomNumber());
+        this(carName, DEFAULT_DISTANCE, new RandomNumberImpl());
     }
 
     public void move() {
