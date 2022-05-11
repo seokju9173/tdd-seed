@@ -24,8 +24,8 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
-    public void move() {
-        cars.stream()
+    public List<Car> move() {
+        return cars.stream()
                 .peek(Car::move)
                 .collect(Collectors.toList());
     }

@@ -1,41 +1,43 @@
 package step3.domain;
 
 
-import step3.domain.impl.CarMove;
-import step3.domain.impl.CarMoveImpl;
+import step3.utils.CarMovementStrategy;
+import step3.utils.CarFourPointOverMovement;
+
+import java.awt.*;
 
 public class Car {
-    private final static int CAR_MOVE_POINT = 4;
     private final static int DEFAULT_DISTANCE = 1;
     private final static int MAX_CAR_NAME = 5;
-    private final static String MOVE_CAR_NAME = "pobi";
 
-    private CarMove carMove;
+    private final CarMovementStrategy carMovementStrategy;
 
     private final String carName;
-    private int distance;
+    private final Distance distance;
 
 
-    public Car(final String carName, final int distance, final CarMove carMove) {
+    public Car(final String carName, final Distance distance, final CarMovementStrategy carMovementStrategy) {
         if (carName.length() > MAX_CAR_NAME) {
             throw new IllegalArgumentException("자동차의 이름은 5글자를 넘을 수 없습니다.");
         }
         this.carName = carName;
         this.distance = distance;
-        this.carMove = carMove;
+        this.carMovementStrategy = carMovementStrategy;
     }
 
     public Car(final String carName) {
-        this(carName, DEFAULT_DISTANCE, new CarMoveImpl());
+        this(carName, new Distance(DEFAULT_DISTANCE), new CarFourPointOverMovement());
     }
 
-    public Car(final String carName, final CarMove carMove) {
-        this(carName, DEFAULT_DISTANCE, carMove);
+    public Car(final String carName, final CarMovementStrategy carMovementStrategy) {
+        this(carName, new Distance(DEFAULT_DISTANCE), carMovementStrategy);
     }
 
-    public void move() {
-        distance = carMove.move(this, CAR_MOVE_POINT);
-        //distance = carMove.move(this, MOVE_CAR_NAME);
+    public Car move() {
+        if (carMovementStrategy.move()){
+            return new Car(carName ,distance.increase(), carMovementStrategy);
+        }
+        return this;
     }
 
     public String getCarName() {
@@ -43,13 +45,11 @@ public class Car {
     }
 
     public int getDistance() {
-        return distance;
+        return distance.getDistance();
     }
 
     public String winnerCarName(int max) {
-        if (this.distance == max) {
-            return this.carName;
-        }
+
         return "";
     }
 }

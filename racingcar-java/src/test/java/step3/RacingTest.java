@@ -4,9 +4,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step3.domain.Car;
 import step3.domain.Cars;
+import step3.domain.Distance;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -15,22 +21,13 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 class RacingTest {
 
     @Test
-    @DisplayName("자동차 이름 비어있을 때 오류 발생 테스트")
-    void carNameIsNullTest() {
-        assertThatThrownBy(() -> new Cars(""))
-                .isInstanceOf(IllegalArgumentException.class);
+    @DisplayName("Car의 distance 증가 확인")
+    void carDistanceIncreaseTest(){
+        Car car = new Car("pobi", new Distance(1), () -> true);
+
+        car = car.move();
+
+        assertThat(car.getDistance()).isEqualTo(2);
     }
 
-    @Test
-    @DisplayName("Car 이름 가져오기")
-    void getCarName() {
-        String carNames = "pobi,crong,honux";
-
-        Cars cars = new Cars(carNames);
-
-        assertAll(
-                () -> assertThat(cars.getCars().get(0).getCarName()).isEqualTo("pobi"),
-                () -> assertThat(cars.getCars().get(1).getCarName()).isEqualTo("crong")
-        );
-    }
 }
