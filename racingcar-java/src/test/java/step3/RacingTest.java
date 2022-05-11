@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 @DisplayName("레이싱 테스트")
 class RacingTest {
-    Racing racing = new Racing();
 
     @Test
     @DisplayName("자동차 이름 비어있을 때 오류 발생 테스트")
