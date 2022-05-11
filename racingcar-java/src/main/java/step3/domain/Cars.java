@@ -14,7 +14,7 @@ public class Cars{
     }
 
     public Cars(final List<Car> cars) {
-        this.cars = cars;
+        this.cars = new ArrayList<>(cars);
     }
 
     public List<Car> getCars() {
@@ -38,7 +38,7 @@ public class Cars{
     private int maxCarPoint(){
         Car car = cars
                 .stream()
-                .max(Comparator.comparing(Car::getCarName))
+                .max(Comparator.comparing(Car::getDistance))
                 .orElse(new Car("test",0));
 
         return car.getDistance();
