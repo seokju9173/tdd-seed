@@ -30,9 +30,9 @@ public class Cars {
 
     public List<String> getCarsStatus() {
         List<String> strings = new ArrayList<>();
-        for(int i = 0; i < cars.size(); i++) {
-            strings.add(cars.get(i).carString());
-        }
+        IntStream.range(0, cars.size()).
+                mapToObj(i -> cars.get(i).carString()).
+                forEach(strings::add);
         return strings;
     }
 
