@@ -30,4 +30,26 @@ class RacingTest {
         assertThat(car.getDistance()).isEqualTo(2);
     }
 
+    @Test
+    @DisplayName("Cars에 Car넣고 경주 테스트")
+    void carRacingTest(){
+        Map<Integer, Cars> round = new HashMap<>();
+        Cars cars = new Cars(
+                Arrays.asList(
+                        new Car("pobi", new Distance(1), () -> true),
+                        new Car("nabi", new Distance(3), () -> true),
+                        new Car("tobi", new Distance(2), () -> true)
+                )
+        );
+
+        round.put(1, new Cars(cars.getCars().stream()
+                .map(Car::move)
+                .collect(Collectors.toList())));
+
+        assertAll(
+                () -> assertThat( round.get(1).getCars().get(0).getDistance() ).isEqualTo(2),
+                () -> assertThat( round.get(1).getCars().get(1).getDistance() ).isEqualTo(4),
+                () -> assertThat( round.get(1).getCars().get(2).getDistance() ).isEqualTo(3)
+        );
+    }
 }
