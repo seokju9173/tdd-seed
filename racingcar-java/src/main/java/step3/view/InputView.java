@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    static Scanner input = new Scanner(System.in);
+    private final static Scanner input = new Scanner(System.in);
 
     public static String inputCarNames() {
         OutputView.outputHowManyCar();

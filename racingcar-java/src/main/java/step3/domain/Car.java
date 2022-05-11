@@ -39,4 +39,11 @@ public class Car {
     public int getDistance() {
         return distance;
     }
+
+    public String winnerCarName(int max){
+        if(this.distance == max){
+            return this.carName;
+        }
+        return "";
+    }
 }

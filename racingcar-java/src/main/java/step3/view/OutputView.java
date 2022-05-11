@@ -33,12 +33,8 @@ public class OutputView {
     }
 
     public static void outputWinner(final Cars cars){
-        List<Car> winner = cars.winner();
+        List<String> winner = cars.winner();
 
-        String str = winner.stream()
-                .map(Car::getCarName)
-                .collect(joining(OUTPUT_JOINING_TEXT));
-
-        System.out.println(str+OUTPUT_WINNER_TEXT);
+        System.out.println(String.join(",", winner) +OUTPUT_WINNER_TEXT);
     }
 }
