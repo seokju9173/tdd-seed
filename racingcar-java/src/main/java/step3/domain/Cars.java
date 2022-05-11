@@ -24,10 +24,10 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
-    public List<Car> move() {
-        return cars.stream()
-                .peek(Car::move)
-                .collect(Collectors.toList());
+    public Cars move() {
+        return new Cars(cars.stream()
+                .map(Car::move)
+                .collect(Collectors.toList()));
     }
 
     public List<String> winner() {

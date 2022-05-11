@@ -34,8 +34,8 @@ public class Car {
     }
 
     public Car move() {
-        if (carMovementStrategy.move()){
-            return new Car(carName ,distance.increase(), carMovementStrategy);
+        if (carMovementStrategy.move()) {
+            return new Car(carName, distance.increase(), carMovementStrategy);
         }
         return this;
     }

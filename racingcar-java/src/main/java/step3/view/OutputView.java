@@ -2,9 +2,11 @@ package step3.view;
 
 import step3.domain.Car;
 import step3.domain.Cars;
+import step3.domain.Round;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.*;
 
@@ -24,17 +26,21 @@ public class OutputView {
         System.out.println(OUTPUT_HOW_MANY_RACING_ATTEMPT);
     }
 
-    public static void outputMoveCarPosition(final Cars cars) {
-        System.out.println("");
+    public static void outputRound(Round round) {
+        round.getRound().forEach((integer, cars) -> {
+            outputCarsDistance(cars);
+            System.out.println();
+        });
+    }
+
+    private static void outputCarsDistance(Cars cars) {
         cars.getCars().forEach(car -> {
             System.out.print(car.getCarName() + " : ");
             System.out.println(OUTPUT_MOVE_CAR_POSITION.repeat(car.getDistance()));
         });
     }
 
-    public static void outputWinner(final Cars cars) {
-        List<String> winner = cars.winner();
+    private static void outputWinner() {
 
-        System.out.println(String.join(",", winner) + OUTPUT_WINNER_TEXT);
     }
 }

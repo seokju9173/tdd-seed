@@ -22,7 +22,7 @@ class RacingTest {
 
     @Test
     @DisplayName("Car의 distance 증가 확인")
-    void carDistanceIncreaseTest(){
+    void carDistanceIncreaseTest() {
         Car car = new Car("pobi", new Distance(1), () -> true);
 
         car = car.move();
@@ -32,7 +32,7 @@ class RacingTest {
 
     @Test
     @DisplayName("Cars에 Car넣고 경주 테스트")
-    void carRacingTest(){
+    void carRacingTest() {
         Map<Integer, Cars> round = new HashMap<>();
         Cars cars = new Cars(
                 Arrays.asList(
@@ -47,9 +47,9 @@ class RacingTest {
                 .collect(Collectors.toList())));
 
         assertAll(
-                () -> assertThat( round.get(1).getCars().get(0).getDistance() ).isEqualTo(2),
-                () -> assertThat( round.get(1).getCars().get(1).getDistance() ).isEqualTo(4),
-                () -> assertThat( round.get(1).getCars().get(2).getDistance() ).isEqualTo(3)
+                () -> assertThat(round.get(1).getCars().get(0).getDistance()).isEqualTo(2),
+                () -> assertThat(round.get(1).getCars().get(1).getDistance()).isEqualTo(4),
+                () -> assertThat(round.get(1).getCars().get(2).getDistance()).isEqualTo(3)
         );
     }
 }
