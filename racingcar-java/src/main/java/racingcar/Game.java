@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.stream.IntStream;
+
 public class Game {
     public void run() {
         Cars cars;
@@ -8,16 +10,15 @@ public class Game {
         int number = InputView.getCarNumber();
         cars = new Cars(number);
         users = new Users(number);
-        for(int i = 0; i < number; i++) {
-            users.getUser(i).
-            setCar(cars.getCar(i));
-        }
+        IntStream.range(0, number).
+                forEach(i -> users.getUser(i).setCar(cars.getCar(i)));
         int round = InputView.getRoundNumber();
-
-        for(int i = 0; i < round; i++) {
-            users.usersGo();
-            ResultView.printGameStatus(cars);
-        }
+        
+        IntStream.range(0, round).
+                forEach(i -> {
+                    users.usersGo();
+                    ResultView.printGameStatus(cars);
+                });
     }
 
 }
