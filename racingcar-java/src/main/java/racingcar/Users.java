@@ -6,25 +6,26 @@ import java.util.List;
 
 public class Users {
 
-    private final List<User> userList;
+    private final List<User> users;
 
     public Users(int size) {
-        userList = new ArrayList<>();
+        List<User> temp = new ArrayList<>();
         for(int i = 0; i < size; i++) {
-            userList.add(new User());
+            temp.add(new User());
         }
+        users = Collections.unmodifiableList(temp);
     }
 
     public List<User> getUserList() {
-        return Collections.unmodifiableList(userList);
+        return users;
     }
 
     public User getUser(int index) {
-        return userList.get(index);
+        return users.get(index);
     }
 
     public void usersGo() {
-        for(int i = 0; i < userList.size(); i++) {
+        for(int i = 0; i < users.size(); i++) {
             getUser(i).go();
         }
     }

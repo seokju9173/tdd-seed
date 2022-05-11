@@ -3,22 +3,23 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 public class Cars {
 
-    private final List<Car> cars = new ArrayList<>();
+    private final List<Car> cars;
 
     public Cars(int size) {
+        List<Car> temp = new ArrayList<>();
         for(int i = 0; i < size; i++) {
-            cars.add(new Car());
+            temp.add(new Car());
         }
         if(size <= 0)
-            cars.add(new Car());
+            temp.add(new Car());
+        cars = Collections.unmodifiableList(temp);
     }
 
     public List<Car> getCarList() {
-        return Collections.unmodifiableList(cars);
+        return cars;
     }
 
     public Car getCar(int index) {
