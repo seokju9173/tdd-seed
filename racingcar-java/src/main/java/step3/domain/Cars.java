@@ -39,7 +39,7 @@ public class Cars{
         Car car = cars
                 .stream()
                 .max(Comparator.comparing(Car::getDistance))
-                .orElse(new Car("test",0));
+                .orElseThrow( () -> new IllegalArgumentException("우승자가 없습니다") );
 
         return car.getDistance();
     }
