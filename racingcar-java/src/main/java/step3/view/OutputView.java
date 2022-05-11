@@ -31,6 +31,7 @@ public class OutputView {
             outputCarsDistance(cars);
             System.out.println();
         });
+        outputWinner(round);
     }
 
     private static void outputCarsDistance(Cars cars) {
@@ -40,7 +41,7 @@ public class OutputView {
         });
     }
 
-    private static void outputWinner() {
-
+    private static void outputWinner(Round round) {
+        System.out.println(String.join(OUTPUT_JOINING_TEXT, round.getWinners()) + OUTPUT_WINNER_TEXT);
     }
 }

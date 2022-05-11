@@ -49,7 +49,9 @@ public class Car {
     }
 
     public String winnerCarName(int max) {
-
+        if (distance.getDistance() == max) {
+            return carName;
+        }
         return "";
     }
 }

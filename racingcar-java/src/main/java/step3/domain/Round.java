@@ -1,6 +1,7 @@
 package step3.domain;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Round {
@@ -19,7 +20,8 @@ public class Round {
         return round;
     }
 
-    public int getRoundSize() {
-        return round.size();
+    public List<String> getWinners() {
+        int size = round.size() - 1;
+        return round.get(size).winners();
     }
 }

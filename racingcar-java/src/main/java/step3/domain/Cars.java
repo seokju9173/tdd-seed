@@ -30,7 +30,7 @@ public class Cars {
                 .collect(Collectors.toList()));
     }
 
-    public List<String> winner() {
+    public List<String> winners() {
         int max = maxCarPoint();
 
         return cars.stream()
