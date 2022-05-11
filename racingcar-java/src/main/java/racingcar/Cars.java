@@ -3,6 +3,7 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Cars {
 
@@ -10,9 +11,9 @@ public class Cars {
 
     public Cars(int size) {
         List<Car> temp = new ArrayList<>();
-        for(int i = 0; i < size; i++) {
-            temp.add(new Car());
-        }
+        IntStream.rangeClosed(1, size).
+                mapToObj(i -> new Car()).
+                forEach(temp::add);
         if(size <= 0)
             temp.add(new Car());
         cars = Collections.unmodifiableList(temp);
