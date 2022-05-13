@@ -39,6 +39,10 @@ public class Car {
         return this;
     }
 
+    public boolean winnerCarName(int max) {
+        return distance.getDistance() == max;
+    }
+
     private void checkCarNameLength(final String carName) {
         if (carName.length() > MAX_CAR_NAME) {
             throw new IllegalArgumentException("자동차의 이름은 5글자를 넘을 수 없습니다.");
@@ -53,7 +57,4 @@ public class Car {
         return distance.getDistance();
     }
 
-    public boolean winnerCarName(int max) {
-        return distance.getDistance() == max;
-    }
 }

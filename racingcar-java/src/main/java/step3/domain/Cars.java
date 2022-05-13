@@ -20,10 +20,6 @@ public class Cars {
         this.cars = new ArrayList<>(cars);
     }
 
-    public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
-    }
-
     public Cars move() {
         return new Cars(cars.stream()
                 .map(Car::move)
@@ -47,4 +43,7 @@ public class Cars {
         return car.getDistance();
     }
 
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
+    }
 }
