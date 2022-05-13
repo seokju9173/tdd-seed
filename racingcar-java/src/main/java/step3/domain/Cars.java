@@ -30,12 +30,11 @@ public class Cars {
                 .collect(Collectors.toList()));
     }
 
-    public List<String> winners() {
+    public List<Car> winners() {
         int max = maxCarPoint();
 
         return cars.stream()
-                .map(car -> car.winnerCarName(max))
-                .filter(str -> !str.isEmpty())
+                .filter(car -> car.winnerCarName(max))
                 .collect(Collectors.toList());
     }
 
