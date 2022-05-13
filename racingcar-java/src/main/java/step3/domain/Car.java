@@ -17,9 +17,7 @@ public class Car {
 
 
     public Car(final String carName, final Distance distance, final CarMovementStrategy carMovementStrategy) {
-        if (carName.length() > MAX_CAR_NAME) {
-            throw new IllegalArgumentException("자동차의 이름은 5글자를 넘을 수 없습니다.");
-        }
+        checkCarNameLength(carName);
         this.carName = carName;
         this.distance = distance;
         this.carMovementStrategy = carMovementStrategy;
@@ -33,11 +31,18 @@ public class Car {
         this(carName, new Distance(DEFAULT_DISTANCE), carMovementStrategy);
     }
 
+
     public Car move() {
         if (carMovementStrategy.move()) {
             return new Car(carName, distance.increase(), carMovementStrategy);
         }
         return this;
+    }
+
+    private void checkCarNameLength(final String carName) {
+        if (carName.length() > MAX_CAR_NAME) {
+            throw new IllegalArgumentException("자동차의 이름은 5글자를 넘을 수 없습니다.");
+        }
     }
 
     public String getCarName() {
