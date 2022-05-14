@@ -105,4 +105,24 @@ public class RacingCarTest {
             Name name = new Name("여섯글자닉넴");
         });
     }
+
+    @Test
+    @DisplayName("이름들 ,로 분리")
+    void namesSplitTest() {
+        String string = "pobi,crong,honux";
+        List<Name> names = NameSpliter.nameSplit(string);
+        assertThat(names).hasSize(3);
+        assertThat(names.get(0)).isEqualTo("pobi");
+        assertThat(names.get(1)).isEqualTo("crong");
+        assertThat(names.get(2)).isEqualTo("honux");
+    }
+
+    @Test
+    @DisplayName("이름들 분리 실패")
+    void namesSplitFailTest() {
+        String string = "1234,12345,123456,1234567";
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            List<Name> names = NameSpliter.nameSplit(string);
+        });
+    }
 }
