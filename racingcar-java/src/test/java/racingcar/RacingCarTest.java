@@ -88,4 +88,22 @@ public class RacingCarTest {
         Users users = new Users(3);
         assertThat(users.getUserList()).hasSize(3);
     }
+
+    @Test
+    @DisplayName("이름 생성")
+    void nameCreateTest() {
+        Name name1 = new Name("name1");
+        Name name2 = new Name("다섯글자닉");
+        assertThat(name1.getCarName()).isEqualTo("name1");
+        assertThat(name2.getCarName()).isEqualTo("다섯글자닉");
+    }
+
+    @Test
+    @DisplayName("이름 생성 실패")
+    void nameCreateFailTest() {
+        final Name name;
+        assertThatIllegalArgumentException().isThrownBy(() ->
+                name = new Name("여섯글자닉넴")
+        );
+    }
 }
