@@ -112,9 +112,12 @@ public class RacingCarTest {
         String string = "pobi,crong,honux";
         List<Name> names = NameSpliter.nameSplit(string);
         assertThat(names).hasSize(3);
-        assertThat(names.get(0)).isEqualTo("pobi");
-        assertThat(names.get(1)).isEqualTo("crong");
-        assertThat(names.get(2)).isEqualTo("honux");
+        assertThat(names.get(0).getCarName()).
+                isEqualTo("pobi");
+        assertThat(names.get(1).getCarName()).
+                isEqualTo("crong");
+        assertThat(names.get(2).getCarName()).
+                isEqualTo("honux");
     }
 
     @Test
