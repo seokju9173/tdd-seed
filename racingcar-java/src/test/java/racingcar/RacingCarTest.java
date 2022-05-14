@@ -101,9 +101,8 @@ public class RacingCarTest {
     @Test
     @DisplayName("이름 생성 실패")
     void nameCreateFailTest() {
-        final Name name;
-        assertThatIllegalArgumentException().isThrownBy(() ->
-                name = new Name("여섯글자닉넴")
-        );
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            Name name = new Name("여섯글자닉넴");
+        });
     }
 }
