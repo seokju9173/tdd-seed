@@ -2,14 +2,20 @@ package racingcar;
 
 public class Car {
 
+    private final Name name;
     private final Position position;
 
-    public Car() {
-        this.position = new Position();
+    public Car(String string, int number) {
+        this.name = new Name(string);
+        this.position = new Position(number);
     }
 
-    public Car(int number) {
-        this.position = new Position(number);
+    public Car(String string) {
+        this(string, 1);
+    }
+
+    public Car() {
+        this("temp");
     }
 
     public int getPosition() {
