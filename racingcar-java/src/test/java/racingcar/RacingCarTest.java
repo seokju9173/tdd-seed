@@ -54,7 +54,7 @@ public class RacingCarTest {
         assertThat(cars2.getCarList()).hasSize(2);
 
         cars2.getCar(0).move();
-        List<String> carsStatus = cars2.getCarsStatus();
+        List<String> carsStatus = ResultView.getCarsStatus(cars2.getCarList());
         assertThat(carsStatus.get(0)).isEqualTo("temp : --");
         assertThat(carsStatus.get(1)).isEqualTo("temp : -");
     }
@@ -62,8 +62,8 @@ public class RacingCarTest {
     @Test
     @DisplayName("자동차들 0대 생성 테스트")
     void carsNotCreateTest() {
-        Cars cars = new Cars(new MoveStrategyTrue(), 0);
-        assertThat(cars.getCar(0).getPosition()).isEqualTo(1);
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Cars(new MoveStrategyTrue(), 0));
     }
 
 //    @Test
@@ -99,12 +99,12 @@ public class RacingCarTest {
         String string = "pobi,crong,honux";
         List<Name> names = NameSpliter.nameSplit(string);
         assertThat(names).hasSize(3);
-        assertThat(names.get(0).getCarName()).
-                isEqualTo("pobi");
-        assertThat(names.get(1).getCarName()).
-                isEqualTo("crong");
-        assertThat(names.get(2).getCarName()).
-                isEqualTo("honux");
+        assertThat(names.get(0).getCarName())
+                .isEqualTo("pobi");
+        assertThat(names.get(1).getCarName())
+                .isEqualTo("crong");
+        assertThat(names.get(2).getCarName())
+                .isEqualTo("honux");
     }
 
     @Test
@@ -121,20 +121,20 @@ public class RacingCarTest {
     void gameWinnerPersonTest() {
         String string = "pobi,crong,honux";
         Cars cars = new Cars(new MoveStrategyTrue(), string);
-        IntStream.range(0, 4).
-                forEach(i -> cars.getCar(0).move());
-        IntStream.range(0, 3).
-                forEach(i -> cars.getCar(1).move());
-        IntStream.range(0, 2).
-                forEach(i -> cars.getCar(2).move());
+        IntStream.range(0, 4)
+                .forEach(i -> cars.getCar(0).move());
+        IntStream.range(0, 3)
+                .forEach(i -> cars.getCar(1).move());
+        IntStream.range(0, 2)
+                .forEach(i -> cars.getCar(2).move());
 
         Game game = new Game();
         List<Car> winner = game.getWinner(cars);
         assertThat(winner).hasSize(1);
-        assertThat(winner.get(0).getPosition()).
-                isEqualTo(5);
-        assertThat(winner.get(0).getName()).
-                isEqualTo("pobi");
+        assertThat(winner.get(0).getPosition())
+                .isEqualTo(5);
+        assertThat(winner.get(0).getName())
+                .isEqualTo("pobi");
     }
 
     @Test
@@ -142,19 +142,19 @@ public class RacingCarTest {
     void gameWinnerPeopleTest() {
         String string = "pobi,crong,honux";
         Cars cars = new Cars(new MoveStrategyTrue(), string);
-        IntStream.range(0, 4).
-                forEach(i -> cars.getCar(0).move());
-        IntStream.range(0, 4).
-                forEach(i -> cars.getCar(1).move());
-        IntStream.range(0, 2).
-                forEach(i -> cars.getCar(2).move());
+        IntStream.range(0, 4)
+                .forEach(i -> cars.getCar(0).move());
+        IntStream.range(0, 4)
+                .forEach(i -> cars.getCar(1).move());
+        IntStream.range(0, 2)
+                .forEach(i -> cars.getCar(2).move());
 
         Game game = new Game();
         List<Car> winner = game.getWinner(cars);
         assertThat(winner).hasSize(2);
-        assertThat(winner.get(1).getPosition()).
-                isEqualTo(5);
-        assertThat(winner.get(1).getName()).
-                isEqualTo("crong");
+        assertThat(winner.get(1).getPosition())
+                .isEqualTo(5);
+        assertThat(winner.get(1).getName())
+                .isEqualTo("crong");
     }
 }
