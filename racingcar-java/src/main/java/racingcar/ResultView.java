@@ -6,10 +6,8 @@ import java.util.stream.IntStream;
 public class ResultView {
 
     private static final String printCharacter = "-";
-
-    public static void carMessage() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-    }
+    private static final String winnerDelimiter = ", ";
+    private static final String endMessage = "가 최종 우승했습니다.";
 
     public static void roundMessage() {
         System.out.println("시도할 회수는 몇 회 인가요?");
@@ -21,6 +19,14 @@ public class ResultView {
                 mapToObj(i -> carsStatus.get(i)).
                 forEach(System.out::println);
         System.out.println();
+    }
+
+    public static void printWinner(List<Car> winner) {
+        IntStream.range(0, winner.size() - 1).
+                mapToObj(i -> winner.get(i).getName() + winnerDelimiter).
+                forEach(System.out::print);
+        System.out.println(
+                winner.get(winner.size() - 1).getName() + endMessage);
     }
 
     public static String getPrintCharacter() {

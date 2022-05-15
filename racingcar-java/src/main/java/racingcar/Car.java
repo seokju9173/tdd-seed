@@ -18,10 +18,15 @@ public class Car {
         this.position = new Position();
     }
 
+    public Car(MoveStrategy moveStrategy, Name name) {
+        this.moveStrategy = moveStrategy;
+        this.name = name;
+        this.position = new Position();
+    }
+
     public Car(MoveStrategy moveStrategy) {
         this(moveStrategy, "temp");
     }
-
 
     public int getPosition() {
         return position.getDistance();
@@ -35,5 +40,9 @@ public class Car {
 
     public String carString() {
         return position.positionString();
+    }
+
+    public String getName() {
+        return name.getCarName();
     }
 }

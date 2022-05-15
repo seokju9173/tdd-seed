@@ -19,6 +19,17 @@ public class Cars {
         cars = Collections.unmodifiableList(temp);
     }
 
+    public Cars(MoveStrategy moveStrategy, String string) {
+        List<Car> temp = new ArrayList<>();
+        List<Name> names = NameSpliter.nameSplit(string);
+        IntStream.range(0, names.size()).
+                mapToObj(i -> new Car(moveStrategy, names.get(i))).
+                forEach(temp::add);
+        if(names.size() <= 0)
+            temp.add(new Car(moveStrategy));
+        cars = Collections.unmodifiableList(temp);
+    }
+
     public List<Car> getCarList() {
         return cars;
     }
@@ -31,7 +42,7 @@ public class Cars {
     public List<String> getCarsStatus() {
         List<String> strings = new ArrayList<>();
         IntStream.range(0, cars.size()).
-                mapToObj(i -> cars.get(i).carString()).
+                mapToObj(i -> cars.get(i).getName() + " : " + cars.get(i).carString()).
                 forEach(strings::add);
         return strings;
     }

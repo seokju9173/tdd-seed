@@ -3,6 +3,7 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.util.List;
+import java.util.stream.IntStream;
 import static org.assertj.core.api.Assertions.*;
 
 public class RacingCarTest {
@@ -54,8 +55,8 @@ public class RacingCarTest {
 
         cars2.getCar(0).move();
         List<String> carsStatus = cars2.getCarsStatus();
-        assertThat(carsStatus.get(0)).isEqualTo("--");
-        assertThat(carsStatus.get(1)).isEqualTo("-");
+        assertThat(carsStatus.get(0)).isEqualTo("temp : --");
+        assertThat(carsStatus.get(1)).isEqualTo("temp : -");
     }
 
     @Test
@@ -113,5 +114,47 @@ public class RacingCarTest {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             List<Name> names = NameSpliter.nameSplit(string);
         });
+    }
+
+    @Test
+    @DisplayName("게임 승자 1명 테스트")
+    void gameWinnerPersonTest() {
+        String string = "pobi,crong,honux";
+        Cars cars = new Cars(new MoveStrategyTrue(), string);
+        IntStream.range(0, 4).
+                forEach(i -> cars.getCar(0).move());
+        IntStream.range(0, 3).
+                forEach(i -> cars.getCar(1).move());
+        IntStream.range(0, 2).
+                forEach(i -> cars.getCar(2).move());
+
+        Game game = new Game();
+        List<Car> winner = game.getWinner(cars);
+        assertThat(winner).hasSize(1);
+        assertThat(winner.get(0).getPosition()).
+                isEqualTo(5);
+        assertThat(winner.get(0).getName()).
+                isEqualTo("pobi");
+    }
+
+    @Test
+    @DisplayName("게임 승자 2명 테스트")
+    void gameWinnerPeopleTest() {
+        String string = "pobi,crong,honux";
+        Cars cars = new Cars(new MoveStrategyTrue(), string);
+        IntStream.range(0, 4).
+                forEach(i -> cars.getCar(0).move());
+        IntStream.range(0, 4).
+                forEach(i -> cars.getCar(1).move());
+        IntStream.range(0, 2).
+                forEach(i -> cars.getCar(2).move());
+
+        Game game = new Game();
+        List<Car> winner = game.getWinner(cars);
+        assertThat(winner).hasSize(2);
+        assertThat(winner.get(1).getPosition()).
+                isEqualTo(5);
+        assertThat(winner.get(1).getName()).
+                isEqualTo("crong");
     }
 }
