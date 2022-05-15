@@ -6,18 +6,18 @@ public class Car {
     private final Name name;
     private final Position position;
 
-    public Car(MoveStrategy moveStrategy, Name name, int number) {
+    public Car(MoveStrategy moveStrategy, Name name, int positionNumber) {
         this.moveStrategy = moveStrategy;
         this.name = name;
-        this.position = new Position(number);
+        this.position = new Position(positionNumber);
     }
 
-    public Car(MoveStrategy moveStrategy, String string, int number) {
-        this(moveStrategy, new Name(string), number);
+    public Car(MoveStrategy moveStrategy, String nameString, int positionNumber) {
+        this(moveStrategy, new Name(nameString), positionNumber);
     }
 
-    public Car(MoveStrategy moveStrategy, String string) {
-        this(moveStrategy, string, 1);
+    public Car(MoveStrategy moveStrategy, String nameString) {
+        this(moveStrategy, nameString, 1);
     }
 
     public Car(MoveStrategy moveStrategy, Name name) {
