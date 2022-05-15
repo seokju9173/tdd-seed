@@ -42,7 +42,7 @@ public class Cars {
     public List<String> getCarsStatus() {
         List<String> strings = new ArrayList<>();
         IntStream.range(0, cars.size()).
-                mapToObj(i -> cars.get(i).getName() + " : " + cars.get(i).carString()).
+                mapToObj(i -> cars.get(i).getName() + " : " + cars.get(i).carPositionString()).
                 forEach(strings::add);
         return strings;
     }

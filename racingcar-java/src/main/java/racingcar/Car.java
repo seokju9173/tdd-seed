@@ -6,30 +6,26 @@ public class Car {
     private final Name name;
     private final Position position;
 
-    public Car(MoveStrategy moveStrategy, String string, int number) {
+    public Car(MoveStrategy moveStrategy, Name name, int number) {
         this.moveStrategy = moveStrategy;
-        this.name = new Name(string);
+        this.name = name;
         this.position = new Position(number);
     }
 
+    public Car(MoveStrategy moveStrategy, String string, int number) {
+        this(moveStrategy, new Name(string), number);
+    }
+
     public Car(MoveStrategy moveStrategy, String string) {
-        this.moveStrategy = moveStrategy;
-        this.name = new Name(string);
-        this.position = new Position();
+        this(moveStrategy, string, 1);
     }
 
     public Car(MoveStrategy moveStrategy, Name name) {
-        this.moveStrategy = moveStrategy;
-        this.name = name;
-        this.position = new Position();
+        this(moveStrategy, name, 1);
     }
 
     public Car(MoveStrategy moveStrategy) {
         this(moveStrategy, "temp");
-    }
-
-    public int getPosition() {
-        return position.getDistance();
     }
 
     public void move() {
@@ -38,8 +34,12 @@ public class Car {
         }
     }
 
-    public String carString() {
+    public String carPositionString() {
         return position.positionString();
+    }
+
+    public int getPosition() {
+        return position.getDistance();
     }
 
     public String getName() {

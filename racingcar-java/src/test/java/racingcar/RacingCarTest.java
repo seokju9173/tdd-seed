@@ -33,7 +33,7 @@ public class RacingCarTest {
     @DisplayName("자동차 객체 생성 후 위치 출력")
     void carStringTest() {
         Car car = new Car(new MoveStrategyTrue());
-        assertThat(car.carString()).isEqualTo("-");
+        assertThat(car.carPositionString()).isEqualTo("-");
     }
 
     @Test
@@ -42,7 +42,7 @@ public class RacingCarTest {
         Car car = new Car(new MoveStrategyTrue());
         car.move();
         assertThat(car.getPosition()).isEqualTo(2);
-        assertThat(car.carString()).isEqualTo("--");
+        assertThat(car.carPositionString()).isEqualTo("--");
     }
 
     @Test
