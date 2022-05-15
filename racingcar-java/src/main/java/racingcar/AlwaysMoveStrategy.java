@@ -1,6 +1,6 @@
 package racingcar;
 
-public class MoveStrategyTrue implements MoveStrategy {
+public class AlwaysMoveStrategy implements MoveStrategy {
 
     @Override
     public boolean isMove() {

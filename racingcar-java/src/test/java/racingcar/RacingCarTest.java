@@ -26,21 +26,21 @@ public class RacingCarTest {
     @Test
     @DisplayName("자동차 객체 생성 후 위치 확인")
     void carCreateTest() {
-        Car car = new Car(new MoveStrategyTrue());
+        Car car = new Car(new AlwaysMoveStrategy());
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
     @DisplayName("자동차 객체 생성 후 위치 출력")
     void carStringTest() {
-        Car car = new Car(new MoveStrategyTrue());
+        Car car = new Car(new AlwaysMoveStrategy());
         assertThat(car.carPositionString()).isEqualTo("-");
     }
 
     @Test
     @DisplayName("자동차 객체 생성 후 1칸 움직임")
     void carMoveTest() {
-        Car car = new Car(new MoveStrategyTrue());
+        Car car = new Car(new AlwaysMoveStrategy());
         car.move();
         assertAll(
                 () -> assertThat(car.getPosition()).isEqualTo(2),
@@ -51,7 +51,7 @@ public class RacingCarTest {
     @Test
     @DisplayName("자동차들 여러 대 생성 테스트")
     void carsCreateTest() {
-        Cars cars2 = new Cars(new MoveStrategyTrue(), 2);
+        Cars cars2 = new Cars(new AlwaysMoveStrategy(), 2);
         assertAll(
                 () -> assertThat(cars2.getCar(0).getPosition()).isEqualTo(1),
                 () -> assertThat(cars2.getCar(1).getPosition()).isEqualTo(1),
@@ -70,7 +70,7 @@ public class RacingCarTest {
     @DisplayName("자동차들 0대 생성 테스트")
     void carsNotCreateTest() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new Cars(new MoveStrategyTrue(), 0));
+                .isThrownBy(() -> new Cars(new AlwaysMoveStrategy(), 0));
     }
 
 //    @Test
@@ -128,7 +128,7 @@ public class RacingCarTest {
     @DisplayName("게임 승자 1명 테스트")
     void gameWinnerPersonTest() {
         String string = "pobi,crong,honux";
-        Cars cars = new Cars(new MoveStrategyTrue(), string);
+        Cars cars = new Cars(new AlwaysMoveStrategy(), string);
         IntStream.range(0, 4)
                 .forEach(i -> cars.getCar(0).move());
         IntStream.range(0, 3)
@@ -149,7 +149,7 @@ public class RacingCarTest {
     @DisplayName("게임 승자 2명 테스트")
     void gameWinnerPeopleTest() {
         String string = "pobi,crong,honux";
-        Cars cars = new Cars(new MoveStrategyTrue(), string);
+        Cars cars = new Cars(new AlwaysMoveStrategy(), string);
         IntStream.range(0, 4)
                 .forEach(i -> cars.getCar(0).move());
         IntStream.range(0, 4)
