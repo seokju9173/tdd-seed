@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.stream.IntStream;
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RacingCarTest {
 
@@ -41,22 +42,28 @@ public class RacingCarTest {
     void carMoveTest() {
         Car car = new Car(new MoveStrategyTrue());
         car.move();
-        assertThat(car.getPosition()).isEqualTo(2);
-        assertThat(car.carPositionString()).isEqualTo("--");
+        assertAll(
+                () -> assertThat(car.getPosition()).isEqualTo(2),
+                () -> assertThat(car.carPositionString()).isEqualTo("--")
+        );
     }
 
     @Test
     @DisplayName("자동차들 여러 대 생성 테스트")
     void carsCreateTest() {
         Cars cars2 = new Cars(new MoveStrategyTrue(), 2);
-        assertThat(cars2.getCar(0).getPosition()).isEqualTo(1);
-        assertThat(cars2.getCar(1).getPosition()).isEqualTo(1);
-        assertThat(cars2.getCarList()).hasSize(2);
+        assertAll(
+                () -> assertThat(cars2.getCar(0).getPosition()).isEqualTo(1),
+                () -> assertThat(cars2.getCar(1).getPosition()).isEqualTo(1),
+                () -> assertThat(cars2.getCarList()).hasSize(2)
+        );
 
         cars2.getCar(0).move();
         List<String> carsStatus = ResultView.getCarsStatus(cars2.getCarList());
-        assertThat(carsStatus.get(0)).isEqualTo("temp : --");
-        assertThat(carsStatus.get(1)).isEqualTo("temp : -");
+        assertAll(
+                () -> assertThat(carsStatus.get(0)).isEqualTo("temp : --"),
+                () -> assertThat(carsStatus.get(1)).isEqualTo("temp : -")
+        );
     }
 
     @Test
@@ -81,8 +88,10 @@ public class RacingCarTest {
     void nameCreateTest() {
         Name name1 = new Name("name1");
         Name name2 = new Name("다섯글자닉");
-        assertThat(name1.getCarName()).isEqualTo("name1");
-        assertThat(name2.getCarName()).isEqualTo("다섯글자닉");
+        assertAll(
+                () -> assertThat(name1.getCarName()).isEqualTo("name1"),
+                () -> assertThat(name2.getCarName()).isEqualTo("다섯글자닉")
+        );
     }
 
     @Test
@@ -98,13 +107,12 @@ public class RacingCarTest {
     void namesSplitTest() {
         String string = "pobi,crong,honux";
         List<Name> names = NameSpliter.nameSplit(string);
-        assertThat(names).hasSize(3);
-        assertThat(names.get(0).getCarName())
-                .isEqualTo("pobi");
-        assertThat(names.get(1).getCarName())
-                .isEqualTo("crong");
-        assertThat(names.get(2).getCarName())
-                .isEqualTo("honux");
+        assertAll(
+                () -> assertThat(names).hasSize(3),
+                () -> assertThat(names.get(0).getCarName()).isEqualTo("pobi"),
+                () -> assertThat(names.get(1).getCarName()).isEqualTo("crong"),
+                () -> assertThat(names.get(2).getCarName()).isEqualTo("honux")
+        );
     }
 
     @Test
@@ -130,11 +138,11 @@ public class RacingCarTest {
 
         Game game = new Game();
         List<Car> winner = game.getWinner(cars);
-        assertThat(winner).hasSize(1);
-        assertThat(winner.get(0).getPosition())
-                .isEqualTo(5);
-        assertThat(winner.get(0).getName())
-                .isEqualTo("pobi");
+        assertAll(
+                () -> assertThat(winner).hasSize(1),
+                () -> assertThat(winner.get(0).getPosition()).isEqualTo(5),
+                () -> assertThat(winner.get(0).getName()).isEqualTo("pobi")
+        );
     }
 
     @Test
@@ -151,10 +159,10 @@ public class RacingCarTest {
 
         Game game = new Game();
         List<Car> winner = game.getWinner(cars);
-        assertThat(winner).hasSize(2);
-        assertThat(winner.get(1).getPosition())
-                .isEqualTo(5);
-        assertThat(winner.get(1).getName())
-                .isEqualTo("crong");
+        assertAll(
+                () -> assertThat(winner).hasSize(2),
+                () -> assertThat(winner.get(1).getPosition()).isEqualTo(5),
+                () -> assertThat(winner.get(1).getName()).isEqualTo("crong")
+        );
     }
 }
