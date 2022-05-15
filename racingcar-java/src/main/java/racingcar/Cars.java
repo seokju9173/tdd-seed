@@ -9,13 +9,13 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(int size) {
+    public Cars(MoveStrategy moveStrategy, int size) {
         List<Car> temp = new ArrayList<>();
         IntStream.rangeClosed(1, size).
-                mapToObj(i -> new Car()).
+                mapToObj(i -> new Car(moveStrategy)).
                 forEach(temp::add);
         if(size <= 0)
-            temp.add(new Car());
+            temp.add(new Car(moveStrategy));
         cars = Collections.unmodifiableList(temp);
     }
 
@@ -34,6 +34,11 @@ public class Cars {
                 mapToObj(i -> cars.get(i).carString()).
                 forEach(strings::add);
         return strings;
+    }
+
+    public void moveCars() {
+        IntStream.range(0, cars.size()).
+                forEach(i -> getCar(i).move());
     }
 
     private void validateCarsSize(int index) {

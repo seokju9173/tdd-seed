@@ -2,28 +2,35 @@ package racingcar;
 
 public class Car {
 
+    private final MoveStrategy moveStrategy;
     private final Name name;
     private final Position position;
 
-    public Car(String string, int number) {
+    public Car(MoveStrategy moveStrategy, String string, int number) {
+        this.moveStrategy = moveStrategy;
         this.name = new Name(string);
         this.position = new Position(number);
     }
 
-    public Car(String string) {
-        this(string, 1);
+    public Car(MoveStrategy moveStrategy, String string) {
+        this.moveStrategy = moveStrategy;
+        this.name = new Name(string);
+        this.position = new Position();
     }
 
-    public Car() {
-        this("temp");
+    public Car(MoveStrategy moveStrategy) {
+        this(moveStrategy, "temp");
     }
+
 
     public int getPosition() {
         return position.getDistance();
     }
 
     public void move() {
-        position.increase();
+        if(moveStrategy.isMove()) {
+            position.increase();
+        }
     }
 
     public String carString() {
