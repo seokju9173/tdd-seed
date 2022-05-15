@@ -1,30 +1,49 @@
 package step3.domain;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(final int count) {
-        this.cars = IntStream.range(0, count)
-                .mapToObj(Car::new)
+    public Cars(final String carName) {
+        if (carName.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름이 비어있습니다");
+        }
+        String[] splitCarNames = carName.split(",");
+        cars = Arrays.stream(splitCarNames)
+                .map(Car::new)
                 .collect(Collectors.toList());
     }
 
-    public Cars(final List<Car> cars){
-        this.cars = cars;
+    public Cars(final List<Car> cars) {
+        this.cars = new ArrayList<>(cars);
+    }
+
+    public Cars move() {
+        return new Cars(cars.stream()
+                .map(Car::move)
+                .collect(Collectors.toList()));
+    }
+
+    public List<Car> winners() {
+        int max = maxCarPoint();
+
+        return cars.stream()
+                .filter(car -> car.winnerCarName(max))
+                .collect(Collectors.toList());
+    }
+
+    private int maxCarPoint() {
+        Car car = cars
+                .stream()
+                .max(Comparator.comparing(Car::getDistance))
+                .orElseThrow(() -> new IllegalArgumentException("우승자가 없습니다"));
+
+        return car.getDistance();
     }
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
-    }
-
-    public void move() {
-        cars.stream()
-                .peek(Car::move)
-                .collect(Collectors.toList());
     }
 }
