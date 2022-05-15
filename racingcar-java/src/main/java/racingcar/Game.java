@@ -22,11 +22,11 @@ public class Game {
                     ResultView.printGameStatus(cars);
                 });
 
-        List<Car> winner = getWinner(cars);
+        List<Car> winner = findWinner(cars);
         ResultView.printWinner(winner);
     }
 
-    public List<Car> getWinner(Cars cars) {
+    public List<Car> findWinner(Cars cars) {
         int maxPosition = IntStream.range(0, cars.getCarList().size())
                 .map(i -> cars.getCar(i).getPosition())
                 .max()

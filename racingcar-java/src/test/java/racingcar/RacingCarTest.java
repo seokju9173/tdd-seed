@@ -137,7 +137,7 @@ public class RacingCarTest {
                 .forEach(i -> cars.getCar(2).move());
 
         Game game = new Game();
-        List<Car> winner = game.getWinner(cars);
+        List<Car> winner = game.findWinner(cars);
         assertAll(
                 () -> assertThat(winner).hasSize(1),
                 () -> assertThat(winner.get(0).getPosition()).isEqualTo(5),
@@ -158,7 +158,7 @@ public class RacingCarTest {
                 .forEach(i -> cars.getCar(2).move());
 
         Game game = new Game();
-        List<Car> winner = game.getWinner(cars);
+        List<Car> winner = game.findWinner(cars);
         assertAll(
                 () -> assertThat(winner).hasSize(2),
                 () -> assertThat(winner.get(1).getPosition()).isEqualTo(5),
