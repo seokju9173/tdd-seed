@@ -10,8 +10,9 @@ public class MoveStrategyRandom implements MoveStrategy {
     public boolean isMove() {
         Random random = new Random();
         int number = random.nextInt(10);
-        if(number >= FORWARD_BOUND)
+        if(number >= FORWARD_BOUND) {
             return true;
+        }
         return false;
     }
 }
