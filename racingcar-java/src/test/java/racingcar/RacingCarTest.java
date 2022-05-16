@@ -20,7 +20,7 @@ public class RacingCarTest {
     @DisplayName("새로 생성한 위치 객체 문자열 확인")
     void positionStringTest() {
         Position position = new Position();
-        assertThat(position.positionString()).isEqualTo("-");
+        assertThat(ResultView.positionString(position.getDistance())).isEqualTo("-");
     }
 
     @Test
@@ -34,7 +34,7 @@ public class RacingCarTest {
     @DisplayName("자동차 객체 생성 후 위치 출력")
     void carStringTest() {
         Car car = new Car(new AlwaysMoveStrategy());
-        assertThat(car.carPositionString()).isEqualTo("-");
+        assertThat(ResultView.positionString(car.getPosition())).isEqualTo("-");
     }
 
     @Test
@@ -44,7 +44,7 @@ public class RacingCarTest {
         car.move();
         assertAll(
                 () -> assertThat(car.getPosition()).isEqualTo(2),
-                () -> assertThat(car.carPositionString()).isEqualTo("--")
+                () -> assertThat(ResultView.positionString(car.getPosition())).isEqualTo("--")
         );
     }
 

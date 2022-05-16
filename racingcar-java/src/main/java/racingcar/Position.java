@@ -1,8 +1,5 @@
 package racingcar;
 
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 public class Position {
 
     final static int START_POSITION = 1;
@@ -19,14 +16,6 @@ public class Position {
 
     public int getDistance() {
         return distance;
-    }
-
-    public String positionString() {
-        String character = ResultView.getPrintCharacter();
-        return IntStream.rangeClosed(1, distance).
-                filter(i -> i == distance).
-                mapToObj(i -> character.repeat(i)).
-                collect(Collectors.joining());
     }
 
     public void increase() {

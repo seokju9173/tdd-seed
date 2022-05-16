@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ResultView {
@@ -18,7 +19,7 @@ public class ResultView {
     public static List<String> getCarsStatus(List<Car> cars) {
         List<String> strings = new ArrayList<>();
         IntStream.range(0, cars.size())
-                .mapToObj(i -> cars.get(i).getName() + nameAndPrintDelimiter + cars.get(i).carPositionString())
+                .mapToObj(i -> cars.get(i).getName() + nameAndPrintDelimiter + positionString(cars.get(i).getPosition()))
                 .forEach(strings::add);
         return strings;
     }
@@ -39,8 +40,11 @@ public class ResultView {
                 winner.get(winner.size() - 1).getName() + endMessage);
     }
 
-    public static String getPrintCharacter() {
-        return printCharacter;
+    public static String positionString(int distance) {
+        String character = printCharacter;
+        return IntStream.rangeClosed(1, distance).
+                filter(i -> i == distance).
+                mapToObj(i -> character.repeat(i)).
+                collect(Collectors.joining());
     }
-
 }

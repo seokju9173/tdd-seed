@@ -34,10 +34,6 @@ public class Car {
         }
     }
 
-    public String carPositionString() {
-        return position.positionString();
-    }
-
     public int getPosition() {
         return position.getDistance();
     }
