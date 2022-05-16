@@ -17,11 +17,15 @@ public class ResultView {
     }
 
     public static List<String> getCarsStatus(List<Car> cars) {
-        List<String> strings = new ArrayList<>();
-        IntStream.range(0, cars.size())
-                .mapToObj(i -> cars.get(i).getName() + nameAndPrintDelimiter + positionString(cars.get(i).getPosition()))
-                .forEach(strings::add);
-        return strings;
+        return IntStream.range(0, cars.size())
+                .mapToObj(i -> {
+                    StringBuilder sb = new StringBuilder();
+                    sb.append(cars.get(i).getName());
+                    sb.append(nameAndPrintDelimiter);
+                    sb.append(positionString(cars.get(i).getPosition()));
+                    return sb.toString();
+                })
+                .collect(Collectors.toList());
     }
 
     public static void printGameStatus(Cars cars) {
