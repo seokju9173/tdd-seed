@@ -165,4 +165,10 @@ public class RacingCarTest {
                 () -> assertThat(winner.get(1).getName()).isEqualTo("crong")
         );
     }
+
+    @Test
+    @DisplayName("이름이 같은 객체는 같은 객체")
+    void sameNameCarTest() {
+        assertThat(new Name("car")).isEqualTo(new Name("car"));
+    }
 }
