@@ -37,6 +37,6 @@ public class OutputView {
     }
 
     private static void outputWinner(final Round round) {
-        System.out.println(CAR_WINNER_FORWARD_COMMENT + String.join(CAR_BREAK_POINT, round.getWinner()) + CAR_WINNER_BACKWARD_COMMENT);
+        System.out.println(CAR_WINNER_FORWARD_COMMENT + String.join(CAR_BREAK_POINT, round.findWinners()) + CAR_WINNER_BACKWARD_COMMENT);
     }
 }

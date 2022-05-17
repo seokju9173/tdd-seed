@@ -26,7 +26,7 @@ public class Round {
         return Collections.unmodifiableMap(round);
     }
 
-    public List<String> getWinner() {
+    public List<String> findWinners() {
         int attempt = round.size() - 1;
         return round.get(attempt).winner();
     }
