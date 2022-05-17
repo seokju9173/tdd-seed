@@ -23,7 +23,7 @@ public class Car {
         this(carName, new Distance(distance), carMoveStrategy);
     }
 
-    public Car(String carName) {
+    public Car(final String carName) {
         this(carName, new Distance(DEFAULT_DISTANCE), new NumOverFourMove());
     }
 
@@ -34,11 +34,11 @@ public class Car {
         return this;
     }
 
-    public boolean winner(int max) {
+    public boolean winner(final int max) {
         return distance.getDistance() == max;
     }
 
-    private void checkCarNameLength(String carName) {
+    private void checkCarNameLength(final String carName) {
         if (carName.length() > MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException(MAX_CAR_NAME_LENGTH_OVER_COMMENT + carName);
         }

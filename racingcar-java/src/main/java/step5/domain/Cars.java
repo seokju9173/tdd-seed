@@ -9,11 +9,11 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    public Cars(final List<Car> cars) {
         this.cars = new ArrayList<>(cars);
     }
 
-    public Cars(String carNames) {
+    public Cars(final String carNames) {
         isEmptyCarName(carNames);
         String[] str = carNames.split(",");
         cars = Arrays.stream(str)
@@ -42,7 +42,7 @@ public class Cars {
                 .orElseThrow(() -> new IllegalArgumentException("승자가 존재하지 않습니다."));
     }
 
-    private void isEmptyCarName(String carName){
+    private void isEmptyCarName(final String carName){
         if(carName.isEmpty()){
             throw new IllegalArgumentException("자동차 이름이 비어있습니다.");
         }

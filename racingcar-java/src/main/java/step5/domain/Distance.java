@@ -5,7 +5,7 @@ public class Distance {
 
     private final int distance;
 
-    public Distance(int distance) {
+    public Distance(final int distance) {
         this.distance = distance;
     }
 

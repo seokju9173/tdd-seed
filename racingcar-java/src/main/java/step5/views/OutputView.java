@@ -22,7 +22,7 @@ public class OutputView {
         System.out.println(HOW_MAY_ROUNDS);
     }
 
-    public static void outputRounds(Round round) {
+    public static void outputRounds(final Round round) {
         round.getRound()
                 .forEach((integer, cars) -> {
                     outputDistance(cars);
@@ -31,12 +31,12 @@ public class OutputView {
         outputWinner(round);
     }
 
-    private static void outputDistance(Cars cars) {
+    private static void outputDistance(final Cars cars) {
         cars.getCars()
                 .forEach(car -> System.out.println(car.getCarName() + " : " + CAR_DISTANCE.repeat(car.getDistance())));
     }
 
-    private static void outputWinner(Round round) {
+    private static void outputWinner(final Round round) {
         System.out.println(CAR_WINNER_FORWARD_COMMENT + String.join(CAR_BREAK_POINT, round.getWinner()) + CAR_WINNER_BACKWARD_COMMENT);
     }
 }
