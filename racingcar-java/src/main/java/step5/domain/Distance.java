@@ -9,7 +9,7 @@ public class Distance {
         this.distance = distance;
     }
 
-    public Distance increase(){
+    public Distance increase() {
         return new Distance(distance + INCREASE_CAR_DISTANCE);
     }
 
