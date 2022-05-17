@@ -7,6 +7,7 @@ import step5.utils.NumOverFourMove;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Cars 일급컬렉션 테스트")
@@ -46,4 +47,10 @@ class CarsTest {
         );
     }
 
+    @Test
+    @DisplayName("자동차 이름이 비어있을 때 에러 발생 테스트")
+    void emptyCarNameThrowErrorTest(){
+        assertThatThrownBy( () -> new Cars("") )
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
