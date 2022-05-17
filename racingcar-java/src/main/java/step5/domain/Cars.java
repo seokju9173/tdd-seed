@@ -14,6 +14,7 @@ public class Cars {
     }
 
     public Cars(String carNames) {
+        isEmptyCarName(carNames);
         String[] str = carNames.split(",");
         cars = Arrays.stream(str)
                 .map(Car::new)
@@ -39,6 +40,12 @@ public class Cars {
                 .mapToInt(Car::getDistance)
                 .max()
                 .orElseThrow(() -> new IllegalArgumentException("승자가 존재하지 않습니다."));
+    }
+
+    private void isEmptyCarName(String carName){
+        if(carName.isEmpty()){
+            throw new IllegalArgumentException("자동차 이름이 비어있습니다.");
+        }
     }
 
     public List<Car> getCars() {
