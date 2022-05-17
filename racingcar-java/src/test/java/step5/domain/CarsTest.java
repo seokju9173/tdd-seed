@@ -4,9 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step5.utils.NumOverFourMove;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -30,7 +28,7 @@ class CarsTest {
     @Test
     @DisplayName("특정 조건 발생 시 이동하는 테스트")
     void moveCarsTest() {
-
+        Map<Integer, Cars> round = new HashMap<>();
         Cars cars = new Cars(
                 Arrays.asList(
                         new Car("pobi", new Distance(1), () -> true),
@@ -39,8 +37,13 @@ class CarsTest {
                 )
         );
 
-        cars = cars.move();
+        round.put(1, cars.move());
 
+        assertAll(
+                () -> assertThat(round.get(1).getCars().get(0).getDistance()).isEqualTo(2),
+                () -> assertThat(round.get(1).getCars().get(1).getDistance()).isEqualTo(5),
+                () -> assertThat(round.get(1).getCars().get(2).getDistance()).isEqualTo(3)
+        );
     }
 
 }
