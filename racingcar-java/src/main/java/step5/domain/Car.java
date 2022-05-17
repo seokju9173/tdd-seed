@@ -13,6 +13,10 @@ public class Car {
         this(carName, new Distance(distance));
     }
 
+    public Car move(){
+        return new Car(carName, distance.increase());
+    }
+
     public int getDistance() {
         return distance.getDistance();
     }

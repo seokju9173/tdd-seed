@@ -29,7 +29,7 @@ public class CarTest {
     void carMoveTest(){
         Car car = new Car("pobi", 1);
 
-        car.move();
+        car = car.move();
 
         assertThat(car.getDistance()).isEqualTo(2);
     }
