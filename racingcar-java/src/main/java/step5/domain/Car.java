@@ -34,7 +34,7 @@ public class Car {
         return this;
     }
 
-    public boolean winner(int max){
+    public boolean winner(int max) {
         return distance.getDistance() == max;
     }
 
