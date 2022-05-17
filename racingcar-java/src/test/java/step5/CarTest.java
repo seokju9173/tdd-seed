@@ -23,4 +23,14 @@ public class CarTest {
                 () -> assertThat(distance).isEqualTo(1)
         );
     }
+
+    @Test
+    @DisplayName("Car 객체의 이동 이벤트 테스트")
+    void carMoveTest(){
+        Car car = new Car("pobi", 1);
+
+        car.move();
+
+        assertThat(car.getDistance()).isEqualTo(2);
+    }
 }
