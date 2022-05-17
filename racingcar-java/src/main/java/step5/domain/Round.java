@@ -2,6 +2,7 @@ package step5.domain;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Round {
@@ -23,5 +24,10 @@ public class Round {
 
     public Map<Integer, Cars> getRound() {
         return Collections.unmodifiableMap(round);
+    }
+
+    public List<String> getWinner() {
+        int attempt = round.size() - 1;
+        return round.get(attempt).winner();
     }
 }

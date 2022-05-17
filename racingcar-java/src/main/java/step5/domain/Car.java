@@ -34,6 +34,10 @@ public class Car {
         return this;
     }
 
+    public boolean winner(int max){
+        return distance.getDistance() == max;
+    }
+
     private void checkCarNameLength(String carName) {
         if (carName.length() > MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException(MAX_CAR_NAME_LENGTH_OVER_COMMENT + carName);

@@ -26,6 +26,21 @@ public class Cars {
                 .collect(Collectors.toList()));
     }
 
+    public List<String> winner(){
+        int max = max();
+        return cars.stream()
+                .filter(car -> car.winner(max))
+                .map(Car::getCarName)
+                .collect(Collectors.toList());
+    }
+
+    private int max(){
+        return cars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElseThrow(() -> new IllegalArgumentException("승자가 존재하지 않습니다."));
+    }
+
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }

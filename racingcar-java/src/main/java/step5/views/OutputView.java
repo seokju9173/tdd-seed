@@ -10,6 +10,9 @@ public class OutputView {
     private static final String HOW_MAY_CARS_NAME = "자동차의 이름을 작성해 주세요.";
     private static final String HOW_MAY_ROUNDS = "시도할 회수는 몇 회 인가요?";
     private static final String CAR_DISTANCE = "-";
+    private static final String CAR_BREAK_POINT = ",";
+    private static final String CAR_WINNER_FORWARD_COMMENT = "우승자는 ";
+    private static final String CAR_WINNER_BACKWARD_COMMENT = " 입니다";
 
     public static void outputInputCarsName() {
         System.out.println(HOW_MAY_CARS_NAME);
@@ -25,10 +28,15 @@ public class OutputView {
                     outputDistance(cars);
                     System.out.println();
                 });
+        outputWinner(round);
     }
 
     private static void outputDistance(Cars cars) {
         cars.getCars()
                 .forEach(car -> System.out.println(car.getCarName() + " : " + CAR_DISTANCE.repeat(car.getDistance())));
+    }
+
+    private static void outputWinner(Round round) {
+        System.out.println(CAR_WINNER_FORWARD_COMMENT + String.join(CAR_BREAK_POINT,round.getWinner()) + CAR_WINNER_BACKWARD_COMMENT);
     }
 }
