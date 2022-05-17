@@ -15,11 +15,11 @@ public class OutputView {
         System.out.println(HOW_MAY_CARS_NAME);
     }
 
-    public static void outputInputRounds(){
+    public static void outputInputRounds() {
         System.out.println(HOW_MAY_ROUNDS);
     }
 
-    public static void outputRounds(Round round){
+    public static void outputRounds(Round round) {
         round.getRound()
                 .forEach((integer, cars) -> {
                     outputDistance(cars);
@@ -27,8 +27,8 @@ public class OutputView {
                 });
     }
 
-    private static void outputDistance(Cars cars){
+    private static void outputDistance(Cars cars) {
         cars.getCars()
-                .forEach(car -> System.out.println(car.getCarName() + " : " + CAR_DISTANCE.repeat(car.getDistance())) );
+                .forEach(car -> System.out.println(car.getCarName() + " : " + CAR_DISTANCE.repeat(car.getDistance())));
     }
 }

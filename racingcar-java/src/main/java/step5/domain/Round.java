@@ -11,7 +11,7 @@ public class Round {
         this.round = round;
     }
 
-    public Round(final int roundNum, final Cars cars){
+    public Round(final int roundNum, final Cars cars) {
         this.round = new HashMap<>();
         this.round.put(roundNum, cars);
     }

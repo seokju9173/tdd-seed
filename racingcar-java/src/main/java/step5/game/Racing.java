@@ -10,7 +10,7 @@ import static step5.views.InputView.inputRounds;
 import static step5.views.OutputView.outputRounds;
 
 public class Racing {
-    public void start(){
+    public void start() {
         Cars cars = new Cars(inputCarsName());
         int attempt = inputRounds();
 
