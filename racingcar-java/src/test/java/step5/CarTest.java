@@ -15,8 +15,8 @@ public class CarTest {
     void createCarObjectTest() {
         Car car = new Car("pobi", 1);
 
-        String name = car.getName();
-        int distance = car.getDistance;
+        String name = car.getCarName();
+        int distance = car.getDistance();
 
         assertAll(
                 () -> assertThat(name).isEqualTo("pobi"),
