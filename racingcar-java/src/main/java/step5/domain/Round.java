@@ -21,13 +21,12 @@ public class Round {
         round.put(roundNum, cars);
     }
 
-
-    public Map<Integer, Cars> getRound() {
-        return Collections.unmodifiableMap(round);
-    }
-
     public List<String> findWinners() {
         int attempt = round.size() - 1;
         return round.get(attempt).winner();
+    }
+
+    public Map<Integer, Cars> getRound() {
+        return Collections.unmodifiableMap(round);
     }
 }
