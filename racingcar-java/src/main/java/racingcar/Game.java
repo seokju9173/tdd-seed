@@ -1,24 +1,45 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.OptionalInt;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Game {
     public void run() {
         Cars cars;
-        Users users;
 
-        int number = InputView.getCarNumber();
-        cars = new Cars(number);
-        users = new Users(number);
-        IntStream.range(0, number).
-                forEach(i -> users.getUser(i).setCar(cars.getCar(i)));
+        String names = InputView.getNames();
+        cars = new Cars(new MoveStrategyRandom(), names);
+        IntStream.range(0, cars.getCarList().size())
+                .forEach(i -> cars.getCar(i));
         int round = InputView.getRoundNumber();
         
-        IntStream.range(0, round).
-                forEach(i -> {
-                    users.usersGo();
+        IntStream.range(0, round)
+                .forEach(i -> {
+                    cars.moveCars();
                     ResultView.printGameStatus(cars);
                 });
+
+        List<Car> winner = findWinner(cars);
+        ResultView.printWinner(winner);
+    }
+
+    public List<Car> findWinner(Cars cars) {
+        int maxPosition = IntStream.range(0, cars.getCarList().size())
+                .map(i -> cars.getCar(i).getPosition())
+                .max()
+                .getAsInt();
+        List<Car> winnerCars = IntStream.range(0, cars.getCarList().size())
+                .filter(i -> cars.getCar(i).getPosition() == maxPosition)
+                .mapToObj(cars::getCar)
+                .collect(Collectors.toList());
+
+        if(winnerCars.size() == 0) {
+            throw new IllegalArgumentException("승자가 0명인 오류 발생");
+        }
+        return winnerCars;
     }
 
 }
