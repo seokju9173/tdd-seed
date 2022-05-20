@@ -56,7 +56,7 @@ public class RacingCarTest {
     void nameSplitFailTest() {
         assertAll(
                 () -> assertThatIllegalArgumentException()
-                        .isThrownBy(() -> NameSpliter.nameSplit()),
+                        .isThrownBy(() -> NameSpliter.nameSplit(null)),
                 () -> assertThatIllegalArgumentException()
                         .isThrownBy(() -> NameSpliter.nameSplit(""))
         );
