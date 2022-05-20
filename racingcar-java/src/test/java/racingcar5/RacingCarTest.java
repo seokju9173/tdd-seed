@@ -2,6 +2,7 @@ package racingcar5;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -37,5 +38,27 @@ public class RacingCarTest {
         Car car = new Car(new AlwaysMoveStrategy());
         car.move();
         assertThat(car.getPosition()).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("이름 분할 테스트")
+    void nameSplitTest() {
+        List<String> nameStrings = NameSpliter.nameSplit("pobi,crong,honux");
+        assertAll(
+                () -> assertThat(nameStrings.get(0)).isEqualTo("pobi"),
+                () -> assertThat(nameStrings.get(2)).isEqualTo("honux"),
+                () -> assertThat(nameStrings).hasSize(3)
+        );
+    }
+
+    @Test
+    @DisplayName("이름 분할 실패 테스트")
+    void nameSplitFailTest() {
+        assertAll(
+                () -> assertThatIllegalArgumentException()
+                        .isThrownBy(() -> NameSpliter.nameSplit()),
+                () -> assertThatIllegalArgumentException()
+                        .isThrownBy(() -> NameSpliter.nameSplit(""))
+        );
     }
 }
