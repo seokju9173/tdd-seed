@@ -24,10 +24,18 @@ public class RacingCarTest {
     @Test
     @DisplayName("자동차 생성 테스트")
     void carCreateTest() {
-        Car car = new Car("pobi");
+        Car car = new Car(new AlwaysMoveStrategy(), "pobi");
         assertAll(
                 () -> assertThat(car.getName()).isEqualTo("pobi"),
                 () -> assertThat(car.getPosition()).isEqualTo(1)
         );
+    }
+
+    @Test
+    @DisplayName("자동차 이동 테스트")
+    void carMoveTest() {
+        Car car = new Car(new AlwaysMoveStrategy());
+        car.move();
+        assertThat(car.getPosition()).isEqualTo(2);
     }
 }
