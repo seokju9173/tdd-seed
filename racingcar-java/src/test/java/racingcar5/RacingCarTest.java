@@ -65,7 +65,7 @@ public class RacingCarTest {
     @Test
     @DisplayName("Cars 클래스 테스트")
     void carsCreateTest() {
-        Cars cars = new Cars("pobi,crong,honux");
+        Cars cars = new Cars(new AlwaysMoveStrategy(), "pobi,crong,honux");
         cars.moveCars();
         assertAll(
                 () -> assertThat(cars.getCar(0).getName()).isEqualTo("pobi"),
@@ -76,12 +76,14 @@ public class RacingCarTest {
     @Test
     @DisplayName("Cars 클래스 실패 테스트")
     void carsFailTest() {
-        Cars cars = new Cars("pobi");
+        Cars cars = new Cars(new AlwaysMoveStrategy(), "pobi");
         assertAll(
                 () -> assertThatIllegalArgumentException()
                         .isThrownBy(() -> cars.getCar(-1)),
                 () -> assertThatIllegalArgumentException()
-                        .isThrownBy(() -> cars.getCar(2))
+                        .isThrownBy(() -> cars.getCar(2)),
+                () -> assertThatIllegalArgumentException()
+                        .isThrownBy(() -> new Cars(new AlwaysMoveStrategy(), ""))
         );
     }
 }
