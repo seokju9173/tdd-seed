@@ -3,6 +3,7 @@ package racingcar5;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.util.List;
+import java.util.stream.IntStream;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -84,6 +85,38 @@ public class RacingCarTest {
                         .isThrownBy(() -> cars.getCar(2)),
                 () -> assertThatIllegalArgumentException()
                         .isThrownBy(() -> new Cars(new AlwaysMoveStrategy(), ""))
+        );
+    }
+
+    @Test
+    @DisplayName("승자 1명 테스트")
+    void winnerTest() {
+        Cars cars = new Cars(new AlwaysMoveStrategy(), "pobi,crong,honux");
+        IntStream.range(0, 5)
+                .forEach(i -> cars.getCar(0).move());
+        IntStream.range(0, 3)
+                .forEach(i -> cars.getCar(1).move());
+        List<Car> winner = Game.findWinner(cars);
+        assertAll(
+                () -> assertThat(winner).hasSize(1),
+                () -> assertThat(winner.get(0).getPosition()).isEqualTo(6),
+                () -> assertThat(winner.get(0).getName()).isEqualTo("pobi")
+        );
+    }
+
+    @Test
+    @DisplayName("승자 2명 테스트")
+    void winnersTest() {
+        Cars cars = new Cars(new AlwaysMoveStrategy(), "pobi,crong,honux");
+        IntStream.range(0, 3)
+                .forEach(i -> cars.getCar(0).move());
+        IntStream.range(0, 3)
+                .forEach(i -> cars.getCar(2).move());
+        List<Car> winner = Game.findWinner(cars);
+        assertAll(
+                () -> assertThat(winner).hasSize(2),
+                () -> assertThat(winner.get(1).getPosition()).isEqualTo(4),
+                () -> assertThat(winner.get(1).getName()).isEqualTo("honux")
         );
     }
 }
