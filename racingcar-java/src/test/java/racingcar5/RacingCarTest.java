@@ -61,4 +61,27 @@ public class RacingCarTest {
                         .isThrownBy(() -> NameSpliter.nameSplit(""))
         );
     }
+
+    @Test
+    @DisplayName("Cars 클래스 테스트")
+    void carsCreateTest() {
+        Cars cars = new Cars("pobi,crong,honux");
+        cars.moveCars();
+        assertAll(
+                () -> assertThat(cars.getCar(0).getName()).isEqualTo("pobi"),
+                () -> assertThat(cars.getCar(1).getPosition()).isEqualTo(2)
+        );
+    }
+
+    @Test
+    @DisplayName("Cars 클래스 실패 테스트")
+    void carsFailTest() {
+        Cars cars = new Cars("pobi");
+        assertAll(
+                () -> assertThatIllegalArgumentException()
+                        .isThrownBy(() -> cars.getCar(-1)),
+                () -> assertThatIllegalArgumentException()
+                        .isThrownBy(() -> cars.getCar(2))
+        );
+    }
 }
