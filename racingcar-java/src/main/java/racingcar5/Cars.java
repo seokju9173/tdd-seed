@@ -29,10 +29,9 @@ public class Cars {
         return cars.size();
     }
 
-    private boolean validateIndex(int index) {
+    private void validateIndex(int index) {
         if(index < 0 || index >= cars.size()) {
             throw new IllegalArgumentException("잘못된 인덱스 접근");
         }
-        return true;
     }
 }
