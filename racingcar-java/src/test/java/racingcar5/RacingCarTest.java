@@ -10,27 +10,36 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RacingCarTest {
 
     @Test
-    @DisplayName("위치 객체 테스트")
+    @DisplayName("위치 객체 생성 테스트")
     void positionCreateTest() {
         Position position1 = new Position();
         Position position2 = new Position(2);
-        Position position3 = new Position(3);
-        position3.increase();
         assertAll(
                 () -> assertThat(position1.getDistance()).isEqualTo(1),
-                () -> assertThat(position2.getDistance()).isEqualTo(2),
-                () -> assertThat(position3.getDistance()).isEqualTo(4)
+                () -> assertThat(position2.getDistance()).isEqualTo(2)
         );
+    }
+
+    @Test
+    @DisplayName("위치 객체 증가 테스트")
+    void positionIncreaseTest() {
+        Position position = new Position();
+        position.increase();
+        assertThat(position.getDistance()).isEqualTo(2);
     }
 
     @Test
     @DisplayName("자동차 생성 테스트")
     void carCreateTest() {
         Car car = new Car(new AlwaysMoveStrategy(), "pobi");
-        assertAll(
-                () -> assertThat(car.getName()).isEqualTo("pobi"),
-                () -> assertThat(car.getPosition()).isEqualTo(1)
-        );
+//        assertAll(
+//                () -> assertThat(car.getName()).isEqualTo("pobi"),
+//                () -> assertThat(car.getPosition()).isEqualTo(1)
+//        );
+        assertThat(car)
+                .usingRecursiveComparison()
+                .ignoringFields("moveStrategy")
+                .isEqualTo(new Car(() -> true, "pobi", 1));
     }
 
     @Test
@@ -39,28 +48,6 @@ public class RacingCarTest {
         Car car = new Car(new AlwaysMoveStrategy());
         car.move();
         assertThat(car.getPosition()).isEqualTo(2);
-    }
-
-    @Test
-    @DisplayName("이름 분할 테스트")
-    void nameSplitTest() {
-        List<String> nameStrings = NameSpliter.nameSplit("pobi,crong,honux");
-        assertAll(
-                () -> assertThat(nameStrings.get(0)).isEqualTo("pobi"),
-                () -> assertThat(nameStrings.get(2)).isEqualTo("honux"),
-                () -> assertThat(nameStrings).hasSize(3)
-        );
-    }
-
-    @Test
-    @DisplayName("이름 분할 실패 테스트")
-    void nameSplitFailTest() {
-        assertAll(
-                () -> assertThatIllegalArgumentException()
-                        .isThrownBy(() -> NameSpliter.nameSplit(null)),
-                () -> assertThatIllegalArgumentException()
-                        .isThrownBy(() -> NameSpliter.nameSplit(""))
-        );
     }
 
     @Test
