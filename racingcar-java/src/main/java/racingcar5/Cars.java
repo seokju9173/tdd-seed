@@ -30,7 +30,7 @@ public class Cars {
     }
 
     private void validateIndex(int index) {
-        if(index < 0 || index >= cars.size()) {
+        if (index < 0 || index >= cars.size()) {
             throw new IllegalArgumentException("잘못된 인덱스 접근");
         }
     }

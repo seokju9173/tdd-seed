@@ -26,7 +26,7 @@ public class Car {
     }
 
     public void move() {
-        if(moveStrategy.isMove()) {
+        if (moveStrategy.isMove()) {
             position.increase();
         }
     }

@@ -32,7 +32,7 @@ public class Game {
                 .filter(i -> cars.getCar(i).getPosition() == maxPosition)
                 .mapToObj(cars::getCar)
                 .collect(Collectors.toList());
-        if(winners.size() <= 0) {
+        if (winners.size() <= 0) {
             throw new IllegalArgumentException("승자가 없음");
         }
         return winners;
