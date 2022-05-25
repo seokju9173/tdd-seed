@@ -2,9 +2,10 @@ package racingcar5;
 
 public class Car {
 
-    private MoveStrategy moveStrategy;
-    private String name;
-    private Position position;
+    private final static int INITIAL_POSITION = 1;
+    private final MoveStrategy moveStrategy;
+    private final String name;
+    private final Position position;
 
     public Car(MoveStrategy moveStrategy, String name, Position position) {
         this.moveStrategy = moveStrategy;
@@ -17,11 +18,11 @@ public class Car {
     }
 
     public Car(MoveStrategy moveStrategy, String name) {
-        this(moveStrategy, name, 1);
+        this(moveStrategy, name, INITIAL_POSITION);
     }
 
     public Car(MoveStrategy moveStrategy) {
-        this(moveStrategy, "temp", 1);
+        this(moveStrategy, "temp", INITIAL_POSITION);
     }
 
     public void move() {
