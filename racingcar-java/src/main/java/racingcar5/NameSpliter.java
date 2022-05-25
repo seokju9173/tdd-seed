@@ -7,6 +7,10 @@ public class NameSpliter {
 
     private final static String DELIMITER_CHARACTER = ",";
 
+    private NameSpliter() {
+        throw new AssertionError();
+    }
+
     public static List<String> nameSplit(String string) {
         if (string == null || string.isBlank()) {
             throw new IllegalArgumentException("null / 공백 이름");
