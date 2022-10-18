@@ -18,8 +18,7 @@ public class StringTest {
 
     @Test
     void substring() {
-        String str = "(1,2)";
-        str.substring(1, 4);
-        assertThat(str).contains("1,2");
+        String result = "(1,2)".substring(1, 4);
+        assertThat(result).isEqualTo("1,2");
     }
 }
