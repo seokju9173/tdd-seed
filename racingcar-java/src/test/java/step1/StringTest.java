@@ -38,7 +38,7 @@ public class StringTest {
     @DisplayName("특정 위치의 문자를 가져올 때 위치 값을 벗어나면 예외 발생")
     void charAtExceptionTest() {
         String string = "abc";
-        char result = string.charAt(3);
-        assertThat(result).isEqualTo('a');
+        assertThatThrownBy(() -> string.charAt(3))
+                .isInstanceOf(StringIndexOutOfBoundsException.class);
     }
 }
