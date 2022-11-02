@@ -22,19 +22,27 @@ public class StringCalculatorTest {
     
     @Test
     @DisplayName("뺄셈 테스트")
-    void substractionTest() {
-        assertThat(4).isEqualTo(stringCalculator.substraction(7,3));
+    void subtractionTest() {
+        assertThat(4).isEqualTo(stringCalculator.subtraction(7,3));
     }
-    
+
     @Test
     @DisplayName("곱셈 테스트")
     void multiplicationTest() {
         assertThat(21).isEqualTo(stringCalculator.multiplication(7,3));
     }
-    
+
     @Test
     @DisplayName("나눗셈 테스트")
     void divisionTest() {
         assertThat(2).isEqualTo(stringCalculator.division(6,3));
+    }
+
+    @Test
+    @DisplayName("입력한 문자열 사이의 빈 공백으로 문자열 분리 테스트")
+    void stringBlankSplitTest() {
+        String inputString = "7 + 3";
+        String[] result = inputString.split(" ");
+        assertThat(result).containsExactly("7", "+", "3");
     }
 }
