@@ -28,18 +28,19 @@ public class SetTest {
     @DisplayName("Set 크기 확인")
     void sizeTest() {
         int setSize = numbers.size();
+
         assertThat(setSize).isEqualTo(3);
     }
 
-    @ParameterizedTest
     @DisplayName("1,2,3의 값이 존재하는지 확인하는 코드의 중복 코드 제거")
+    @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void containsTest(int number) {
         assertThat(numbers.contains(number)).isTrue();
     }
 
-    @ParameterizedTest
     @DisplayName("contains 실행 결과 true, false 반환")
+    @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     void containsTrueFalseTest(int number, boolean result) {
         assertThat(numbers.contains(number)).isEqualTo(result);
