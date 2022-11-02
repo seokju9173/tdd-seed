@@ -1,9 +1,14 @@
 package step2;
 
-public class StringCalculator {
+import java.util.Scanner;
 
+public class StringCalculator {
     public String[] stringBlankSplit(String inputString) {
         return inputString.split(" ");
+    }
+
+    public int stringToInt(String string) {
+        return Integer.parseInt(string);
     }
 
     public int addition(int firstNumber, int secondNumber) {
