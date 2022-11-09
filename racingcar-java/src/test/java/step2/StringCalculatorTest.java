@@ -39,10 +39,19 @@ public class StringCalculatorTest {
     }
 
     @Test
-    @DisplayName("입력한 문자열 사이의 빈 공백으로 문자열 분리 테스트")
+    @DisplayName("입력한 문자열 사이의 빈 공백으로 문자열이 분리되는지 테스트")
     void stringBlankSplitTest() {
         String inputString = "7 + 3";
         String[] result = inputString.split(" ");
         assertThat(result).containsExactly("7", "+", "3");
+    }
+    
+    @Test
+    @DisplayName("입력한 문자열이 연산자에 따라 계산되는지 테스트")
+    void stringCalculateTest() {
+        String inputString = "2 + 3 * 4 / 2";
+        String[] result = stringCalculator.stringBlankSplit(inputString);
+        int number = 10;
+        assertThat(number).isEqualTo(stringCalculator.calculateString(result));
     }
 }

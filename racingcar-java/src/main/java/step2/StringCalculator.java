@@ -7,10 +7,6 @@ public class StringCalculator {
         return inputString.split(" ");
     }
 
-    public int stringToInt(String string) {
-        return Integer.parseInt(string);
-    }
-
     public int addition(int firstNumber, int secondNumber) {
         return firstNumber + secondNumber;
     }
@@ -24,6 +20,28 @@ public class StringCalculator {
     }
 
     public int division(int firstNumber, int secondNumber) {
-        return firstNumber / secondNumber;
+        try {
+            return firstNumber / secondNumber;
+        }
+        catch (Exception e) {
+            System.out.println("0으로 나눌 수 없습니다.");
+        }
+        return 0;
+    }
+
+    public int calculate(int firstNumber, char operator, int secondNumber) {
+        if (operator == '+') {
+            return addition(firstNumber, secondNumber);
+        }
+        if (operator == '-') {
+            return subtraction(firstNumber, secondNumber);
+        }
+        if (operator == '*') {
+            return multiplication(firstNumber, secondNumber);
+        }
+        if (operator == '/') {
+            return division(firstNumber, secondNumber);
+        }
+        throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
     }
 }
