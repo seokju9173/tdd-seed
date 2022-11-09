@@ -44,4 +44,13 @@ public class StringCalculator {
         }
         throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
     }
+
+    public int calculateString(String[] string) {
+        int result = Integer.parseInt(string[0]);
+
+        for(int i = 0; i < string.length - 2; i += 2) {
+            result = calculate(result, string[i + 1].charAt(0), Integer.parseInt(string[i + 2]));
+        }
+        return result;
+    }
 }
