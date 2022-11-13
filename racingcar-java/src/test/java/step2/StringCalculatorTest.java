@@ -3,6 +3,9 @@ package step2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -53,5 +56,15 @@ public class StringCalculatorTest {
         String[] result = stringCalculator.stringBlankSplit(inputString);
         int number = 10;
         assertThat(number).isEqualTo(stringCalculator.calculateString(result));
+    }
+
+    @DisplayName("입력한 문자열이 null 이거나 공백일 경우 예외처리 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"", " "})
+    void stringNullOrBlankTest(String inputString) {
+        assertThatIllegalArgumentException()
+                .as("입력한 문자열이 null 이거나 공백입니다.")
+                .isThrownBy(() -> stringCalculator.stringNullOrBlank(inputString))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

@@ -1,7 +1,5 @@
 package step2;
 
-import java.util.Scanner;
-
 public class StringCalculator {
     public String[] stringBlankSplit(String inputString) {
         return inputString.split(" ");
