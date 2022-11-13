@@ -51,4 +51,11 @@ public class StringCalculator {
         }
         return result;
     }
+
+    public int stringNullOrBlank(String inputString) {
+        if (inputString.trim().isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+        return calculateString(inputString.split(" "));
+    }
 }
